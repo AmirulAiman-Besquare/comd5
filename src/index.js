@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "index.css";
-import { Register } from "components";
+import { Register, Login } from "components";
 import reportWebVitals from "reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <Register />
+    {/* <Login /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
