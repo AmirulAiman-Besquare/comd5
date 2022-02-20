@@ -134,7 +134,4 @@ body {
   .app .btn-toggle {
     display: flex;
   }
-  /* .app.rtl .btn-toggle {
-    margin-left: auto;
-  } */
 }

@@ -39,15 +39,14 @@ export const SideBar = ({ toggled, handleToggleSidebar }) => {
     >
       <SidebarHeader>
         <div className="logotext">
-          {/* small and big change using menucollapse state */}
           <IconContext.Provider value={{ color: "white", size: "2em" }}>
-            <p>
+            <>
               {toggleCollapse ? (
                 <FaBars className="m-auto" />
               ) : (
                 <FaAngleDoubleLeft className="m-auto" />
               )}
-            </p>
+            </>
           </IconContext.Provider>
         </div>
       </SidebarHeader>
