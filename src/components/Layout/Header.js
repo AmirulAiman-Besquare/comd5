@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Badge, Menu, MenuItem, IconButton, Toolbar } from "@mui/material";
 import { IconContext } from "react-icons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   // root: {
@@ -73,9 +74,7 @@ export const Header = (props) => {
             <div className="w-1.5 h-10 ml-5 bg-[#00B2FF] text-[#00B2FF] hidden xs:block">
               .
             </div>
-            <Typography variant="h6" className={classes.title}>
-              Title
-            </Typography>
+            <Typography variant="h6" className={classes.title}></Typography>
             <IconButton>
               <FiSearch
                 size="0.8em"
@@ -84,9 +83,11 @@ export const Header = (props) => {
             </IconButton>
             <div>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MdOutlineNotificationsActive className="text-[#2093d6]" />
-                </Badge>
+                <Link to={"/notification"}>
+                  <Badge badgeContent={4} color="secondary">
+                    <MdOutlineNotificationsActive className="text-[#2093d6]" />
+                  </Badge>
+                </Link>
               </IconButton>
               <IconButton
                 onClick={handleMenu}
@@ -115,10 +116,13 @@ export const Header = (props) => {
                 <IconContext.Provider
                   value={{ color: "#194886", size: "1.3em" }}
                 >
-                  <MenuItem onClick={handleClose}>
-                    <FiSettings className="mr-3 -mt-0.5" />
-                    Settings
-                  </MenuItem>
+                  <Link to="/usersetting">
+                    <MenuItem onClick={handleClose}>
+                      <FiSettings className="mr-3 -mt-0.5" />
+                      Settings
+                    </MenuItem>
+                  </Link>
+
                   <hr className="border-black" />
                   <MenuItem onClick={handleClose}>
                     <CgLogOut className="mr-3" />

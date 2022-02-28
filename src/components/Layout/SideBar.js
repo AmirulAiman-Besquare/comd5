@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import styles from "./styles.modules.css";
+import "./styles.modules.css";
 import {
   ProSidebar,
   Menu,
@@ -61,22 +61,22 @@ export const SideBar = ({ toggled, handleToggleSidebar }) => {
               className="mt-[0.325rem] mb-3"
             >
               Dashboard
-              <NavLink to={"/"}></NavLink>
+              <Link to={"/"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem icon={<MdOutlineAutoGraph />} className="my-3.5">
-              Trade<NavLink to={"/register"}></NavLink>
+              Trade<Link to={"/tx"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem icon={<FiArchive />} className="my-3.5">
-              History<NavLink to={"/register"}></NavLink>
+              History<Link to={"/txhistory"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem
               icon={<MdOutlineAccountBalanceWallet />}
               className="my-3.5"
             >
-              Wallet<NavLink to={"/register"}></NavLink>
+              Wallet<Link to={"/wallet"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
           </Menu>
