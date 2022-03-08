@@ -29,3 +29,5 @@ jobs:
       env:
         CI: false
     - run: npm test  --if-present
+      env:
+        CI: false
