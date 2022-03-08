@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import goldicon from "../../asset/images/gold.png";
-import silvericon from "../../asset/images/silver.png";
+import goldicon from "../asset/images/gold.png";
+import silvericon from "../asset/images/silver.png";
 import "react-widgets/styles.css";
 import Select, { components } from "react-select";
 
@@ -50,48 +50,61 @@ const colourStyles = {
     },
   }),
 };
-const commodities = [
-  {
-    label: "Gold",
-    value: "frxXAUUSD",
-    icon: <img src={silvericon} height="30px" width="30px" />,
-    test: "Gold",
-  },
-  {
-    label: "Palladium",
-    value: "frxXPDUSD",
-    icon: <img src={silvericon} height="30px" width="30px" />,
-    test: "Palladium",
-  },
-  {
-    label: "Platinium",
-    value: "frxXPTUSD",
-    icon: <img src={silvericon} height="30px" width="30px" />,
-    test: "Platinium",
-  },
-  {
-    label: "Silver",
-    value: "frxXAGUSD",
-    icon: <img src={silvericon} height="30px" width="30px" />,
-    test: "Silver",
-  },
-];
 
-export const SelectCommodity = () => {
-  const [open, setOpen] = useState(false);
-
-  function onChange(value) {
-    console.log(`selected ${value}`);
+class SelectCommodity extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { itemselect: "" };
   }
 
-  return (
-    <Select
-      styles={colourStyles}
-      options={commodities}
-      className="w-full m-auto mr-5 text-xl font-bold"
-      isSearchable={false}
-      defaultValue={commodities[0]}
-      onBlur={() => setOpen(false)}
-    />
-  );
-};
+  _onChange(value) {
+    this.props.func(value.value);
+    console.log(value.value);
+    // - just to see what we recive from <Select />
+    this.setState({ itemselect: value });
+  }
+
+  render() {
+    const options = [
+      {
+        label: "Gold",
+        value: "Xau",
+        // icon: <img src={silvericon} height="30px" width="30px" />,
+        // test: "Gold",
+      },
+      {
+        label: "Palladium",
+        value: "frxXPDUSD",
+        // icon: <img src={silvericon} height="30px" width="30px" />,
+        // test: "Palladium",
+      },
+      {
+        label: "Platinium",
+        value: "frxXPTUSD",
+        // icon: <img src={silvericon} height="30px" width="30px" />,
+        // test: "Platinium",
+      },
+      {
+        label: "Silver",
+        value: "frxXAGUSD",
+        // icon: <img src={silvericon} height="30px" width="30px" />,
+        // test: "Silver",
+      },
+    ];
+
+    return (
+      <Select
+        styles={colourStyles}
+        name="form-field-name"
+        value={this.state.itemselect}
+        options={options}
+        defaultValue={options[0]}
+        searchable={false}
+        className="w-full m-auto mr-5 text-xl font-bold"
+        onChange={this._onChange.bind(this)}
+      />
+    );
+  }
+}
+
+export default SelectCommodity;

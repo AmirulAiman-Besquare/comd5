@@ -1,6 +1,6 @@
 import React from "react";
-import MasterCard from "../../asset/images/Master.png";
-import Visa from "../../asset/images/Visa.png";
+import MasterCard from "../asset/images/Master.png";
+import Visa from "../asset/images/Visa.png";
 
 export const PaymentMethod = () => {
   return (

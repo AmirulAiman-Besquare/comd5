@@ -1,9 +1,9 @@
 import "./styles.modules.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DashBoardFav } from "./DashboardFav";
-import linegraph from "../../asset/images/linegraph.png";
-import walleticon from "../../asset/images/Wallet.svg";
+import linegraph from "../asset/images/linegraph.png";
+import walleticon from "../asset/images/Wallet.svg";
 import Select, { components } from "react-select";
 
 const colourStyles = {
@@ -67,6 +67,29 @@ const options = [
 export const DashBoard = () => {
   const [open, setOpen] = useState(false);
 
+  const [balance, setBalance] = useState();
+
+  async function getBalance() {
+    try {
+      const response = await fetch(
+        "http://157.245.57.54:5000/display/balance",
+        {
+          method: "GET",
+          headers: { token: localStorage.token },
+        }
+      );
+
+      const parseRes = await response.json();
+      setBalance(parseRes[0].balance);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getBalance();
+  }, []);
+
   return (
     <div className="m-10">
       <div className="flex w-full gap-x-10">
@@ -95,7 +118,7 @@ export const DashBoard = () => {
               draggable="false"
               dragstart="false;"
             />
-            <p>$16, 0290.92</p>
+            <p>${balance}</p>
           </div>
         </div>
       </div>

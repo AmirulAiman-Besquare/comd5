@@ -61,15 +61,15 @@ export const SideBar = ({ toggled, handleToggleSidebar }) => {
               className="mt-[0.325rem] mb-3"
             >
               Dashboard
-              <Link to={"/"}></Link>
+              <Link to={"/dashboard"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem icon={<MdOutlineAutoGraph />} className="my-3.5">
-              Trade<Link to={"/tx"}></Link>
+              Trade<Link to={"/trade"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem icon={<FiArchive />} className="my-3.5">
-              History<Link to={"/txhistory"}></Link>
+              History<Link to={"/transactionhistory"}></Link>
             </MenuItem>
             <hr className="border-[#2d95d1] border-2" />
             <MenuItem

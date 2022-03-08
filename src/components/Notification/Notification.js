@@ -1,5 +1,5 @@
 import styles from "./styles.modules.css";
-import noticon from "../../asset/images/noticon.png";
+import noticon from "../asset/images/noticon.png";
 import { FiTrash } from "react-icons/fi";
 
 export const Notification = () => {

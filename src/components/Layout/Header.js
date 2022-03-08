@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { FaBars } from "react-icons/fa";
 import {
   FiSettings,
@@ -15,6 +16,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Badge, Menu, MenuItem, IconButton, Toolbar } from "@mui/material";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   // root: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header = (props) => {
+export const Header = ({ setAuth, handleToggleSidebar }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -57,6 +59,33 @@ export const Header = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [name, setName] = useState();
+
+  async function getName() {
+    try {
+      const response = await fetch("http://157.245.57.54:5000/display/user", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
+
+      const parseRes = await response.json();
+      setName(parseRes[0].first_name);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    getName();
+  }, []);
+
   return (
     <header>
       {/* <div className={classes.root}> */}
@@ -65,7 +94,7 @@ export const Header = (props) => {
           <Toolbar className={classes.hditem}>
             <div
               className={`btn-toggle ${classes.menuButton}`}
-              onClick={() => props.handleToggleSidebar(true)}
+              onClick={() => handleToggleSidebar(true)}
             >
               <IconContext.Provider value={{ color: "white", size: "2em" }}>
                 <FaBars />
@@ -94,7 +123,7 @@ export const Header = (props) => {
                 color="inherit"
                 disableRipple={true}
               >
-                <p className="mt-1 ml-1 text-base">Hi,Amirul!</p>
+                <p className="mt-1 ml-1 text-base">Hi,{name}</p>
                 <AccountCircle fontSize="large" />
                 <>
                   {open ? (
@@ -124,10 +153,10 @@ export const Header = (props) => {
                   </Link>
 
                   <hr className="border-black" />
-                  <MenuItem onClick={handleClose}>
+                  <Button onClick={(e) => logout(e)}>
                     <CgLogOut className="mr-3" />
                     Logout
-                  </MenuItem>
+                  </Button>
                 </IconContext.Provider>
               </Menu>
             </div>

@@ -5,7 +5,7 @@ body {
   height: 100vh;
   font-family: "Roboto", sans-serif;
   background-color: #13407b;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 #root {
   height: 100%;
@@ -56,7 +56,8 @@ body {
 }
 
 .app-content {
-  background: url("./asset/images/mainbg.png") no-repeat center center fixed;
+  background: url("./components/asset/images/mainbg.png") no-repeat center
+    center fixed;
   background-size: cover;
   height: 100%;
   overflow: auto;
