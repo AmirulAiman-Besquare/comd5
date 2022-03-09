@@ -1,0 +1,242 @@
+.footer-position {
+  position: absolute;
+  bottom: 0px;
+}
+.cards-final-section {
+  padding: 4rem;
+
+  height: 40rem;
+}
+
+.bg-Commodify {
+  background: linear-gradient(180deg, #b3e2ee 0%, #3288af 99.99%, #0a2653 100%);
+}
+
+.text-description-color-final {
+  color: #ffffff;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  position: relative;
+  top: 20px;
+}
+
+.start-now-btn-final-page {
+  background: #ffffff;
+  color: #194785;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 0.015em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50px;
+  width: 250px;
+  height: 74px;
+  border-radius: 20px;
+}
+
+.text-description-comD5 {
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  top: 70px;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 37px;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+.center-googlePlay-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 100px;
+  width: 313px;
+  height: 108px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .text-description-color-final {
+    color: #ffffff;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    position: relative;
+    top: 20px;
+  }
+
+  .start-now-btn-final-page {
+    background: #ffffff;
+    color: #194785;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 33px;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 40px;
+    width: 200px;
+    height: 60px;
+    border-radius: 20px;
+  }
+
+  .text-description-comD5 {
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    top: 70px;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+  .center-googlePlay-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 80px;
+    width: 250px;
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .text-description-color-final {
+    color: #ffffff;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    position: relative;
+    top: 20px;
+  }
+
+  .start-now-btn-final-page {
+    background: #ffffff;
+    color: #194785;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50px;
+    width: 180px;
+    height: 60px;
+    border-radius: 20px;
+  }
+
+  .text-description-comD5 {
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    top: 70px;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+  .center-googlePlay-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 100px;
+    width: 250px;
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .text-description-color-final {
+    color: #ffffff;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    position: relative;
+    top: 20px;
+  }
+
+  .start-now-btn-final-page {
+    background: #ffffff;
+    color: #194785;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 40px;
+    width: 160px;
+    height: 50px;
+    border-radius: 20px;
+  }
+
+  .text-description-comD5 {
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    top: 60px;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+  .center-googlePlay-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 70px;
+    width: 220px;
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+}

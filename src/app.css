@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  background-color: #13407b;
+  /* overflow: hidden; */
+}
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.app .btn-toggle {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  /* background: #353535; */
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  display: none;
+}
+.app .sidebar-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app .sidebar-btn-wrapper .sidebar-btn {
+  padding: 1px 15px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #adadad;
+  text-decoration: none;
+  margin: 0 auto;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.app main {
+  width: 100%;
+  display: block;
+}
+
+.app-content {
+  background: url("./components/asset/images/mainbg.png") no-repeat center
+    center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: auto;
+}
+
+@media (max-width: 769.98px) {
+  .app {
+    overflow-x: hidden;
+  }
+  .app header h1 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 769px) {
+  .app .btn-toggle {
+    display: flex;
+  }
+}

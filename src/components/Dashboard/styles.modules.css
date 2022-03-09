@@ -1,0 +1,32 @@
+.testt {
+  background: linear-gradient(
+    121.56deg,
+    #122746 48.43%,
+    #093374 62.51%,
+    #03132d 76.09%
+  );
+  border-radius: 10px;
+}
+
+.dashboard-button {
+  background: linear-gradient(101.43deg, #00b2ff -2.83%, #194886 73.19%);
+  border-radius: 20px;
+}
+
+.testing {
+  background-color: #03132d;
+}
+
+.menu {
+  animation: fade--in 0.3s ease-in-out;
+}
+
+@keyframes fade--in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
