@@ -14,7 +14,7 @@ export const Layout = (props) => {
       <SideBar toggled={toggled} handleToggleSidebar={handleToggleSidebar} />
       <main>
         <Header handleToggleSidebar={handleToggleSidebar} />
-        <div className="app-content">{props.children}</div>
+        <div className=" app-content">{props.children}</div>
       </main>
     </div>
   );

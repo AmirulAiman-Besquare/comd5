@@ -1,10 +1,11 @@
-import "./styles.modules.css";
+import styles from "./Dashboard.modules.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DashBoardFav } from "./DashboardFav";
 import linegraph from "../asset/images/linegraph.png";
 import walleticon from "../asset/images/Wallet.svg";
 import Select, { components } from "react-select";
+import TableData from "../Charts/TableData";
 
 const colourStyles = {
   control: (styles) => ({
@@ -91,7 +92,7 @@ export const DashBoard = () => {
   }, []);
 
   return (
-    <div className="m-10">
+    <div className="m-10 ">
       <div className="flex w-full gap-x-10">
         <div className="flex flex-col w-full gap-y-10">
           <div className="bg-[#075F93] p-3 rounded-xl">
@@ -136,6 +137,7 @@ export const DashBoard = () => {
               defaultValue={options[0]}
               onBlur={() => setOpen(false)}
             />
+            <TableData />
           </div>
         </div>
       </div>

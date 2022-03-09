@@ -73,6 +73,7 @@ export const PageRoute = () => {
           }
         />
       </Routes>
+
       {window.location.href === "http://localhost:3000/" ||
       window.location.href === "http://localhost:3001/" ||
       window.location.href === "http://localhost:3002/" ||

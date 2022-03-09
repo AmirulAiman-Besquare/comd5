@@ -100,7 +100,7 @@ class SelectCommodity extends React.Component {
         options={options}
         defaultValue={options[0]}
         searchable={false}
-        className="w-full m-auto mr-5 text-xl font-bold"
+        className="z-50 w-full m-auto mr-5 text-xl font-bold"
         onChange={this._onChange.bind(this)}
       />
     );

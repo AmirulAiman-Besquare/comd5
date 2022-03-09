@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.modules.css";
 import down from "../asset/images/down.png";
-
+import TableData from "../Charts/TableData";
 import SelectCommodity from "./SelectCommodity";
 import { data } from "autoprefixer";
 
@@ -121,13 +121,7 @@ export const TradePage = () => {
         </div>
       </div>
       <div>
-        <div className="h-full mx-20 mt-5 bg-[#075F93] rounded-lg">
-          <div className="flex flex-row">
-            <p className="flex-grow p-6 ml-8 text-3xl font-bold text-white ">
-              Charts Here
-            </p>
-          </div>
-        </div>
+        <TableData className="w-full h-full" />
       </div>
     </>
   );
