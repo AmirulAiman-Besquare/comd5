@@ -100,7 +100,7 @@ export const DashBoard = () => {
               <p className="flex-grow mt-2 ml-3 font-bold leading-none">
                 Come And Modify Your Life With Commodify!
               </p>
-              <Link to={"/tx"}>
+              <Link to={"/trade"}>
                 <button className="px-6 py-1 mt-4 mr-4 font-bold text-center justify-self-end dashboard-button">
                   Go Trade
                 </button>

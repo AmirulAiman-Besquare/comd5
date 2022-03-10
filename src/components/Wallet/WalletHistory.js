@@ -31,6 +31,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const WalletHistory = () => {
+  const [fetchingdata, setFetchingData] = useState(true);
   const [walletHistory, setWalletHistory] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -47,6 +48,7 @@ export const WalletHistory = () => {
       const parseRes = await response.json();
       console.log(parseRes);
       setWalletHistory(parseRes);
+      setFetchingData(false);
     } catch (error) {
       console.error(error.message);
     }
@@ -54,6 +56,10 @@ export const WalletHistory = () => {
 
   useEffect(() => {
     getWalletHistory();
+
+    return () => {
+      setWalletHistory([]);
+    };
   }, []);
 
   return (

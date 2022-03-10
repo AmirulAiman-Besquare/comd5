@@ -100,6 +100,7 @@ export const UserSetting = () => {
                 className="w-full px-3 py-2 border rounded shadow appearance-none border-red text-grey-darker"
                 type="tel"
                 placeholder="Fetch contact from db"
+                disabled="disabled"
               />
             </div>
             <div>
@@ -114,6 +115,7 @@ export const UserSetting = () => {
                 className="w-full px-3 py-2 mb-3 border rounded shadow appearance-none border-red text-grey-darker"
                 type="text"
                 placeholder="Fetch address from db here."
+                disabled="disabled"
               />
             </div>
             <div className="flex items-center justify-center ">
@@ -152,6 +154,7 @@ export const UserSetting = () => {
                 className="w-full px-3 py-2 border rounded shadow appearance-none text-grey-darker"
                 type="email"
                 placeholder="fetch email from db"
+                disabled="disabled"
               />
             </div>
             <div>
