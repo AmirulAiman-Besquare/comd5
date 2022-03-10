@@ -159,10 +159,10 @@ export const TradePage = () => {
 
   return (
     <>
-      <Header />
+      <Header title={"TRADING"} />
       <div className="flex flex-col pb-4 mx-12 mt-8 mb-4 md:flex-row place-content-evenly">
         <div className="flex flex-row">
-          <div className="bg-white px-9 py-4 m-auto mr-10 rounded">
+          <div className="py-4 m-auto mr-10 bg-white rounded px-9">
             GOLD:{asset}
           </div>
           <SelectCommodity func={pull_data} />
@@ -188,7 +188,7 @@ export const TradePage = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white px-9 py-4 m-auto mr-10 rounded">
+          <div className="py-4 m-auto mr-10 bg-white rounded px-9">
             BALANCE:
             {balance}
           </div>

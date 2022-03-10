@@ -18,7 +18,7 @@ import {
 
 import "./Header.modules.css";
 
-export const Header = ({ setAuth }) => {
+export const Header = ({ setAuth, title }) => {
   const [name, setName] = useState(<ScaleLoader color="#00B2FF" height={15} />);
 
   async function getName() {
@@ -83,7 +83,7 @@ export const Header = ({ setAuth }) => {
       <nav className="flex justify-between items-center bg-[#0A2653] border-b-2 border-[#075F93] h-20 shadow-lg">
         <div className="logo ">
           <h1 className="ml-24 text-2xl font-bold text-white animate__animated animate__fadeIn">
-            TITLE HERE
+            {title}
           </h1>
         </div>
         <ul className="flex ">

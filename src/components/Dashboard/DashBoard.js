@@ -94,7 +94,7 @@ export const DashBoard = () => {
 
   return (
     <>
-      <Header />
+      <Header title={"DASHBOARD"} />
       <div className="m-10 ">
         <div className="flex w-full gap-x-10">
           <div className="flex flex-col w-full gap-y-10">

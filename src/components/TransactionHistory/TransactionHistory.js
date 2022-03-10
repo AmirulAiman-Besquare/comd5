@@ -58,7 +58,7 @@ export const TransactionHistory = () => {
 
   return (
     <>
-      <Header />
+      <Header title={"TRANSACTION"} />
       <div className="history">
         <input
           type="text"
