@@ -72,93 +72,75 @@ export const PageRoute = () => {
             )
           }
         />
+
+        {/* Default Page */}
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            IsAuthenticated ? (
+              <DashBoard setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/usersetting"
+          element={
+            IsAuthenticated ? (
+              <UserSetting setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/trade"
+          element={
+            IsAuthenticated ? (
+              <TradePage setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/transactionhistory"
+          element={
+            IsAuthenticated ? (
+              <TransactionHistory setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/wallet"
+          element={
+            IsAuthenticated ? (
+              <Wallet setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/notification"
+          element={
+            IsAuthenticated ? (
+              <Notification setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
-
-      {window.location.href === "http://localhost:3000/" ||
-      window.location.href === "http://localhost:3001/" ||
-      window.location.href === "http://localhost:3002/" ||
-      window.location.href === "http://localhost:3003/" ||
-      window.location.href === "http://localhost:3004/" ||
-      window.location.href === "http://localhost:3005/" ? (
-        <></>
-      ) : (
-        <Layout>
-          {" "}
-          <Routes>
-            {/* Default Page */}
-            <Route
-              exact
-              path="/dashboard"
-              element={
-                IsAuthenticated ? (
-                  <DashBoard setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-
-            {/* Other Page */}
-            {/* <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} /> */}
-            <Route
-              exact
-              path="/usersetting"
-              element={
-                IsAuthenticated ? (
-                  <UserSetting setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/trade"
-              element={
-                IsAuthenticated ? (
-                  <TradePage setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/transactionhistory"
-              element={
-                IsAuthenticated ? (
-                  <TransactionHistory setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/wallet"
-              element={
-                IsAuthenticated ? (
-                  <Wallet setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/notification"
-              element={
-                IsAuthenticated ? (
-                  <Notification setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-          </Routes>
-        </Layout>
-      )}
     </>
   );
 };

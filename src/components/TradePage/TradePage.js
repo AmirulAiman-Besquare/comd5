@@ -3,7 +3,7 @@ import "./styles.modules.css";
 import down from "../asset/images/down.png";
 import TableData from "../Charts/TableData";
 import SelectCommodity from "./SelectCommodity";
-import { data } from "autoprefixer";
+import { Header } from "components/Header";
 
 export const TradePage = () => {
   const [commodity, setCommodity] = useState("");
@@ -75,6 +75,7 @@ export const TradePage = () => {
 
   return (
     <>
+      <Header />
       <div className="flex flex-col pb-4 mx-12 mt-8 mb-4 md:flex-row place-content-evenly">
         <div className="flex flex-row">
           <SelectCommodity func={pull_data} />

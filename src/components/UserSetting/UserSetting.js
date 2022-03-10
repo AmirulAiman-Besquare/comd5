@@ -6,6 +6,7 @@ import { IoMdHome } from "react-icons/io";
 import { AiOutlineLock } from "react-icons/ai";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { useState, useEffect } from "react";
+import { Header } from "components/Header";
 
 export const UserSetting = () => {
   const [firstname, setFirstName] = useState();
@@ -35,11 +36,10 @@ export const UserSetting = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      <Header />
       {/* <div className="w-full h-screen"> */}
-      <div
-        className="flex flex-col items-center justify-center pt-4 mt-2 ml-2 lg:mx-10 lg:items-start lg:gap-10 lg:flex-row xl:items-start xl:mt-10 xl:gap-20 xl:flex-row "
-      >
+      <div className="flex flex-col items-center justify-center pt-4 mt-2 ml-2 lg:mx-10 lg:items-start lg:gap-10 lg:flex-row xl:items-start xl:mt-10 xl:gap-20 xl:flex-row ">
         <div
           className="mb-4 xl:mb-0 rounded-lg shadow-xl box w-11/12
         lg: xl:w-auto border-[#376db3] border-8"
@@ -54,9 +54,7 @@ export const UserSetting = () => {
                 alt="..."
                 className="h-32 border-none rounded-full shadow xs:h-44 lg:h-28"
               />
-              <p
-                className="mt-8 ml-2 text-xl font-bold text-white lg:text-xl xxs:text-2xl xxs:mt-8 xxs:ml-6 xs:text-5xl xs:mt-10 xs:ml-10 "
-              >
+              <p className="mt-8 ml-2 text-xl font-bold text-white lg:text-xl xxs:text-2xl xxs:mt-8 xxs:ml-6 xs:text-5xl xs:mt-10 xs:ml-10 ">
                 {firstname} <br />
                 {lastName}
               </p>
@@ -123,9 +121,7 @@ export const UserSetting = () => {
         >
           {" "}
           <div className="h-full mx-3 my-5 sm:mx-20 sm:my-10">
-            <p
-              className="mb-3 text-xl font-bold text-white lg:text-2xl sm:text-2xl"
-            >
+            <p className="mb-3 text-xl font-bold text-white lg:text-2xl sm:text-2xl">
               Email & Password
             </p>
             <div className="mb-3">
@@ -168,7 +164,7 @@ export const UserSetting = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
     // </div>
   );
 };
