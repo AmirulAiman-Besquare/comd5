@@ -15,9 +15,9 @@ export const Balance = () => {
   const { amount } = topupInputs;
   const { withdraw_amount } = withdrawInputs;
 
-  const onChangeTopUp = (e) => {
-    setTopupInputs({ ...topupInputs, [e.target.name]: e.target.value });
-  };
+  // const onChangeTopUp = (e) => {
+  //   setTopupInputs({ ...topupInputs, [e.target.name]: e.target.value });
+  // };
 
   const onChangeWithdraw = (e) => {
     setwithdrawInputs({ ...withdrawInputs, [e.target.name]: e.target.value });
@@ -142,12 +142,12 @@ export const Balance = () => {
           >
             <div>
               <form onSubmit={onSubmitTopUp}>
-                <input
+                {/* <input
                   type="number"
                   name="amount"
                   value={amount}
                   onChange={(e) => onChangeTopUp(e)}
-                />
+                /> */}
                 <button
                   type="submit"
                   className="w-full p-6 mt-3 text-white bg-blue-900 hover:bg-blue-600"

@@ -94,13 +94,11 @@ export const Login = ({ setAuth }) => {
                 <label htmlFor="password" className="text-sm font-semibold">
                   Password
                 </label>
-                <Link to="/forgotpassword">
-                  <a
-                    href="#" //Forgot Password Button
-                    className="text-sm text-blue-600 hover:underline focus:text-blue-800"
-                  >
-                    Forgot Password?
-                  </a>
+                <Link
+                  to="/forgotpassword"
+                  className="text-sm text-blue-600 hover:underline focus:text-blue-800"
+                >
+                  Forgot Password?
                 </Link>
               </div>
               <input
