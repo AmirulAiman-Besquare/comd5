@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap");
+.badge {
+  padding: 3px 6px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  border-radius: 15px;
+}
+.badge.red {
+  color: #fff;
+  background: #d63030;
+}
+.badge.gray {
+  color: #fff;
+  background: #777;
+}
+.badge.yellow {
+  color: #000;
+  background: #ffd331;
+}
+
+.pro-sidebar-header {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  /* margin-bottom: 3.2rem; */
+  font-weight: bold;
+  background: #13407b;
+  text-align: center;
+}
+/* .sidebar-header .user-email {
+  font-size: 14px;
+  color: darkgray;
+} */
+
+.pro-sidebar {
+  width: 280px;
+  max-width: 280px;
+  min-width: 280px;
+}
+
+@media (max-width: 769px) {
+  .pro-sidebar.md {
+    position: fixed;
+    left: -280px;
+  }
+  .pro-sidebar.md.rtl {
+    left: auto;
+    right: -280px;
+  }
+}
+
+@media (max-width: 769px) {
+  .app.rtl .btn-toggle {
+    margin-left: 16px;
+    margin-right: 0px;
+  }
+}
+/* .user-image {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 7px solid #252f3e;
+} */
+
+.pro-sidebar-content,
+.pro-sidebar > .pro-sidebar-inner,
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
+  background-color: #13407b;
+}
+
+.pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
+  color: rgb(255, 255, 255);
+  /* margin: 20px 0px 20px 0px; */
+  font-weight: bold;
+  font-size: large;
+}
+
+.pro-inner-item:hover {
+  background-color: #0a2653;
+}
+
+.pro-sidebar > .pro-sidebar-inner > .pro-sidebar-layout .pro-sidebar-header {
+  border-bottom: 0px;
+}
+
+.pro-sidebar-header {
+  position: relative;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.pro-sidebar
+  .pro-menu.shaped
+  .pro-menu-item
+  > .pro-inner-item
+  > .pro-icon-wrapper {
+  background-color: transparent;
+}
