@@ -3,8 +3,24 @@ import registericon from "../asset/images/register.png";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 // import { DashBoard } from "components";
+import { eye } from "react-icons-kit/fa/eye";
+import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
+import { Icon } from "react-icons-kit";
 
 export const Register = ({ setAuth }) => {
+  //toggle password feature
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeSlash);
+
+  const handlePasswordVisibility = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeSlash);
+      setType("password");
+    }
+  };
   const [Inputs, setInputs] = useState({
     first_name: "",
     last_name: "",
@@ -121,14 +137,24 @@ export const Register = ({ setAuth }) => {
                   Password
                 </label>
               </div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => onChange(e)}
-                className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
-              />
+              <div className="flex relative ">
+                <input
+                  type={type}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                  className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200 w-full"
+                />
+                <div style={{ color: "#000000	" }}>
+                  <span
+                    onClick={handlePasswordVisibility}
+                    className="absolute top-2 right-1"
+                  >
+                    <Icon icon={icon} size={25} />
+                  </span>
+                </div>
+              </div>
             </div>
             {/* <div className="flex flex-col space-y-1">
               <div className="flex items-center justify-between">
