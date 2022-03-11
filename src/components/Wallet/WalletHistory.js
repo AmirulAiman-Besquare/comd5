@@ -13,16 +13,21 @@ import Paper from "@mui/material/Paper";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    color: "#84C7EF",
   },
   [`&.${tableCellClasses.body}`]: {
+    color: "white",
     fontSize: 14,
+    fontWeight: 600,
   },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
+    backgroundColor: "#059DE6",
+  },
+  "&:nth-of-type(even)": {
+    backgroundColor: "#122746",
   },
   // hide last border
   "&:last-child td, &:last-child th": {
@@ -47,7 +52,7 @@ export const WalletHistory = () => {
 
       const parseRes = await response.json();
       console.log(parseRes);
-      setWalletHistory(parseRes);
+      setWalletHistory(parseRes.reverse());
       setFetchingData(false);
     } catch (error) {
       console.error(error.message);
@@ -63,30 +68,33 @@ export const WalletHistory = () => {
   }, []);
 
   return (
-    <div className="App">
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      />
-
+    <div className="p-10 border-8 App box border-[#376db3] rounded-xl mx-60 ">
+      <div className="flex mb-5">
+        <p className="mr-10 text-4xl font-bold text-white">History</p>
+        <input
+          type="text"
+          placeholder="Search"
+          className="rounded-xl"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+      </div>
       <TableContainer
         component={Paper}
-        className="overflow-y-auto max-h-80 scrollbar"
+        className="overflow-y-auto max-h-60 scrollbar"
       >
         <Table
           aria-label="customized table"
-          className="w-10/12 m-auto mb-6 overflow-scroll text-xl font-bold text-white rounded table-fixed"
+          className="overflow-scroll text-xl font-bold text-white rounded table-fixed "
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell>Payment ID</StyledTableCell>
-              <StyledTableCell align="right">Type</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Amount</StyledTableCell>
-              <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="center">Payment ID</StyledTableCell>
+              <StyledTableCell align="center">Type</StyledTableCell>
+              <StyledTableCell align="center">Date</StyledTableCell>
+              <StyledTableCell align="center">Amount</StyledTableCell>
+              <StyledTableCell align="center">Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -102,24 +110,24 @@ export const WalletHistory = () => {
               })
               .map((item) => {
                 return (
-                  // <p>
-                  //   {item.payment_id} - {item.payment_type} - {item.payment_timestamp}{" "}
-                  //   - {item.payment_amount} - {item.payment_status}
-                  // </p>
                   <StyledTableRow key={item.payment_id}>
-                    <StyledTableCell component="th" scope="row">
+                    <StyledTableCell component="th" scope="row" align="center">
                       {item.payment_id}
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       {item.payment_type}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {item.payment_timestamp}
+                      {new Date(item.payment_timestamp * 1000).toDateString()}
+                      <br />
+                      {new Date(
+                        item.payment_timestamp * 1000
+                      ).toLocaleTimeString()}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {item.payment_amount}
+                    <StyledTableCell align="center">
+                      ${item.payment_amount}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="center">
                       {item.payment_status}
                     </StyledTableCell>
                   </StyledTableRow>

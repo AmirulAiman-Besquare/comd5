@@ -4,11 +4,18 @@ import Visa from "../asset/images/Visa.png";
 
 export const PaymentMethod = () => {
   return (
-    <form className="  mb-10 rounded-lg shadow-xl box w-auto lg:mb-0 2xl:mb-8 lg:pb-1 border-[#376db3] border-8  text-white">
-      <p className="mt-2 mb-4 ml-8 text-2xl font-bold">Payment Method</p>
+    <form className="mb-10 rounded-lg shadow-xl box w-100 lg:mb-0 2xl:mb-8 lg:pb-1 border-[#376db3] border-8  text-white">
+      <p className="mt-2 mb-1 ml-8 text-2xl font-bold">Payment Method</p>
       <div className="flex flex-row justify-around w-auto">
         <div className="inline-block">
-          <input type="checkbox" id="cc" name="CreditCard" value="CreditCard" />
+          <input
+            type="checkbox"
+            id="cc"
+            name="CreditCard"
+            value="CreditCard"
+            className="border-slate-600 bg-slate-500"
+            disabled
+          />
           <label htmlFor="CreditCard" className="inline-block float-right pl-1">
             <img src={MasterCard} />
           </label>
@@ -17,7 +24,14 @@ export const PaymentMethod = () => {
           </label>
         </div>
         <div className="inline-block">
-          <input type="checkbox" id="cc" name="CreditCard" value="CreditCard" />
+          <input
+            type="checkbox"
+            id="cc"
+            name="CreditCard"
+            value="CreditCard"
+            className="border-slate-600 bg-slate-500"
+            disabled
+          />
           <label
             htmlFor="OnlineBanking"
             className="inline-block ml-2 text-base font-bold"
@@ -31,10 +45,11 @@ export const PaymentMethod = () => {
           <label className="relative flex flex-col w-full">
             <span className="mb-3 font-bold">Card number</span>
             <input
-              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 border-gray-200 rounded-md peer"
+              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 rounded-md border-slate-600 bg-slate-500 peer"
               type="text"
               name="card_number"
               placeholder="0000 0000 0000"
+              disabled
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,10 +70,11 @@ export const PaymentMethod = () => {
           <label className="relative flex flex-col flex-1">
             <span className="mb-3 font-bold">Expire date</span>
             <input
-              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 border-gray-200 rounded-md peer"
+              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 rounded-md border-slate-600 bg-slate-500 peer"
               type="text"
               name="expire_date"
               placeholder="MM/YY"
+              disabled
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,10 +96,7 @@ export const PaymentMethod = () => {
             <span className="flex items-center gap-3 mb-3 font-bold">
               CVC/CVV
               <span className="relative group">
-                <span className="absolute items-center justify-center hidden px-2 py-1 text-xs text-white transform translate-x-full -translate-y-1/2 bg-black group-hover:flex -right-2 w-max top-1/2">
-                  {" "}
-                  Something3
-                </span>
+                <span className="absolute items-center justify-center hidden px-2 py-1 text-xs text-white transform translate-x-full -translate-y-1/2 bg-black group-hover:flex -right-2 w-max top-1/2"></span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-4 h-4"
@@ -101,10 +114,11 @@ export const PaymentMethod = () => {
               </span>
             </span>
             <input
-              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 border-gray-200 rounded-md peer"
+              className="py-2 pl-12 pr-2 text-black placeholder-gray-300 border-2 rounded-md border-slate-600 bg-slate-500 peer"
               type="text"
               name="card_cvc"
               placeholder="&bull;&bull;&bull;"
+              disabled
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +141,8 @@ export const PaymentMethod = () => {
             type="submit"
             value="Submit"
             id="topbtn"
-            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full  py-2 px-4 mb-2 font-bold"
+            className="px-4 py-2 mb-3 font-bold border-4 rounded-full border-slate-600 bg-slate-500"
+            disabled
           />
         </div>
       </div>

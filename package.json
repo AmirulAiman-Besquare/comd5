@@ -27,7 +27,9 @@
     "react-usestateref": "^1.0.8",
     "react-widgets": "^5.8.3",
     "reactjs-popup": "^2.0.5",
-    "web-vitals": "^2.1.4"
+    "rodal": "^1.8.3",
+    "web-vitals": "^2.1.4",
+    "ws": "^8.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

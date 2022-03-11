@@ -16,12 +16,13 @@ import { ForgotPassword } from "components/ForgotPassword/ForgotPassword";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HashLoader from "react-spinners/HashLoader";
 
 toast.configure();
 
 export const PageRoute = () => {
   const [IsAuthenticated, setIsAuthenticated] = useState(true);
-  console.log(IsAuthenticated);
+  const [isLoading, setIsLoading] = useState(true);
   const setAuth = (Boolean) => {
     setIsAuthenticated(Boolean);
   };
@@ -36,6 +37,7 @@ export const PageRoute = () => {
       const parseRes = await response.json();
 
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      setIsLoading(false);
     } catch (error) {
       console.error(error.message);
     }
@@ -55,6 +57,10 @@ export const PageRoute = () => {
           element={
             !IsAuthenticated ? (
               <Login setAuth={setAuth} />
+            ) : isLoading ? (
+              <div className="flex items-center justify-center h-full ">
+                <HashLoader color="#00B2FF" size={100} />
+              </div>
             ) : (
               <Navigate to="/dashboard" />
             )
@@ -67,6 +73,10 @@ export const PageRoute = () => {
           element={
             !IsAuthenticated ? (
               <Register setAuth={setAuth} />
+            ) : isLoading ? (
+              <div className="flex items-center justify-center h-full ">
+                <HashLoader color="#00B2FF" size={100} />
+              </div>
             ) : (
               <Navigate to="/dashboard" />
             )

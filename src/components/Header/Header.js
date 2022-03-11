@@ -40,7 +40,8 @@ export const Header = ({ setAuth, title }) => {
   };
 
   useEffect(() => {
-    getName();
+    const unsubscribe = getName(); //subscribe
+    return () => unsubscribe, setName(); //unsubscribe
   }, []);
 
   return (
