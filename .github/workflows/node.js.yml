@@ -6,10 +6,11 @@ name: Node.js CI
 on:
   pull_request:
     branches: [ master ]
+    types:  [ closed ]
 
 jobs:
   build:
-
+    if: github.event.pull_request.merged == true
     runs-on: self-hosted
 
     strategy:
@@ -28,4 +29,12 @@ jobs:
     - run: npm run build --if-present
       env:
         CI: false
+  
+  close_job:
+    if: github.event.pull_request.merged == false
+    runs-on:  self-hosted
+    
+    steps:
+    - run: |
+        echo PR #${{ github.event.number }} has been closed without being merged
 
