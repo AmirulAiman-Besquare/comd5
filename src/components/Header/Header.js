@@ -81,7 +81,7 @@ export const Header = ({ setAuth, title }) => {
           </Link>
         </ul>
       </Menu>
-      <nav className="h-15 flex justify-between items-center bg-[#0A2653] border-b-2 border-[#075F93] sm:h-20 shadow-lg">
+      <nav className="h-[3.5rem] flex justify-between items-center bg-[#0A2653] border-b-2 border-[#075F93] sm:h-20 shadow-lg">
         <div className="logo ">
           <h1 className="ml-12 text-base font-bold text-white sm:ml-24 xs:text-2xl animate__animated animate__fadeIn">
             {title}
