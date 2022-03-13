@@ -5,10 +5,19 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: absolute;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 25px;
+  width: 26px;
+  height: 20px;
+  left: 16px;
+  top: 27px;
+}
+@media only screen and (min-width: 641px) {
+  .bm-burger-button {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 25px;
+  }
 }
 
 /* Color/shape of burger icon bars */
@@ -63,8 +72,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Individual item */
-.bm-item {
-}
+/* .bm-item {
+} */
 
 .bm-header {
   display: flex !important;

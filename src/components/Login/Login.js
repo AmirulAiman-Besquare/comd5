@@ -2,8 +2,24 @@ import React, { useState } from "react";
 import personpc from "../asset/images/person-pc.png";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { eye } from "react-icons-kit/fa/eye";
+import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
+import { Icon } from "react-icons-kit";
 
 export const Login = ({ setAuth }) => {
+  //toggle password feature
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeSlash);
+
+  const handlePasswordVisibility = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeSlash);
+      setType("password");
+    }
+  };
   const [Inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -101,14 +117,24 @@ export const Login = ({ setAuth }) => {
                   Forgot Password?
                 </Link>
               </div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => onChange(e)}
-                className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
-              />
+              <div className="relative flex ">
+                <input
+                  type={type}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                  className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                />
+                <div style={{ color: "#000000	" }}>
+                  <span
+                    onClick={handlePasswordVisibility}
+                    className="absolute top-2 right-1"
+                  >
+                    <Icon icon={icon} size={25} />
+                  </span>
+                </div>
+              </div>
             </div>
             <div className="flex items-center space-x-2">
               <input
