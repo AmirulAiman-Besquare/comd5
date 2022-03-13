@@ -7,12 +7,10 @@ export const CandleStick = ({ data }) => {
     alignLabels: true,
     grid: {
       vertLines: {
-        // color: GRID_COLOR,
         style: 1,
         visible: true,
       },
       horzLines: {
-        // color: GRID_COLOR,
         style: 1,
         visible: true,
       },
@@ -29,16 +27,12 @@ export const CandleStick = ({ data }) => {
       fontFamily: "monospace",
     },
     timeScale: {
-      // rightOffset: 0,
-      // barSpacing: 3,
-      // fixLeftEdge: true,
-      // lockVisibleTimeRangeOnResize: true,
-      // rightBarStaysOnScroll: true,
-      // borderVisible: false,
+      barSpacing: 20,
       borderColor: "#194886",
-      // visible: true,
       timeVisible: true,
       secondsVisible: false,
+      fixRightEdge: true,
+      // fixLeftEdge: true,
     },
     // localization: {
     //   priceFormatter: (price) =>

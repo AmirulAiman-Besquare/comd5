@@ -55,7 +55,7 @@ export const TransactionHistory = () => {
 
       const parseRes = await response.json();
       console.table(parseRes);
-      setTransactionHistory(parseRes);
+      setTransactionHistory(parseRes.reverse());
     } catch (error) {
       console.error(error.message);
     }
@@ -68,7 +68,7 @@ export const TransactionHistory = () => {
   return (
     <>
       <Header title={"TRANSACTION"} />
-      <div className="p-10 mt-10 bg-[#075F93] rounded-xl mx-80 history">
+      <div className="p-10 mt-10 box bg-[#075F93] rounded-xl mx-80 history">
         <div className="flex mb-5">
           <p className="mr-10 text-4xl font-bold text-white">History</p>
           <input

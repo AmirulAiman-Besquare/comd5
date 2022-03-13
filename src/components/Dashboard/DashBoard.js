@@ -1,12 +1,11 @@
 import styles from "./Dashboard.modules.css";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { TicksPriceWs } from "./TicksPriceWs";
-import linegraph from "../asset/images/linegraph.png";
 import walleticon from "../asset/images/Wallet.svg";
-import TableData from "../Charts/TableData";
 import { Header } from "components/Header";
 import { AssestAnalysis } from "./AssestAnalysis";
+import { AssetOwned } from "./AssestOwned";
+import LineTableData from "../Charts/DashBoardChart/LineTableData";
 
 const options = [
   { value: "realtime", label: "Real-Time" },
@@ -54,10 +53,14 @@ export const DashBoard = () => {
           <div className="flex flex-col w-full gap-y-10">
             <div className="bg-[#075F93] rounded-xl h-full">
               <div className="flex justify-around w-full h-full py-6 align-middle ">
-                <TicksPriceWs asset={"frxXAUUSD"} />
+                <TicksPriceWs asset={"RDBEAR"} />
+                <TicksPriceWs asset={"RDBEAR"} />
+                <TicksPriceWs asset={"RDBEAR"} />
+                <TicksPriceWs asset={"RDBEAR"} />
+                {/* <TicksPriceWs asset={"frxXAUUSD"} />
                 <TicksPriceWs asset={"frxXAGUSD"} />
                 <TicksPriceWs asset={"frxXPTUSD"} />
-                <TicksPriceWs asset={"frxXPDUSD"} />
+                <TicksPriceWs asset={"frxXPDUSD"} /> */}
               </div>
             </div>
           </div>
@@ -75,10 +78,15 @@ export const DashBoard = () => {
           </div>
         </div>
         <div className="flex w-full h-full mt-10 gap-x-10">
-          <div className="flex flex-col w-full gap-y-10">
-            <div className="bg-[#075F93] rounded-xl h-full"></div>
-          </div>
           <AssestAnalysis />
+          <AssetOwned />
+          <div className="flex flex-col w-full gap-y-10">
+            <div className="bg-[#075F93] rounded-xl py-6">
+              {/* <div className="flex justify-center w-full h-full gap-2 m-auto align-middle">
+                <LineTableData />
+              </div> */}
+            </div>
+          </div>
         </div>
       </div>
     </>

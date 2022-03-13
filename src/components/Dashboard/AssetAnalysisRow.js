@@ -1,21 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import downicon from "../asset/images/down.png";
-import upicon from "../asset/images/up.png";
-import useState from "react-usestateref";
+import { BsFillTriangleFill } from "react-icons/bs";
 
 export const AssetAnalysisRow = ({ asset }) => {
-  const [price, setPrice, refPrice] = useState(0);
+  const [price, setPrice] = useState(
+    <ScaleLoader color="#00B2FF" height={15} />
+  );
   const [icon, setIcon] = useState(<p></p>);
-  const [status, setStatus] = useState("similar");
-  const [lastPrice, setLastPrice, refLastPrice] = useState(0);
-  const [change, setChange, refChange] = useState(0);
+  const [lastPrice, setLastPrice] = useState(0);
+  const [change, setChange] = useState(0);
   const [changePercent, setChangePercent] = useState(0);
+  const [percent, setPercent] = useState();
   const app_id = 1089; //app_id for testing only
-  let oldprice = null;
+
   let latestPrice = null;
-  let pricechange = null;
-  let pricepercentchange = null;
+
   useEffect(() => {
     const ws = new WebSocket(
       "wss://ws.binaryws.com/websockets/v3?app_id=" + app_id
@@ -28,9 +27,7 @@ export const AssetAnalysisRow = ({ asset }) => {
       let res = JSON.parse(evt.data);
       latestPrice = parseFloat(res.tick.quote).toFixed(2);
       setPrice(latestPrice);
-      setLastPrice(parseFloat(refPrice.current));
-      setChange(parseFloat(refLastPrice.current) - parseFloat(latestPrice));
-      console.log(parseFloat(refLastPrice.current), parseFloat(latestPrice));
+      setLastPrice(price);
     };
     return () => {
       ws.close();
@@ -39,28 +36,38 @@ export const AssetAnalysisRow = ({ asset }) => {
     };
   }, []);
 
-  const setColour = () => {
-    if (!lastPrice) {
-      setStatus("similar");
-      setLastPrice(price);
-      setIcon();
+  const CalChange = () => {
+    if (price === lastPrice) {
+      CalPercent();
     } else {
       if (price > lastPrice) {
-        setIcon(<img src={upicon} />);
-        setStatus("higher");
-        setLastPrice(price);
+        setIcon(<BsFillTriangleFill color="green" className="mt-[0.2em]" />);
+        CalPercent();
       } else {
-        setIcon(<img src={downicon} />);
-        setStatus("lower");
-        setLastPrice(price);
+        setIcon(
+          <BsFillTriangleFill color="red" className="mt-[0.2em] rotate-180" />
+        );
+        CalPercent();
       }
     }
   };
 
-  const CalChange = () => {};
+  const CalPercent = () => {
+    setLastPrice(price);
+    setChange((parseFloat(price) - parseFloat(lastPrice)).toFixed(2));
+    if (parseFloat(lastPrice) === 0) {
+      setIcon(<></>);
+      setChangePercent(<ScaleLoader color="#00B2FF" height={15} />);
+      setChange(<ScaleLoader color="#00B2FF" height={15} />);
+    } else {
+      setPercent("%");
+      let changes = parseFloat(price) - parseFloat(lastPrice);
+      setChangePercent((changes * 100).toFixed(2));
+    }
+  };
 
   useEffect(() => {
-    setColour();
+    CalChange();
   }, [price]);
 
   return (
@@ -75,14 +82,32 @@ export const AssetAnalysisRow = ({ asset }) => {
             ? "Platinium/USD"
             : "Palladium/USD"}
         </td>
-        <td className="px-6 py-4 text-sm font-light text-white whitespace-nowrap">
+        <td
+          className={
+            "px-6 py-4 text-sm font-light whitespace-nowrap text-white"
+          }
+        >
           {price}
         </td>
-        <td className="px-6 py-4 text-sm font-light text-white whitespace-nowrap">
-          {refChange.current}
+        <td
+          className={
+            change >= 0
+              ? "text-green-600 flex px-6 py-4 text-sm font-light whitespace-nowrap gap-1 justify-center"
+              : "text-red-600 flex px-6 py-4 text-sm font-light whitespace-nowrap gap-1 justify-center"
+          }
+        >
+          {icon}
+          {change}
         </td>
-        <td className="px-6 py-4 text-sm font-light text-white whitespace-nowrap">
-          @mdo
+        <td
+          className={
+            changePercent >= 0
+              ? "text-green-600 px-6 py-4 text-sm font-light whitespace-nowrap"
+              : "text-red-600  px-6 py-4 text-sm font-light whitespace-nowrap"
+          }
+        >
+          {changePercent}
+          {percent}
         </td>
       </tr>
     </>

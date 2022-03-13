@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AssetAnalysisRow } from "./AssetAnalysisRow";
 
-export const AssestAnalysis = () => {
+export const AssetOwned = () => {
   return (
     <>
       <div className="h-full bg-[#075F93]  p-4 rounded-xl ">
-        <p className="text-xl text-white">Asset Analysis</p>
+        <p className="text-xl text-white">Asset Owned</p>
         <div className="w-full h-full rounded-lg">
           <div className="flex flex-col">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -24,19 +24,19 @@ export const AssestAnalysis = () => {
                           scope="col"
                           className="px-6 py-4 text-sm font-medium text-center text-white"
                         >
-                          Actual Amount
+                          Total Amount
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-4 text-sm font-medium text-center text-white"
                         >
-                          Change
+                          Bought Price
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-4 text-sm font-medium text-center text-white"
                         >
-                          %Change
+                          Market Price
                         </th>
                       </tr>
                     </thead>
