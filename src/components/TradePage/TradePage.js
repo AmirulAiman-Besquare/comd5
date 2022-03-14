@@ -13,18 +13,27 @@ import { toast } from "react-toastify";
 
 export const TradePage = () => {
   const [commodity, setCommodity] = useState("Xau");
-  const [selectedAsset, setSelectedAsset] = useState("1HZ100V");
+  const [selectedAsset, setSelectedAsset] = useState("frxXAUUSD");
   const [assetQuote, setAssetQuote] = useState(
     <ScaleLoader color="#00B2FF" height={15} />
   );
-  const [asset, setAsset] = useState(
+  const [GoldAsset, setGoldAsset] = useState(
+    <ScaleLoader color="#00B2FF" height={15} />
+  );
+  const [SilverAsset, setSilverAsset] = useState(
+    <ScaleLoader color="#00B2FF" height={15} />
+  );
+  const [PlatAsset, setPlatAsset] = useState(
+    <ScaleLoader color="#00B2FF" height={15} />
+  );
+  const [PladAsset, setPladAsset] = useState(
     <ScaleLoader color="#00B2FF" height={15} />
   );
   const [balance, setBalance] = useState();
   const [status, setStatus] = useState("similar");
   const app_id = 1089; //app_id for testing only
   let latestPrice = null;
-  const [disableBtn, setDisableBtn] = useState(true);
+  const [disableBtn, setDisableBtn] = useState(false);
   const [icon, setIcon] = useState(<></>);
   const [lastPrice, setLastPrice] = useState(0);
 
@@ -32,16 +41,16 @@ export const TradePage = () => {
     setAssetQuote(<ScaleLoader color="#00B2FF" height={15} />);
     switch (commodity) {
       case "Xau":
-        setSelectedAsset("1HZ200V");
+        setSelectedAsset("frxXAUUSD");
         break;
       case "Xag":
-        setSelectedAsset("R_75");
+        setSelectedAsset("frxXAGUSD");
         break;
       case "Xpt":
-        setSelectedAsset("R_50");
+        setSelectedAsset("frxXPTUSD");
         break;
       case "Xpd":
-        setSelectedAsset("1HZ75V");
+        setSelectedAsset("frxXPDUSD");
         break;
     }
     const ws = new WebSocket(
@@ -55,7 +64,7 @@ export const TradePage = () => {
       let res = JSON.parse(evt.data);
       latestPrice = "$" + parseFloat(res.tick.quote).toFixed(2);
       setAssetQuote(latestPrice);
-      setLastPrice(asset);
+      setLastPrice(assetQuote);
     };
     return () => {
       ws.close();
@@ -66,9 +75,9 @@ export const TradePage = () => {
 
   const setColour = () => {
     console.log(assetQuote, lastPrice);
-    if (lastPrice === asset) {
+    if (lastPrice === assetQuote) {
       setStatus("similar");
-      setLastPrice(asset);
+      setLastPrice(assetQuote);
       setIcon();
     } else {
       if (assetQuote > lastPrice) {
@@ -98,19 +107,18 @@ export const TradePage = () => {
   };
 
   useEffect(() => {
-    console.log("TEST");
-
-    if (Inputs !== 0) {
-      setDisableBtn(false);
-    } else {
+    if (parseInt(amount) <= -1) {
       setDisableBtn(true);
+    } else {
+      setDisableBtn(false);
     }
-  }, [Inputs]);
+  }, [amount]);
 
   const onSubmitBuy = async (e) => {
     e.preventDefault();
+    console.log(typeof amount);
+
     try {
-      console.log(commodity);
       const body = { amount };
       const response = await fetch(
         `http://157.245.57.54:5000/buy/${commodity}`,
@@ -178,7 +186,10 @@ export const TradePage = () => {
       });
 
       const parseRes = await response.json();
-      setAsset(parseRes[0].gold_amount);
+      setGoldAsset(parseRes[0].gold_amount);
+      setSilverAsset(parseRes[0].silver_amount);
+      setPlatAsset(parseRes[0].plat_amount);
+      setPladAsset(parseRes[0].plad_amount);
     } catch (error) {
       console.error(error.message);
     }
@@ -221,7 +232,16 @@ export const TradePage = () => {
                 )}
                 <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
                   <p className="mb-1 ml-1 text-sm">Asset Owned</p>
-                  <div className="font-bold">{asset}oz</div>
+                  <div className="font-bold">
+                    {commodity === "Xau"
+                      ? GoldAsset
+                      : commodity === "Xag"
+                      ? SilverAsset
+                      : commodity === "Xpt"
+                      ? PlatAsset
+                      : PladAsset}
+                    oz
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,9 +250,7 @@ export const TradePage = () => {
                 onChange={(e) => setCommodity(e.target.value)}
                 className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-gray-800 bg-white rounded-md outline-none appearance-none placeholder:text-slate-500"
               >
-                <option className="rounded" value="Xau">
-                  GOLD
-                </option>
+                <option value="Xau">GOLD</option>
                 <option value="Xag">SILVER</option>
                 <option value="Xpt">PLATINIUM</option>
                 <option value="Xpd">PALLADIUM</option>
@@ -252,7 +270,6 @@ export const TradePage = () => {
                       : "text-red-600 text-xl flex m-auto gap-2 font-bold leading-none"
                   }
                 >
-                  {console.log(status)}
                   {icon}
                   {assetQuote}
                 </div>
@@ -277,11 +294,7 @@ export const TradePage = () => {
                 name="amount"
                 value={amount}
                 onKeyDown={(event) => {
-                  if (
-                    event.key == "." ||
-                    event.key === "-" ||
-                    event.key === "e"
-                  ) {
+                  if (event.key === "-" || event.key === "e") {
                     event.preventDefault();
                   }
                 }}
