@@ -188,8 +188,8 @@ export const TradePage = () => {
       const parseRes = await response.json();
       setGoldAsset(parseRes[0].gold_amount);
       setSilverAsset(parseRes[0].silver_amount);
-      setPlatAsset(parseRes[0].plat_amount);
-      setPladAsset(parseRes[0].plad_amount);
+      setPlatAsset(parseRes[0].platinum_amount);
+      setPladAsset(parseRes[0].palladium_amount);
     } catch (error) {
       console.error(error.message);
     }
