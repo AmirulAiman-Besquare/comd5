@@ -11,7 +11,11 @@ h2,
 p {
   font-weight: 500;
 }
+.cancelBtn {
+  background: #fff !important;
+}
 
+<<<<<<< HEAD
 .cancelBtn {
   background: #fff !important;
 }
@@ -20,6 +24,11 @@ p {
   background: pink !important;
 }
 
+=======
+.cancelBtn:hover {
+  background: pink !important;
+}
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
 #button {
   background: linear-gradient(
     101.43deg,

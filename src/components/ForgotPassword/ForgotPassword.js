@@ -20,7 +20,10 @@ export const ForgotPassword = () => {
       setType("password");
     }
   };
+<<<<<<< HEAD
 
+=======
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
   const [Inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -101,14 +104,22 @@ export const ForgotPassword = () => {
                   Password
                 </label>
               </div>
+<<<<<<< HEAD
               <div className="flex relative ">
+=======
+              <div className="relative flex ">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 <input
                   type={type}
                   id="password"
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
+<<<<<<< HEAD
                   className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200 w-full"
+=======
+                  className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 />
                 <div style={{ color: "#000000	" }}>
                   <span

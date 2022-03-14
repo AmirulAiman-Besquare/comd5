@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import registericon from "../asset/images/register.png";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 // import { DashBoard } from "components";
+=======
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
 import { eye } from "react-icons-kit/fa/eye";
 import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
 import { Icon } from "react-icons-kit";
@@ -62,7 +65,7 @@ export const Register = ({ setAuth }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-100 lg:justify-center">
+    <div className="flex items-center justify-center min-h-screen p-4 bg-[url('../asset/images/mainbg.png')] lg:justify-center bg-center bg-no-repeat bg-cover">
       <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md ">
         <div className="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly ">
           <img
@@ -137,14 +140,22 @@ export const Register = ({ setAuth }) => {
                   Password
                 </label>
               </div>
+<<<<<<< HEAD
               <div className="flex relative ">
+=======
+              <div className="relative flex ">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 <input
                   type={type}
                   id="password"
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
+<<<<<<< HEAD
                   className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200 w-full"
+=======
+                  className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 />
                 <div style={{ color: "#000000	" }}>
                   <span
@@ -154,6 +165,7 @@ export const Register = ({ setAuth }) => {
                     <Icon icon={icon} size={25} />
                   </span>
                 </div>
+<<<<<<< HEAD
               </div>
             </div>
             {/* <div className="flex flex-col space-y-1">
@@ -161,13 +173,11 @@ export const Register = ({ setAuth }) => {
                 <label htmlFor="password" className="text-sm font-semibold">
                   Confirm Password
                 </label>
+=======
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
               </div>
-              <input
-                type="password"
-                id="confirmpassword"
-                className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
-              />
-            </div> */}
+            </div>
+
             <div className="flex items-center space-x-2">
               <input
                 type="checkbox"
@@ -194,53 +204,6 @@ export const Register = ({ setAuth }) => {
               </button>
             </div>
           </form>
-          {/* <div className="flex flex-col space-y-5">
-            <span className="flex items-center justify-center space-x-2">
-              <span className="h-px bg-gray-400 w-14"></span>
-              <span className="font-normal text-gray-500">or sign up with</span>
-              <span className="h-px bg-gray-400 w-14"></span>
-            </span>
-            <div className="flex flex-col space-y-4 ">
-              <a
-                href="#" //Sign Up WITH GOOGLE BTN
-                className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md group bg-gradient-to-r from-white to-white hover:from-cyan-500 hover:to-blue-700 focus:outline-none focus:ring-blue-200 focus:ring-4 hover:border-white"
-              >
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    width="48"
-                    height="48"
-                    className="w-5 h-5 text-gray-800 fill-current group-hover:text-white"
-                    viewBox="0 0 48 48"
-                    version="1.1"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill="#fbc02d"
-                      d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-                    ></path>
-                    <path
-                      fill="#e53935"
-                      d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-                    ></path>
-                    <path
-                      fill="#4caf50"
-                      d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-                    ></path>
-                    <path
-                      fill="#1565c0"
-                      d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="text-sm font-medium text-gray-800 group-hover:text-white">
-                  Sign Up with Google Account
-                </span>
-              </a>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

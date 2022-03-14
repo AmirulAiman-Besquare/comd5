@@ -9,6 +9,10 @@ import { useState, useEffect } from "react";
 import { eye } from "react-icons-kit/fa/eye";
 import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
 import { Icon } from "react-icons-kit";
+<<<<<<< HEAD
+=======
+import { Header } from "../Header/Header";
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
 
 export const UserSetting = () => {
   const [firstname, setFirstName] = useState();
@@ -113,6 +117,7 @@ export const UserSetting = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       {/* <div className="w-full h-screen"> */}
       <div
         className="flex flex-col items-center justify-center
@@ -125,21 +130,30 @@ export const UserSetting = () => {
        xl:items-start xl:mt-10 xl:gap-20 xl:flex-row
         "
       >
+=======
+      <Header title={"TRANSACTION"} />
+      <div className="flex flex-col items-center justify-center pt-4 mt-2 ml-2 lg:mx-10 lg:items-start lg:gap-10 lg:flex-row xl:items-start xl:mt-10 xl:gap-20 xl:flex-row ">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
         <div
           className="mb-4 xl:mb-0 rounded-lg shadow-xl box w-11/12
         lg: xl:w-auto border-[#376db3] border-8 md:mt-3 "
         >
           <div className="mx-3 my-5 sm:mx-20 sm:my-10 ">
+<<<<<<< HEAD
             <p
               className="mb-3 lg:text-2xl text-xl
             md:text-4xl md:mb-5 xl:text-4xl font-bold text-white sm:text-3xl"
             >
+=======
+            <p className="mb-3 text-xl font-bold text-white lg:text-2xl md:text-4xl md:mb-5 xl:text-4xl sm:text-3xl">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
               Personal Information
             </p>
             <div className="flex flex-wrap justify-center w-full ">
               <img
                 src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-1-800x800.jpg"
                 alt="..."
+<<<<<<< HEAD
                 className="h-32 border-none rounded-full shadow md:h-60 xs:h-44 xl:h-40
                 lg:h-28 "
               />
@@ -147,6 +161,11 @@ export const UserSetting = () => {
                 className="mt-8 ml-2 text-xl font-bold text-white 
               md:text-5xl xl:text-3xl lg:text-xl xxs:text-2xl xxs:mt-8 xxs:ml-6 xs:text-5xl xs:mt-10 xs:ml-10 "
               >
+=======
+                className="h-32 border-none rounded-full shadow md:h-60 xs:h-44 xl:h-40 lg:h-28 "
+              />
+              <p className="mt-8 ml-2 text-xl font-bold text-white md:text-5xl xl:text-3xl lg:text-xl xxs:text-2xl xxs:mt-8 xxs:ml-6 xs:text-5xl xs:mt-10 xs:ml-10 ">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 {firstname} <br />
                 {lastName}
               </p>
@@ -204,7 +223,11 @@ export const UserSetting = () => {
                 className={!showCancelBtnPersonalInfo ? "hidden" : "visible"}
               >
                 <button
+<<<<<<< HEAD
                   className=" cancelBtn px-4 py-2 mt-3 text-base font-bold text-black sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+=======
+                  className="px-4 py-2 mt-3 text-base font-bold text-black cancelBtn sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                   id="button"
                   type="button"
                   onClick={handleCancelBtnTextPersonalInfo}
@@ -230,10 +253,14 @@ export const UserSetting = () => {
         >
           {" "}
           <div className="h-full mx-3 my-5 sm:mx-20 sm:my-10">
+<<<<<<< HEAD
             <p
               className="mb-3 text-xl  md:text-4xl  xl:text-4xl
             lg:text-2xl  font-bold text-white sm:text-2xl"
             >
+=======
+            <p className="mb-3 text-xl font-bold text-white md:text-4xl xl:text-4xl lg:text-2xl sm:text-2xl">
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
               Email & Password
             </p>
             <div className="mb-3">
@@ -285,7 +312,11 @@ export const UserSetting = () => {
                 className={!showElementPasswordSection ? "hidden" : "visible"}
               >
                 <button
+<<<<<<< HEAD
                   className=" cancelBtn px-4 py-2 mt-3 text-base font-bold text-black sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+=======
+                  className="px-4 py-2 mt-3 text-base font-bold text-black cancelBtn sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                   id="button"
                   type="button"
                   onClick={handleCancelBtnEmailPassword}
@@ -295,7 +326,11 @@ export const UserSetting = () => {
               </div>
 
               <button
+<<<<<<< HEAD
                 className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl  xl:mt-7"
+=======
+                className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+>>>>>>> fcfe272fffbb6bbfd8790fc028ffe2af30b7e44c
                 id="button"
                 type="button"
                 onClick={handleEmailPasswordBtn}
