@@ -41,13 +41,10 @@ export const AssestAnalysis = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <AssetAnalysisRow asset={"RDBEAR"} />
-                      <AssetAnalysisRow asset={"RDBEAR"} />
-                      <AssetAnalysisRow asset={"RDBEAR"} />
-                      <AssetAnalysisRow asset={"RDBEAR"} />
-                      {/* <AssetAnalysisRow asset={"frxXAGUSD"} /> */}
-                      {/* <AssetAnalysisRow asset={"frxXPTUSD"} /> */}
-                      {/* <AssetAnalysisRow asset={"frxXPDUSD"} /> */}
+                      <AssetAnalysisRow asset={"frxXAUUSD"} />
+                      <AssetAnalysisRow asset={"frxXAGUSD"} />
+                      <AssetAnalysisRow asset={"frxXPTUSD"} />
+                      <AssetAnalysisRow asset={"frxXPDUSD"} />
                     </tbody>
                   </table>
                 </div>

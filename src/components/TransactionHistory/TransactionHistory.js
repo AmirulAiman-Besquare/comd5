@@ -11,8 +11,8 @@ import Paper from "@mui/material/Paper";
 import buyicon from "../asset/images/buy_icon.png";
 import sellicon from "../asset/images/sell_icon.png";
 import { Header } from "components/Header";
-import goldicon from "../asset/images/gold.png";
-import silvericon from "../asset/images/silver.png";
+import goldicon from "../asset/images/goldcoin.png";
+import silvericon from "../asset/images/silvercoin.png";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -68,17 +68,17 @@ export const TransactionHistory = () => {
   return (
     <>
       <Header title={"TRANSACTION"} />
-      <div className="p-10 mt-10 box bg-[#075F93] rounded-xl mx-80 history">
+      <div className="mx-6 p-10 mt-10 bg-[#075F93] rounded-xl  history">
         <div className="flex mb-5">
           <p className="mr-10 text-4xl font-bold text-white">History</p>
-          <input
+          {/* <input
             type="text"
             placeholder="Search"
             className="rounded-xl"
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-          />
+          /> */}
         </div>
         <TableContainer
           component={Paper}
@@ -116,8 +116,8 @@ export const TransactionHistory = () => {
                   return (
                     <StyledTableRow key={item.tx_id}>
                       <StyledTableCell component="th" scope="row">
-                        {item.tx_asset === "buy" ? (
-                          <img src={silvericon} className="m-auto" />
+                        {item.tx_asset === "gold" ? (
+                          <img src={goldicon} className="m-auto" />
                         ) : (
                           <img src={silvericon} className="m-auto" />
                         )}

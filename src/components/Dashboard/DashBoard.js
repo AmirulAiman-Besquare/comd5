@@ -53,14 +53,10 @@ export const DashBoard = () => {
           <div className="flex flex-col w-full gap-y-10">
             <div className="bg-[#075F93] rounded-xl h-full">
               <div className="flex justify-around w-full h-full py-6 align-middle ">
-                <TicksPriceWs asset={"RDBEAR"} />
-                <TicksPriceWs asset={"RDBEAR"} />
-                <TicksPriceWs asset={"RDBEAR"} />
-                <TicksPriceWs asset={"RDBEAR"} />
-                {/* <TicksPriceWs asset={"frxXAUUSD"} />
+                <TicksPriceWs asset={"frxXAUUSD"} />
                 <TicksPriceWs asset={"frxXAGUSD"} />
                 <TicksPriceWs asset={"frxXPTUSD"} />
-                <TicksPriceWs asset={"frxXPDUSD"} /> */}
+                <TicksPriceWs asset={"frxXPDUSD"} />
               </div>
             </div>
           </div>
@@ -82,9 +78,9 @@ export const DashBoard = () => {
           <AssetOwned />
           <div className="flex flex-col w-full gap-y-10">
             <div className="bg-[#075F93] rounded-xl py-6">
-              {/* <div className="flex justify-center w-full h-full gap-2 m-auto align-middle">
+              <div className="flex justify-center w-full h-full gap-2 m-auto align-middle">
                 <LineTableData />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
