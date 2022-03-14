@@ -15,7 +15,8 @@ const GoldTableData = ({ asset }) => {
   const [tableData, setTableData] = useState([]);
   const [realhistory, setRealHistory, refRealHistoryData] = useState([]);
   const [selectedTime, setSelectedTime] = useState(0);
-  const [selectedCommodity, setselectedCommodity] = useState(asset);
+  const [selectedCommodity, setselectedCommodity, refSelectedCommodity] =
+    useState(asset);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,11 +29,10 @@ const GoldTableData = ({ asset }) => {
       //send request to ws for tick history and subsribe to it.
       wsClient.send(
         JSON.stringify({
-          ticks_history: selectedCommodity,
+          ticks_history: refSelectedCommodity.current,
           adjust_start_time: 1,
-          count: 1000,
+          count: 100,
           end: "latest",
-          granularity: 300,
           start: 1,
           subscribe: 1,
           style: "candles",

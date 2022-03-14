@@ -30,6 +30,7 @@ p {
   background: pink;
 }
 .box {
+  border-radius: 100%;
   background: linear-gradient(
     145.49deg,
     #122746 12.32%,

@@ -3,6 +3,7 @@ import Chart from "@qognicafinance/react-lightweight-charts";
 import { pink } from "@mui/material/colors";
 
 export const CandleStick = ({ data }) => {
+  console.log(data);
   const options = {
     alignLabels: true,
     grid: {

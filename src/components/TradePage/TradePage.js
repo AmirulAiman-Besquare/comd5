@@ -13,7 +13,8 @@ import { toast } from "react-toastify";
 
 export const TradePage = () => {
   const [commodity, setCommodity] = useState("Xau");
-  const [selectedAsset, setSelectedAsset] = useState("frxXAUUSD");
+  const [selectedAsset, setSelectedAsset, refselectedAsset] =
+    useState("frxXAUUSD");
   const [assetQuote, setAssetQuote] = useState(
     <ScaleLoader color="#00B2FF" height={15} />
   );
@@ -57,7 +58,7 @@ export const TradePage = () => {
       "wss://ws.binaryws.com/websockets/v3?app_id=" + app_id
     );
     ws.onopen = function (evt) {
-      ws.send(JSON.stringify({ ticks: selectedAsset }));
+      ws.send(JSON.stringify({ ticks: refselectedAsset.current }));
     };
 
     ws.onmessage = (evt) => {
@@ -328,7 +329,7 @@ export const TradePage = () => {
         </div>
       </div>
       <div className="mx-36 bg-[#075F93] p-10 rounded-lg">
-        <GoldTableData asset={selectedAsset} />
+        <GoldTableData asset={refselectedAsset.current} />
       </div>
     </>
   );

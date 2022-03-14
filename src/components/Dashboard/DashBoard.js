@@ -4,8 +4,9 @@ import { TicksPriceWs } from "./TicksPriceWs";
 import walleticon from "../asset/images/Wallet.svg";
 import { Header } from "components/Header";
 import { AssestAnalysis } from "./AssestAnalysis";
-import { AssetOwned } from "./AssestOwned";
 import LineTableData from "../Charts/DashBoardChart/LineTableData";
+import { DoughnutChart } from "components/Charts/DashBoardChart/DoughnutChart";
+import { ActivitySummary } from "./ActivitySummary";
 
 const options = [
   { value: "realtime", label: "Real-Time" },
@@ -48,7 +49,7 @@ export const DashBoard = () => {
   return (
     <>
       <Header title={"DASHBOARD"} />
-      <div className="m-10 ">
+      <div className="mx-20 mt-10">
         <div className="flex w-full gap-x-10">
           <div className="flex flex-col w-full gap-y-10">
             <div className="bg-[#075F93] rounded-xl h-full">
@@ -73,16 +74,12 @@ export const DashBoard = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full h-full mt-10 gap-x-10">
+        <div className="flex justify-center w-full h-full m-auto mt-10 align-middle gap-x-12">
           <AssestAnalysis />
-          <AssetOwned />
-          <div className="flex flex-col w-full gap-y-10">
-            <div className="bg-[#075F93] rounded-xl py-6">
-              <div className="flex justify-center w-full h-full gap-2 m-auto align-middle">
-                <LineTableData />
-              </div>
-            </div>
-          </div>
+
+          <DoughnutChart />
+
+          <ActivitySummary />
         </div>
       </div>
     </>
