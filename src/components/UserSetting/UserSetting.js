@@ -173,7 +173,7 @@ export const UserSetting = () => {
                 htmlFor="address "
               >
                 <IoMdHome className="text-2xl text-[#10a6f1] xl:text-2xl xl:mb-2" />
-                Country
+                Contact Number
               </label>
               <input
                 className="w-full px-3 py-2 mb-3 border rounded shadow appearance-none border-red text-grey-darker"
