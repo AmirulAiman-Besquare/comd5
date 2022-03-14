@@ -1,6 +1,6 @@
 export * from "./Login";
 export * from "./Register";
-export * from "./Layout";
+export * from "./Header";
 export * from "./UserSetting";
 export * from "./TransactionHistory";
 export * from "./Dashboard";

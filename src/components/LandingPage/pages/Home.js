@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 function Home() {
   return (
     <>
-      <div className="landingpage">
+      <div className=" landingpage">
         <HeroSection />
 
         <Asset />

@@ -1,56 +1,12 @@
-import "./styles.modules.css";
+import styles from "./Dashboard.modules.css";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { DashBoardFav } from "./DashboardFav";
-import linegraph from "../asset/images/linegraph.png";
+import { TicksPriceWs } from "./TicksPriceWs";
 import walleticon from "../asset/images/Wallet.svg";
-import Select, { components } from "react-select";
+import { Header } from "components/Header";
+import { AssestAnalysis } from "./AssestAnalysis";
+import { AssetOwned } from "./AssestOwned";
+import LineTableData from "../Charts/DashBoardChart/LineTableData";
 
-const colourStyles = {
-  control: (styles) => ({
-    ...styles,
-    backgroundColor: "#509AC6",
-    border: "0",
-    boxShadow: "none",
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: "#509AC6",
-      color: "white", //option text color
-      cursor: isDisabled ? "not-allowed" : "default",
-    };
-  },
-  singleValue: (defaultStyles) => {
-    return {
-      ...defaultStyles,
-      color: "white",
-    };
-  },
-  dropdownIndicator: (provided) => ({
-    ...provided,
-    svg: {
-      fill: "white",
-    },
-  }),
-  menuList: (base) => ({
-    ...base,
-
-    "::-webkit-scrollbar": {
-      width: "4px",
-      height: "0px",
-    },
-    "::-webkit-scrollbar-track": {
-      background: "#f1f1f1",
-    },
-    "::-webkit-scrollbar-thumb": {
-      background: "gray",
-    },
-    "::-webkit-scrollbar-thumb:hover": {
-      background: "#555",
-    },
-  }),
-};
 const options = [
   { value: "realtime", label: "Real-Time" },
   { value: "5min", label: "5 Minutes" },
@@ -65,8 +21,6 @@ const options = [
 ];
 
 export const DashBoard = () => {
-  const [open, setOpen] = useState(false);
-
   const [balance, setBalance] = useState();
 
   async function getBalance() {
@@ -87,58 +41,50 @@ export const DashBoard = () => {
   }
 
   useEffect(() => {
-    getBalance();
+    const unsubscribe = getBalance(); //subscribe
+    return unsubscribe; //unsubscribe
   }, []);
 
   return (
-    <div className="m-10">
-      <div className="flex w-full gap-x-10">
-        <div className="flex flex-col w-full gap-y-10">
-          <div className="bg-[#075F93] p-3 rounded-xl">
-            <div className="flex flex-row items-center pb-5 text-2xl text-white testt">
-              <img className="ml-10 mr-20 w-96" src={linegraph} />
-              <p className="flex-grow mt-2 ml-3 font-bold leading-none">
-                Come And Modify Your Life With Commodify!
-              </p>
-              <Link to={"/tx"}>
-                <button className="px-6 py-1 mt-4 mr-4 font-bold text-center justify-self-end dashboard-button">
-                  Go Trade
-                </button>
-              </Link>
+    <>
+      <Header title={"DASHBOARD"} />
+      <div className="m-10 ">
+        <div className="flex w-full gap-x-10">
+          <div className="flex flex-col w-full gap-y-10">
+            <div className="bg-[#075F93] rounded-xl h-full">
+              <div className="flex justify-around w-full h-full py-6 align-middle ">
+                <TicksPriceWs asset={"frxXAUUSD"} />
+                <TicksPriceWs asset={"frxXAGUSD"} />
+                <TicksPriceWs asset={"frxXPTUSD"} />
+                <TicksPriceWs asset={"frxXPDUSD"} />
+              </div>
             </div>
           </div>
-          <DashBoardFav />
+          <div className="h-80 bg-[#075F93] w-96 p-4 rounded-xl">
+            <div className="flex flex-col justify-center h-full text-2xl text-center text-white testt">
+              <p>Current Balance</p>
+              <img
+                src={walleticon}
+                className="w-auto my-6 h-36"
+                draggable="false"
+                dragstart="false;"
+              />
+              <p>${balance}</p>
+            </div>
+          </div>
         </div>
-        <div className="h-80 bg-[#075F93] w-96 p-4 rounded-xl">
-          <div className="flex flex-col justify-center h-full text-2xl text-center text-white testt">
-            <p>Current Balance</p>
-            <img
-              src={walleticon}
-              className="w-auto my-6 h-36"
-              draggable="false"
-              dragstart="false;"
-            />
-            <p>${balance}</p>
+        <div className="flex w-full h-full mt-10 gap-x-10">
+          <AssestAnalysis />
+          <AssetOwned />
+          <div className="flex flex-col w-full gap-y-10">
+            <div className="bg-[#075F93] rounded-xl py-6">
+              <div className="flex justify-center w-full h-full gap-2 m-auto align-middle">
+                <LineTableData />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <div className="h-full mt-10 bg-[#075F93] rounded-lg">
-          <div className="flex flex-row">
-            <p className="flex-grow p-6 ml-8 text-3xl font-bold text-white ">
-              Market Overview
-            </p>
-            <Select
-              styles={colourStyles}
-              options={options}
-              className="p-6 mr-8 text-base font-bold"
-              isSearchable={false}
-              defaultValue={options[0]}
-              onBlur={() => setOpen(false)}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
