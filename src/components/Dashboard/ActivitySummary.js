@@ -25,8 +25,17 @@ export const ActivitySummary = () => {
       tx_type.forEach((x) => {
         counts[x] = (counts[x] || 0) + 1;
       });
-      setBuy(counts.buy);
-      setSell(counts.sell);
+      if (counts.hasOwnProperty("buy")) {
+        setBuy(counts.buy);
+      } else {
+        setBuy(0);
+      }
+
+      if (counts.hasOwnProperty("sell")) {
+        setSell(counts.sell);
+      } else {
+        setSell(0);
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -50,9 +59,18 @@ export const ActivitySummary = () => {
       payment_type.forEach((x) => {
         counts[x] = (counts[x] || 0) + 1;
       });
-      console.log(counts);
-      setTopUp(counts.Topup);
-      setWithdraw(counts.Withdraw);
+
+      if (counts.hasOwnProperty("Topup")) {
+        setTopUp(counts.Topup);
+      } else {
+        setTopUp(0);
+      }
+
+      if (counts.hasOwnProperty("Withdraw")) {
+        setWithdraw(counts.Withdraw);
+      } else {
+        setWithdraw(0);
+      }
     } catch (error) {
       console.error(error.message);
     }

@@ -14,7 +14,7 @@ export function DoughnutChart() {
   const [SilverAsset, setSilverAsset] = useState(0);
   const [PlatAsset, setPlatAsset] = useState(0);
   const [PladAsset, setPladAsset] = useState(0);
-  const [CheckData, setCheckData, refCheckData] = useState(false);
+  const [CheckData, setCheckData] = useState(false);
 
   async function getAsset() {
     try {
@@ -28,6 +28,16 @@ export function DoughnutChart() {
       setSilverAsset(parseRes[0].silver_amount);
       setPlatAsset(parseRes[0].platinum_amount);
       setPladAsset(parseRes[0].palladium_amount);
+      if (
+        parseRes[0].gold_amount === 0 &&
+        parseRes[0].silver_amount === 0 &&
+        parseRes[0].platinum_amount === 0 &&
+        parseRes[0].palladium_amount === 0
+      ) {
+        setCheckData(false);
+      } else {
+        setCheckData(true);
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -39,23 +49,6 @@ export function DoughnutChart() {
       getAsset();
     };
   }, []);
-
-  useEffect(() => {
-    if (
-      GoldAsset === 0 &&
-      SilverAsset === 0 &&
-      PladAsset === 0 &&
-      PlatAsset === 0
-    ) {
-      setCheckData(true);
-    } else {
-      setCheckData(true);
-    }
-
-    return () => {
-      setCheckData();
-    };
-  }, [GoldAsset, SilverAsset, PladAsset, PlatAsset]);
 
   const options = {
     aspectRatio: 3 / 3,
@@ -102,7 +95,9 @@ export function DoughnutChart() {
       <p className="absolute mt-5 ml-10 text-2xl font-bold text-white">
         Asset Owned
       </p>
-      <div className={"flex h-full mt-[7rem] mx-10 text-white align-middle"}>
+      <div
+        className={"flex h-full mt-[7rem] ml-10 mr-5 text-white align-middle"}
+      >
         <div>
           <p className="bg-[#64ECFF] text-xs text-[#64ECFF] mb-3 mt-1">gold</p>
           <p className="bg-[#45BDEA] text-xs text-[#45BDEA] mb-3">silv</p>
@@ -122,50 +117,53 @@ export function DoughnutChart() {
           <p className="pb-1 font-normal">{PladAsset}oz</p>
         </div>
       </div>
-
-      <div className="h-full m-auto mt-6 ">
-        <Doughnut
-          data={{
-            labels: ["Gold", "Silver", "Platinium", "Palladium"],
-            datasets: [
-              {
-                datalabels: {
-                  // backgroundColor: function (context) {
-                  //   return context.dataset.backgroundColor;
-                  // },
-                  borderRadius: 4,
-                  // borderColor: "black",
-                  borderWidth: "1",
-                  color: "white",
-                  font: {
-                    weight: "bold",
-                    size: "15px",
-                  },
-                  align: "end",
-                  anchor: "end",
-                  labels: {
-                    index: {
-                      align: "end",
-                      anchor: "end",
-                      color: "white",
-                      font: { size: 14 },
-                      formatter: function (value, ctx) {
-                        return ctx.active
-                          ? ctx.chart.data.labels[ctx.dataIndex]
-                          : ctx.dataset.data[ctx.dataIndex];
+      {CheckData ? (
+        <div className="w-[17rem] h-full m-auto mt-7 ">
+          <Doughnut
+            data={{
+              labels: ["Gold", "Silver", "Platinium", "Palladium"],
+              datasets: [
+                {
+                  datalabels: {
+                    // backgroundColor: function (context) {
+                    //   return context.dataset.backgroundColor;
+                    // },
+                    borderRadius: 4,
+                    // borderColor: "black",
+                    borderWidth: "1",
+                    color: "white",
+                    font: {
+                      weight: "bold",
+                      size: "15px",
+                    },
+                    align: "end",
+                    anchor: "end",
+                    labels: {
+                      index: {
+                        align: "end",
+                        anchor: "end",
+                        color: "white",
+                        font: { size: 14 },
+                        formatter: function (value, ctx) {
+                          return ctx.active
+                            ? ctx.chart.data.labels[ctx.dataIndex]
+                            : ctx.dataset.data[ctx.dataIndex];
+                        },
+                        offset: 8,
                       },
-                      offset: 8,
                     },
                   },
+                  data: [GoldAsset, SilverAsset, PlatAsset, PladAsset],
+                  backgroundColor: ["#64ECFF", "#45BDEA", "#418FCC", "#4761A4"],
                 },
-                data: [GoldAsset, SilverAsset, PlatAsset, PladAsset],
-                backgroundColor: ["#64ECFF", "#45BDEA", "#418FCC", "#4761A4"],
-              },
-            ],
-          }}
-          options={options}
-        />
-      </div>
+              ],
+            }}
+            options={options}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
