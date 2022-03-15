@@ -90,8 +90,8 @@ export const TicksPriceWs = ({ asset }) => {
             status === "similar"
               ? "text-white text-xl flex m-auto gap-2"
               : status === "higher"
-              ? "text-green-300 text-xl flex m-auto gap-2"
-              : "text-red-600 text-xl flex m-auto gap-2"
+              ? "text-[#5CEE21] text-xl flex m-auto gap-2"
+              : "text-[#FB512D] text-xl flex m-auto gap-2"
           }
         >
           {icon}

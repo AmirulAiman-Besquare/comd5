@@ -3,8 +3,6 @@ import { Chart } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import React, { useEffect } from "react";
 import CharpataLabels from "chartjs-plugin-datalabels";
-import ScaleLoader from "react-spinners/ScaleLoader";
-import { BiRectangle } from "react-icons/bi";
 import useState from "react-usestateref";
 
 Chart.register(CharpataLabels);

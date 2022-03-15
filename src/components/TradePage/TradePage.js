@@ -267,8 +267,8 @@ export const TradePage = () => {
                     status === "similar"
                       ? "text-white text-xl flex m-auto gap-2 font-bold leading-none"
                       : status === "higher"
-                      ? "text-green-300 text-xl flex m-auto gap-2 font-bold leading-none"
-                      : "text-red-600 text-xl flex m-auto gap-2 font-bold leading-none"
+                      ? "text-[#5CEE21] text-xl flex m-auto gap-2 font-bold leading-none"
+                      : "text-[#FB512D] text-xl flex m-auto gap-2 font-bold leading-none"
                   }
                 >
                   {icon}
