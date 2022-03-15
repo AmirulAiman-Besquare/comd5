@@ -5,11 +5,11 @@ import {
   TransactionHistory,
   TradePage,
   Wallet,
-  Layout,
   Notification,
   DashBoard,
   Register,
   Login,
+  NotFoundPage,
 } from "components";
 import Home from "components/LandingPage/pages/Home";
 import { ForgotPassword } from "components/ForgotPassword/ForgotPassword";
@@ -150,6 +150,7 @@ export const PageRoute = () => {
             )
           }
         />
+        <Route exact path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

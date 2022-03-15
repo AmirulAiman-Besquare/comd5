@@ -16,9 +16,9 @@ p {
 }
 
 .cancelBtn:hover {
-  background: pink !important;
+  background: #10a6f1 !important;
 }
-#button {
+.button {
   background: linear-gradient(
     101.43deg,
     #13a9f1 -2.83%,
@@ -26,7 +26,7 @@ p {
     #679ce2 73.19%
   );
 }
-#button:hover {
+.button:hover {
   background: pink;
 }
 .box {

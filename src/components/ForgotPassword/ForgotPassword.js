@@ -150,6 +150,7 @@ export const ForgotPassword = () => {
                 value={email}
                 onChange={(e) => onChange(e)}
                 autoFocus
+                disabled
                 className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
               />
             </div>
@@ -168,6 +169,7 @@ export const ForgotPassword = () => {
                   onFocus={handleOnFocus}
                   onBlur={handleOnBlur}
                   onKeyUp={handleOnKeyUp}
+                  disabled
                   onChange={(e) => onChange(e)}
                   className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
                 />
