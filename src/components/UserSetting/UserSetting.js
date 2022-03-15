@@ -10,6 +10,7 @@ import { eye } from "react-icons-kit/fa/eye";
 import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
 import { Icon } from "react-icons-kit";
 import { Header } from "../Header/Header";
+import { toast } from "react-toastify";
 
 export const UserSetting = () => {
   const [firstname, setFirstName] = useState();
@@ -17,6 +18,82 @@ export const UserSetting = () => {
   const [email, setEmail] = useState();
   const [id, setId] = useState();
   const [pass, setPass] = useState();
+  const [phoneno, setPhoneNo] = useState();
+
+  const [PhoneNumInputs, setPhoneNumInputs] = useState({
+    phone_number: "",
+  });
+
+  const [PasswordInputs, setPasswordInputs] = useState({
+    password: "",
+  });
+
+  const { phone_number } = PhoneNumInputs;
+  const { password } = PasswordInputs;
+
+  const onChangePhoneNum = (e) => {
+    setPhoneNumInputs({ ...PhoneNumInputs, [e.target.name]: e.target.value });
+  };
+
+  const onChangePassword = (e) => {
+    setPasswordInputs({ ...PasswordInputs, [e.target.name]: e.target.value });
+  };
+
+  const onSubmitPhoneNum = async (e) => {
+    e.preventDefault();
+    if (btnTextPersonalInfo === "Save") {
+      <></>;
+    } else {
+      try {
+        const body = { phone_number };
+
+        const response = await fetch("http://157.245.57.54:5000/updateUser", {
+          method: "PUT",
+          headers: {
+            token: localStorage.token,
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+
+        const parseRes = await response.json();
+        console.table(parseRes);
+        toast.success("Updated phone number successfully");
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  };
+
+  const onSubmitPassword = async (e) => {
+    e.preventDefault();
+    if (btnTextEmailPassword === "Save") {
+      <></>;
+    } else {
+      try {
+        const body = { email, password };
+
+        const response = await fetch(
+          "http://157.245.57.54:5000/resetPassword",
+          {
+            method: "POST",
+            headers: {
+              token: localStorage.token,
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(body),
+          }
+        );
+        console.log(JSON.stringify(body));
+
+        const parseRes = await response.json();
+        console.table(parseRes);
+        toast.success("Updated password successfully");
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  };
 
   //Email & Password section
   const [isDisabledEmailPassword, setIsDisabledEmailPassword] = useState(true);
@@ -96,13 +173,15 @@ export const UserSetting = () => {
         method: "GET",
         headers: { token: localStorage.token },
       });
-
       const parseRes = await response.json();
+      console.log(parseRes);
+
       setFirstName(parseRes[0].first_name);
       setLastName(parseRes[0].last_name);
       setEmail(parseRes[0].user_email);
       setId(parseRes[0].user_id);
       setPass(parseRes[0].user_password);
+      setPhoneNo(parseRes[0].phone_number);
     } catch (error) {
       console.error(error.message);
     }
@@ -148,25 +227,10 @@ export const UserSetting = () => {
                 id="id"
                 type="text"
                 value={id}
-                // placeholder="CHANGE THIS TO DISPLAY"
                 disabled="disabled"
               />
             </div>
-            {/* <div>
-              <label
-                className="flex gap-2 mt-6 mb-2 text-sm font-bold text-white sm:text-base xl:text-xl"
-                htmlFor="contact"
-              >
-                <FaPhoneAlt className="text-xl text-[#10a6f1] xl:text-2xl xl:mb-2 " />
-                Contact
-              </label>
-              <input
-                className="w-full px-3 py-2 border rounded shadow appearance-none border-red text-grey-darker"
-                type="tel"
-                placeholder="Fetch contact from db"
-                disabled={isDisabledPersonalInfo}
-              />
-            </div> */}
+
             <div>
               <label
                 className="flex gap-1 mt-6 mb-2 text-sm font-bold text-white sm:text-base xl:text-xl"
@@ -177,8 +241,11 @@ export const UserSetting = () => {
               </label>
               <input
                 className="w-full px-3 py-2 mb-3 border rounded shadow appearance-none border-red text-grey-darker"
-                type="text"
-                placeholder="Fetch address from db here."
+                type="tel"
+                name="phone_number"
+                value={phone_number}
+                onChange={(e) => onChangePhoneNum(e)}
+                placeholder={phoneno}
                 disabled={isDisabledPersonalInfo}
               />
             </div>
@@ -196,14 +263,16 @@ export const UserSetting = () => {
                   Cancel
                 </button>
               </div>
-              <button
-                className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
-                id="button"
-                type="button"
-                onClick={handlePersonalInfo}
-              >
-                {btnTextPersonalInfo}
-              </button>
+              <form onSubmit={onSubmitPhoneNum}>
+                <button
+                  className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+                  id="button"
+                  type="submit"
+                  onClick={handlePersonalInfo}
+                >
+                  {btnTextPersonalInfo}
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -212,7 +281,6 @@ export const UserSetting = () => {
           
         md:my-3 md:mb-10 lg:mb-0 2xl:mb-8 lg:pb-1 border-[#376db3] border-8 xl:max-w-xl  xl:w-full"
         >
-          {" "}
           <div className="h-full mx-3 my-5 sm:mx-20 sm:my-10">
             <p className="mb-3 text-xl font-bold text-white md:text-4xl xl:text-4xl lg:text-2xl sm:text-2xl">
               Email & Password
@@ -246,8 +314,9 @@ export const UserSetting = () => {
                   className="w-full px-3 py-2 border rounded shadow appearance-none text-grey-darker"
                   type={type}
                   disabled={isDisabledEmailPassword}
-                  value={valuePass}
-                  onChange={handleUserInputPass}
+                  name="password"
+                  value={password}
+                  onChange={(e) => onChangePassword(e)}
                   placeholder="Enter new password"
                 ></input>
                 <div style={{ color: "#000000	" }}>
@@ -274,15 +343,16 @@ export const UserSetting = () => {
                   Cancel
                 </button>
               </div>
-
-              <button
-                className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
-                id="button"
-                type="button"
-                onClick={handleEmailPasswordBtn}
-              >
-                {btnTextEmailPassword}
-              </button>
+              <form onSubmit={onSubmitPassword}>
+                <button
+                  className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7"
+                  id="button"
+                  type="submit"
+                  onClick={handleEmailPasswordBtn}
+                >
+                  {btnTextEmailPassword}
+                </button>
+              </form>
             </div>
           </div>
         </div>
