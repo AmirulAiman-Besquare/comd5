@@ -54,7 +54,6 @@ export const AssetAnalysisRow = ({ asset }) => {
 
   const CalPercent = () => {
     setLastPrice(price);
-    setChange((parseFloat(price) - parseFloat(lastPrice)).toFixed(2));
     if (parseFloat(lastPrice) === 0) {
       setIcon(<></>);
       setChangePercent(<ScaleLoader color="#00B2FF" height={15} />);
@@ -62,7 +61,15 @@ export const AssetAnalysisRow = ({ asset }) => {
     } else {
       setPercent("%");
       let changes = parseFloat(price) - parseFloat(lastPrice);
-      setChangePercent((changes * 100).toFixed(2));
+      console.log(changes);
+      if (isNaN(changes)) {
+        setIcon(<></>);
+        setChange(0);
+        setChangePercent(0);
+      } else {
+        setChange((parseFloat(price) - parseFloat(lastPrice)).toFixed(2));
+        setChangePercent((changes * 100).toFixed(2));
+      }
     }
   };
 
@@ -91,7 +98,9 @@ export const AssetAnalysisRow = ({ asset }) => {
         </td>
         <td
           className={
-            change >= 0
+            change === 0
+              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              : change >= 0
               ? "text-green-600 flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
               : "text-red-600 flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
           }
@@ -101,7 +110,9 @@ export const AssetAnalysisRow = ({ asset }) => {
         </td>
         <td
           className={
-            changePercent >= 0
+            changePercent === 0
+              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              : changePercent >= 0
               ? "text-green-600 px-6 py-4 text-base font-light whitespace-nowrap"
               : "text-red-600  px-6 py-4 text-base font-light whitespace-nowrap"
           }

@@ -98,7 +98,7 @@ export function DoughnutChart() {
   };
 
   return (
-    <div className=" flex rounded-lg shadow-xl bg-[#122746] w-auto border-[#075F93] border-[1.2rem] xl:max-w-xl ">
+    <div className=" flex rounded-lg shadow-xl bg-[#122746] w-auto border-[#075F93] border-[1.2rem] xl:max-w-xl">
       <p className="absolute mt-5 ml-10 text-2xl font-bold text-white">
         Asset Owned
       </p>
@@ -123,7 +123,7 @@ export function DoughnutChart() {
         </div>
       </div>
 
-      <div className="h-full m-auto mt-3 ">
+      <div className="h-full m-auto mt-6 ">
         <Doughnut
           data={{
             labels: ["Gold", "Silver", "Platinium", "Palladium"],
