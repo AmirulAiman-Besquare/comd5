@@ -26,6 +26,7 @@ export const AssetAnalysisRow = ({ asset }) => {
     ws.onmessage = (evt) => {
       let res = JSON.parse(evt.data);
       latestPrice = parseFloat(res.tick.quote).toFixed(2);
+
       setPrice(latestPrice);
       setLastPrice(price);
     };
@@ -61,7 +62,6 @@ export const AssetAnalysisRow = ({ asset }) => {
     } else {
       setPercent("%");
       let changes = parseFloat(price) - parseFloat(lastPrice);
-      console.log(changes);
       if (isNaN(changes)) {
         setIcon(<></>);
         setChange(0);
