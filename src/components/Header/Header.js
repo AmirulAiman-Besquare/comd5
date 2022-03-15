@@ -83,25 +83,12 @@ export const Header = ({ setAuth, title }) => {
       </Menu>
       <nav className="h-[3.5rem] flex justify-between items-center bg-[#0A2653] border-b-2 border-[#075F93] sm:h-20 shadow-lg">
         <div className="logo ">
-          <h1 className="ml-12 text-base font-bold text-white sm:ml-24 xs:text-2xl animate__animated animate__fadeIn">
+          <h1 className="text-base font-bold text-white ml-14 sm:ml-24 xs:text-2xl animate__animated animate__fadeIn">
             {title}
           </h1>
         </div>
         <ul className="flex ">
-          <li>
-            <span className="relative inline-block mt-2 mr-4 sm:mr-8">
-              <img
-                src={bellIcon}
-                alt="notification icon"
-                className="w-5 animate__animated animate__swing"
-              />
-
-              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                10
-              </span>
-            </span>
-          </li>
-          <li className="hidden m-auto mr-1 text-base font-bold text-white xs:inline-flex">
+          <li className="hidden m-auto mr-4 text-xl font-bold text-white xs:inline-flex">
             Hi, {name}!
           </li>
           <li>
