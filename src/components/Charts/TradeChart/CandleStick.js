@@ -33,7 +33,7 @@ export const CandleStick = ({ data }) => {
       timeVisible: true,
       secondsVisible: false,
       fixRightEdge: true,
-      // fixLeftEdge: true,
+      fixLeftEdge: true,
     },
     // localization: {
     //   priceFormatter: (price) =>
@@ -51,19 +51,19 @@ export const CandleStick = ({ data }) => {
         bottom: 0.25,
       },
     },
-    // crosshair: {
-    //   vertLine: {
-    //     color: "#204990",
-    //     width: 1.5,
-    //     style: 1,
-    //   },
-    //   horzLine: {
-    //     color: "#204990",
-    //     width: 1.5,
-    //     style: 1,
-    //   },
-    //   mode: 1,
-    // },
+    crosshair: {
+      vertLine: {
+        color: "#204990",
+        width: 1.5,
+        style: 1,
+      },
+      horzLine: {
+        color: "#204990",
+        width: 1.5,
+        style: 1,
+      },
+      mode: 1,
+    },
   };
 
   const [series, setSeries] = useState([
@@ -77,7 +77,6 @@ export const CandleStick = ({ data }) => {
   ]);
 
   useEffect(() => {
-    // console.log("IM UPDATED");
     setSeries([
       {
         data: data,
@@ -96,7 +95,6 @@ export const CandleStick = ({ data }) => {
         options={options}
         candlestickSeries={series}
         autoWidth={true}
-        // autoHeight={true}
         darkTheme
       />
     </div>

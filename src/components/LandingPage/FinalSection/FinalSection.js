@@ -1,7 +1,6 @@
 import React from "react";
 import "./FinalSection.css";
 import GooglePlay from "../../asset/images/googlePlay.png";
-import { Link } from "react-router-dom";
 
 function FinalSection() {
   const arr = ["cards-final-section", "bg-Commodify "];
@@ -17,9 +16,7 @@ function FinalSection() {
         Join our active community with over a million traders worldwide and
         start trading commodities and modify your life.
       </p>
-      <Link to="/register">
-        <button className="start-now-btn-final-page ">Start Now</button>
-      </Link>
+      <button className="start-now-btn-final-page ">Start Now</button>
       <p className="text-description-comD5">
         “For ease of trading anywhere and anytime, ComD5 can help you to achieve
         it”

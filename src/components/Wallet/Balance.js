@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import walleticon from "../asset/images/wallet.png";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast } from "react-toastify";
-import { Close } from "@material-ui/icons";
 
 export const Balance = () => {
   const [topupInputs, setTopupInputs] = useState({
@@ -148,25 +146,31 @@ export const Balance = () => {
   };
 
   return (
-    <div className=" mb-10 pb-1 rounded-lg shadow-xl box w-auto px-32 border-[#376db3] border-8 xl:max-w-xl ">
-      <div className="flex flex-col items-center w-auto text-white ">
-        <img
-          src={walleticon}
-          className="w-4/12 pt-3 mt-3 animate__animated animate__swing"
-        />
-        <p className="pt-3 text-2xl font-bold">Total Balance</p>
-        <p className="py-2 text-6xl font-bold">${balance}</p>
-        <div className="flex gap-20 text-[1.3em] py-4">
+    <div className="mt-3 mx-3 mb-3 pb-1 rounded-lg shadow-xl box w-auto border-[#376db3] border-8 xl:max-w-xl ">
+      <div className="text-white ">
+        <div className="flex">
+          <img
+            src={walleticon}
+            className="h-16 mt-5 ml-8 animate__animated animate__swing"
+          />
+          <div className="mt-3 text-center grow">
+            <p className="pt-3 text-xl font-medium leading-none">
+              Total Balance
+            </p>
+            <p className="py-2 text-3xl leading-none sm:text-6xl">${balance}</p>
+          </div>
+        </div>
+        <div className="flex justify-center gap-2 text-[1.3em] py-2">
           <button
             id="topbtn"
-            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 py-2 font-bold"
+            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2  font-medium"
             onClick={ShowMdl1}
           >
             Withdraw
           </button>
           <button
             id="topbtn"
-            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 font-bold"
+            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 font-medium"
             onClick={ShowMdl2}
             disabled={disableTopup}
           >
@@ -175,7 +179,7 @@ export const Balance = () => {
         </div>
       </div>
       {/* Withdraw */}
-      <Rodal visible={showModal1} onClose={HideMdl1} height={200}>
+      <Rodal visible={showModal1} onClose={HideMdl1} height={180} width={300}>
         <div className="text-[#122746] mx-8 ">
           <p className="mb-2 text-2xl text-center">WITHDRAWAL</p>
           <p className="text-base">Amount</p>
@@ -184,9 +188,9 @@ export const Balance = () => {
             name="withdraw_amount"
             value={withdraw_amount}
             onChange={(e) => onChangeWithdraw(e)}
-            className="w-full rounded"
+            className="w-full h-10 rounded"
           />
-          <div className="flex justify-center h-full gap-2 mt-8">
+          <div className="flex justify-center h-full gap-2 mt-3">
             <button
               type="button"
               id="topbtn"
@@ -208,12 +212,17 @@ export const Balance = () => {
         </div>
       </Rodal>
 
-      <Rodal visible={showCfmModal1} onClose={HideCfmMdl1} height={160}>
+      <Rodal
+        visible={showCfmModal1}
+        onClose={HideCfmMdl1}
+        height={140}
+        width={300}
+      >
         <div className="text-[#122746] mx-8 ">
-          <p className="mb-2 text-2xl text-center">Confirm Withdrawal?</p>
+          <p className="mb-2 text-xl text-center">Confirm Withdrawal?</p>
           <p className="text-xl text-center">Amount: ${withdraw_amount}</p>
           <form onSubmit={onSubmitWithdraw}>
-            <div className="flex justify-center h-full gap-2 mt-8">
+            <div className="flex justify-center h-full gap-2 mt-3">
               <button
                 type="button"
                 id="topbtn"
@@ -236,12 +245,12 @@ export const Balance = () => {
         </div>
       </Rodal>
       {/* TopUp */}
-      <Rodal visible={showModal2} onClose={HideMdl2} height={160}>
+      <Rodal visible={showModal2} onClose={HideMdl2} height={140} width={300}>
         <div className="text-[#122746] mx-8 ">
-          <p className="mb-2 text-2xl text-center">Confirm TopUp?</p>
+          <p className="mb-2 text-xl text-center">Confirm TopUp?</p>
           <p className="text-xl text-center">Amount: $500</p>
           <form onSubmit={onSubmitTopUp}>
-            <div className="flex justify-center h-full gap-2 mt-8">
+            <div className="flex justify-center h-full gap-2 mt-3">
               <button
                 type="button"
                 id="topbtn"

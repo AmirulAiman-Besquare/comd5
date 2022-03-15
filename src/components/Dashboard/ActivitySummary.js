@@ -59,7 +59,6 @@ export const ActivitySummary = () => {
       payment_type.forEach((x) => {
         counts[x] = (counts[x] || 0) + 1;
       });
-
       if (counts.hasOwnProperty("Topup")) {
         setTopUp(counts.Topup);
       } else {
