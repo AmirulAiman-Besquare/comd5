@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { eye } from "react-icons-kit/fa/eye";
 import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
 import { Icon } from "react-icons-kit";
+import PasswordCriteria from "../PasswordCriteriaChecker/PasswordCriteira";
+import "../PasswordCriteriaChecker/PasswordCriteria.css";
 
 export const Register = ({ setAuth }) => {
   //toggle password feature
@@ -29,10 +31,60 @@ export const Register = ({ setAuth }) => {
 
   const { first_name, last_name, email, password } = Inputs;
 
+  //Password Criteria
+  const [passCriteria, setPassCriteria] = useState(false);
+  const [checks, setChecks] = useState({
+    capsLetterCheck: false,
+    numberCheck: false,
+    pwdLengthCheck: false,
+    specialCharCheck: false,
+  });
   const onChange = (e) => {
     setInputs({ ...Inputs, [e.target.name]: e.target.value });
   };
 
+  const handleOnFocus = () => {
+    setPassCriteria(true);
+  };
+
+  const handleOnBlur = () => {
+    setPassCriteria(false);
+  };
+
+  const handleOnKeyUp = (e) => {
+    const { value } = e.target;
+    const capsLetterCheck = /[A-Z]/.test(value);
+    const numberCheck = /[0-9]/.test(value);
+    const pwdLengthCheck = value.length >= 8;
+    const specialCharCheck = /[!@#$%^&*]/.test(value);
+    setChecks({
+      capsLetterCheck,
+      numberCheck,
+      pwdLengthCheck,
+      specialCharCheck,
+    });
+    if (
+      capsLetterCheck &&
+      numberCheck &&
+      pwdLengthCheck &&
+      specialCharCheck === true
+    ) {
+      setBtnSubmitState(false);
+      setBtnSubmitColor(
+        "w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 rounded-md shadow bg-gradient-to-r from-cyan-500 to-blue-700 hover:from-cyan-600 hover:to-blue-900 focus:outline-none focus:ring-blue-200 focus:ring-4"
+      );
+    } else {
+      setBtnSubmitColor(
+        "w-full px-4 py-2 text-lg font-semibold text-white bg-gray-500"
+      );
+    }
+  };
+
+  //Set Submit button behaviour and appearance
+  const [btnSubmitState, setBtnSubmitState] = useState(true);
+  const [btnSubmitColor, setBtnSubmitColor] = useState(
+    "w-full px-4 py-2 text-lg font-semibold text-white bg-gray-500"
+  );
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -143,6 +195,9 @@ export const Register = ({ setAuth }) => {
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
+                  onFocus={handleOnFocus}
+                  onBlur={handleOnBlur}
+                  onKeyUp={handleOnKeyUp}
                   className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
                 />
                 <div style={{ color: "#000000	" }}>
@@ -154,6 +209,16 @@ export const Register = ({ setAuth }) => {
                   </span>
                 </div>
               </div>
+              {passCriteria ? (
+                <PasswordCriteria
+                  capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
+                  numberFlag={checks.numberCheck ? "valid" : "invalid"}
+                  pwdLengthFlag={checks.pwdLengthCheck ? "valid" : "invalid"}
+                  specialCharFlag={
+                    checks.specialCharCheck ? "valid" : "invalid"
+                  }
+                />
+              ) : null}
             </div>
 
             <div className="flex items-center space-x-2">
@@ -161,6 +226,7 @@ export const Register = ({ setAuth }) => {
                 type="checkbox"
                 id="remember"
                 className="w-4 h-4 transition duration-300 rounded focus:ring-2 focus:ring-offset-0 focus:outline-none focus:ring-blue-200"
+                required
               />
               <label htmlFor="remember" className="text-sm font-semibold ">
                 I agree to the{" "}
@@ -176,7 +242,8 @@ export const Register = ({ setAuth }) => {
             <div>
               <button
                 type="submit"
-                className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 rounded-md shadow bg-gradient-to-r from-cyan-500 to-blue-700 hover:from-cyan-600 hover:to-blue-900 focus:outline-none focus:ring-blue-200 focus:ring-4"
+                className={btnSubmitColor}
+                disabled={btnSubmitState}
               >
                 Sign Up
               </button>
