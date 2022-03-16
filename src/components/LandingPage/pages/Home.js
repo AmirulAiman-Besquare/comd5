@@ -1,5 +1,5 @@
 import React from "react";
-import Asset from "../Assetpage/Asset";
+import Assets from "../Assetpage/Assets";
 import HeroSection from "../HeroSection/HeroSection";
 import FirstFeature from "../CardFeature/CardRealTime";
 import SecondFeature from "../CardFeature/CardWallet";
@@ -13,7 +13,7 @@ function Home() {
     <>
       <HeroSection />
 
-      <Asset />
+      <Assets />
 
       <FirstFeature />
       <SecondFeature />
