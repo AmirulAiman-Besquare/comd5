@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import walleticon from "../asset/images/wallet.png";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast } from "react-toastify";
-import { Close } from "@material-ui/icons";
 
 export const Balance = () => {
   const [topupInputs, setTopupInputs] = useState({
@@ -23,13 +21,24 @@ export const Balance = () => {
   const [showCfmModal1, setshowCfmModal1] = useState(false);
 
   const { amount } = topupInputs;
-  const { withdraw_amount } = withdrawInputs;
+  let { withdraw_amount } = withdrawInputs;
 
   // const onChangeTopUp = (e) => {
   //   setTopupInputs({ ...topupInputs, [e.target.name]: e.target.value });
   // };
 
   const onChangeWithdraw = (e) => {
+    const { value } = e.target;
+    // check if value includes a decimal point
+    if (value.match(/\./g)) {
+      const [, decimal] = value.split(".");
+      // restrict value to only 2 decimal places
+      if (decimal?.length > 2) {
+        // do nothing
+        return;
+      }
+    }
+    // otherwise, update value in state
     setwithdrawInputs({ ...withdrawInputs, [e.target.name]: e.target.value });
   };
 
@@ -39,7 +48,7 @@ export const Balance = () => {
     try {
       const body = { amount };
 
-      const response = await fetch("http://157.245.57.54:5000/topup/", {
+      const response = await fetch("https://api.comd5.xyz/topup/", {
         method: "PUT",
         headers: {
           token: localStorage.token,
@@ -59,11 +68,12 @@ export const Balance = () => {
 
   const onSubmitWithdraw = async (e) => {
     e.preventDefault();
-
+    let w_amount = parseFloat(withdraw_amount).toFixed(2).toString();
+    withdraw_amount = w_amount;
     try {
       const body = { withdraw_amount };
-
-      const response = await fetch("http://157.245.57.54:5000/withdraw/", {
+      console.log(body);
+      const response = await fetch("https://api.comd5.xyz/withdraw/", {
         method: "PUT",
         headers: {
           token: localStorage.token,
@@ -90,13 +100,10 @@ export const Balance = () => {
 
   async function getBalance() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/balance",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/balance", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
@@ -148,25 +155,33 @@ export const Balance = () => {
   };
 
   return (
-    <div className=" mb-10 pb-1 rounded-lg shadow-xl box w-auto px-32 border-[#376db3] border-8 xl:max-w-xl ">
-      <div className="flex flex-col items-center w-auto text-white ">
-        <img
-          src={walleticon}
-          className="w-4/12 pt-3 mt-3 animate__animated animate__swing"
-        />
-        <p className="pt-3 text-2xl font-bold">Total Balance</p>
-        <p className="py-2 text-6xl font-bold">${balance}</p>
-        <div className="flex gap-20 text-[1.3em] py-4">
+    <div className="xl:w-96 mx-3 mb-3 pb-1 rounded-lg shadow-xl box w-auto border-[#376db3] border-8 ">
+      <div className="text-white xl:mt-12">
+        <div className="flex-col justify-center w-full gap-3 mt-3 align-middle">
+          <img
+            src={walleticon}
+            className="h-16 m-auto animate__animated animate__swing sm:h-24 xl:mb-2"
+          />
+          <div className="">
+            <p className="text-xl font-medium leading-none text-center">
+              Total Balance
+            </p>
+            <p className="text-3xl leading-none text-center sm:text-5xl">
+              ${balance}
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-center gap-2 text-[1.3em] py-2">
           <button
             id="topbtn"
-            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 py-2 font-bold"
+            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2  font-medium"
             onClick={ShowMdl1}
           >
             Withdraw
           </button>
           <button
             id="topbtn"
-            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 font-bold"
+            className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-2 font-medium disabled:bg-[#505355] disabled:border-[#505355]"
             onClick={ShowMdl2}
             disabled={disableTopup}
           >
@@ -175,22 +190,30 @@ export const Balance = () => {
         </div>
       </div>
       {/* Withdraw */}
-      <Rodal visible={showModal1} onClose={HideMdl1} height={200}>
+      <Rodal visible={showModal1} onClose={HideMdl1} height={180} width={300}>
         <div className="text-[#122746] mx-8 ">
           <p className="mb-2 text-2xl text-center">WITHDRAWAL</p>
           <p className="text-base">Amount</p>
           <input
             type="number"
             name="withdraw_amount"
+            pattern="^\d*(\.\d{0,2})?$"
             value={withdraw_amount}
             onChange={(e) => onChangeWithdraw(e)}
-            className="w-full rounded"
+            onKeyDown={(event) => {
+              if (event.key === "-" || event.key === "e") {
+                event.preventDefault();
+              }
+            }}
+            minLength="1"
+            maxLength="10"
+            className="w-full h-10 rounded"
           />
-          <div className="flex justify-center h-full gap-2 mt-8">
+          <div className="flex justify-center h-full gap-2 mt-3">
             <button
               type="button"
               id="topbtn"
-              className="border-[#0697E0] hover:bg-[#214172] border-2 rounded-full px-4 font-bold"
+              className="border-[#0697E0] hover:bg-[#214172] border-2 rounded-full px-4 font-bold "
               onClick={HideMdl1}
             >
               Cancel
@@ -198,7 +221,7 @@ export const Balance = () => {
             <button
               type="button"
               id="topbtn"
-              className="border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-4 font-bold text-white bg-[#0697E0]"
+              className="disabled:bg-[#505355] disabled:border-[#505355] border-[#0697E0] hover:bg-[#214172] border-4 rounded-full px-4 font-bold text-white bg-[#0697E0]"
               onClick={CloseWithdraw}
               disabled={withdraw_amount <= 0 ? true : false}
             >
@@ -208,12 +231,19 @@ export const Balance = () => {
         </div>
       </Rodal>
 
-      <Rodal visible={showCfmModal1} onClose={HideCfmMdl1} height={160}>
+      <Rodal
+        visible={showCfmModal1}
+        onClose={HideCfmMdl1}
+        height={140}
+        width={300}
+      >
         <div className="text-[#122746] mx-8 ">
-          <p className="mb-2 text-2xl text-center">Confirm Withdrawal?</p>
-          <p className="text-xl text-center">Amount: ${withdraw_amount}</p>
+          <p className="mb-2 text-xl text-center">Confirm Withdrawal?</p>
+          <p className="text-xl text-center">
+            Amount: ${parseFloat(withdraw_amount).toFixed(2)}
+          </p>
           <form onSubmit={onSubmitWithdraw}>
-            <div className="flex justify-center h-full gap-2 mt-8">
+            <div className="flex justify-center h-full gap-2 mt-3">
               <button
                 type="button"
                 id="topbtn"
@@ -236,12 +266,12 @@ export const Balance = () => {
         </div>
       </Rodal>
       {/* TopUp */}
-      <Rodal visible={showModal2} onClose={HideMdl2} height={160}>
+      <Rodal visible={showModal2} onClose={HideMdl2} height={140} width={300}>
         <div className="text-[#122746] mx-8 ">
-          <p className="mb-2 text-2xl text-center">Confirm TopUp?</p>
+          <p className="mb-2 text-xl text-center">Confirm TopUp?</p>
           <p className="text-xl text-center">Amount: $500</p>
           <form onSubmit={onSubmitTopUp}>
-            <div className="flex justify-center h-full gap-2 mt-8">
+            <div className="flex justify-center h-full gap-2 mt-3">
               <button
                 type="button"
                 id="topbtn"

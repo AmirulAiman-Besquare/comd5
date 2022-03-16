@@ -1,5 +1,4 @@
 import React from "react";
-import "./home.css";
 import Asset from "../Assetpage/Asset";
 import HeroSection from "../HeroSection/HeroSection";
 import FirstFeature from "../CardFeature/CardRealTime";
@@ -7,21 +6,20 @@ import SecondFeature from "../CardFeature/CardWallet";
 import FinalSection from "../FinalSection/FinalSection";
 import CreativeTeam from "../CardCreativeTeam/CreativeTeam";
 import Footer from "../Footer/Footer";
+import "typeface-roboto";
 
 function Home() {
   return (
     <>
-      <div className=" landingpage">
-        <HeroSection />
+      <HeroSection />
 
-        <Asset />
+      <Asset />
 
-        <FirstFeature />
-        <SecondFeature />
-        <CreativeTeam />
-        <FinalSection />
-        <Footer />
-      </div>
+      <FirstFeature />
+      <SecondFeature />
+      <CreativeTeam />
+      <FinalSection />
+      <Footer />
     </>
   );
 }

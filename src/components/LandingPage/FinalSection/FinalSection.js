@@ -1,6 +1,7 @@
 import React from "react";
 import "./FinalSection.css";
 import GooglePlay from "../../asset/images/googlePlay.png";
+import "animate.css";
 import { Link } from "react-router-dom";
 
 function FinalSection() {

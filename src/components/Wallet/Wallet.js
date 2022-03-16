@@ -8,9 +8,11 @@ export const Wallet = () => {
   return (
     <>
       <Header title={"WALLET"} />
-      <div className="flex flex-col flex-wrap items-center justify-center pt-4 mt-2 ml-2 xl:items-start xl:mt-10 xl:gap-x-20 xl:flex-row ">
-        <Balance />
-        <PaymentMethod />
+      <div className="flex flex-col">
+        <div className="justify-center mt-3 align-middle xl:mb-10 xl:flex-row xl:flex xl:mt-10">
+          <Balance />
+          <PaymentMethod />
+        </div>
         <WalletHistory />
       </div>
     </>

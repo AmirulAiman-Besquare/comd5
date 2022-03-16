@@ -7,3 +7,4 @@ export * from "./Dashboard";
 export * from "./Wallet";
 export * from "./TradePage";
 export * from "./Notification";
+export * from "./NotFoundPage";

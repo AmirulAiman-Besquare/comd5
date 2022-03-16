@@ -21,14 +21,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     color: "white",
-    fontSize: 14,
-    fontWeight: 600,
+    fontSize: 16,
+    fontWeight: "medium",
   },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: "#059DE6",
+    backgroundColor: "#2496CD",
   },
   "&:nth-of-type(even)": {
     backgroundColor: "#122746",
@@ -46,7 +46,7 @@ export const TransactionHistory = () => {
   async function getTransactionHistory() {
     try {
       const response = await fetch(
-        "http://157.245.57.54:5000/display/transaction",
+        "https://api.comd5.xyz/display/transaction",
         {
           method: "GET",
           headers: { token: localStorage.token },
@@ -66,11 +66,13 @@ export const TransactionHistory = () => {
   }, []);
 
   return (
-    <>
-      <Header title={"TRANSACTION"} />
-      <div className="mx-6 p-10 mt-10 bg-[#075F93] rounded-xl  history">
+    <div>
+      <Header title={"TRANSACTION"} className="fixed" />
+      <div className="sm:mx-6  sm:p-10 mt-10 bg-[#075F93] rounded-xl mb-10 history">
         <div className="flex mb-5">
-          <p className="mr-10 text-4xl font-bold text-white">History</p>
+          <p className="w-full text-4xl font-bold text-center text-white pt-7 sm:text-left">
+            History
+          </p>
           {/* <input
             type="text"
             placeholder="Search"
@@ -80,15 +82,8 @@ export const TransactionHistory = () => {
             }}
           /> */}
         </div>
-        <TableContainer
-          component={Paper}
-          className="overflow-y-auto max-h-[40rem] scrollbar"
-        >
-          <Table
-            sx={{ minWidth: 700 }}
-            aria-label="customized table"
-            className="m-auto overflow-scroll text-xl font-bold text-white rounded table-fixed "
-          >
+        <TableContainer component={Paper} className="overflow-y-auto scrollbar">
+          <Table sx={{ minWidth: 700 }} stickyHeader>
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">
@@ -115,12 +110,16 @@ export const TransactionHistory = () => {
                 .map((item) => {
                   return (
                     <StyledTableRow key={item.tx_id}>
-                      <StyledTableCell component="th" scope="row">
-                        {item.tx_asset === "gold" ? (
-                          <img src={goldicon} className="m-auto" />
-                        ) : (
-                          <img src={silvericon} className="m-auto" />
-                        )}
+                      <StyledTableCell
+                        component="th"
+                        scope="row"
+                        align="center"
+                        sx={{ fontWeight: "bold" }}
+                      >
+                        {item.tx_asset.toUpperCase()}
+                        {/* // ? ( // <img src={goldicon} className="m-auto" />
+                        // ) : ( // <img src={silvericon} className="m-auto" />
+                        // ) */}
                       </StyledTableCell>
                       <StyledTableCell align="center">
                         {item.tx_id}
@@ -137,10 +136,16 @@ export const TransactionHistory = () => {
                           <img src={sellicon} className="m-auto" />
                         )}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell
+                        align="center"
+                        sx={{ fontWeight: "bold" }}
+                      >
                         $ {item.tx_amount}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell
+                        align="center"
+                        sx={{ fontWeight: "bold" }}
+                      >
                         {item.tx_asset_amount}
                       </StyledTableCell>
                     </StyledTableRow>
@@ -150,6 +155,6 @@ export const TransactionHistory = () => {
           </Table>
         </TableContainer>
       </div>
-    </>
+    </div>
   );
 };

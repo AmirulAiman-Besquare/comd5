@@ -59,7 +59,7 @@ export const TicksPriceWs = ({ asset }) => {
   }, [price]);
 
   return (
-    <div className=" pb-1 rounded-lg shadow-xl box w-56 h-full  border-[#376db3] xl:max-w-xl flex flex-col">
+    <div className=" pb-1 rounded-lg shadow-xl box w-72 h-full  border-[#376db3] xl:max-w-xl flex flex-col animate__animated animate__flipInY">
       <div className="flex flex-col justify-center w-full m-auto text-center align-middle">
         <p className="text-2xl font-bold text-white ">
           {asset === "frxXAUUSD"
@@ -90,8 +90,8 @@ export const TicksPriceWs = ({ asset }) => {
             status === "similar"
               ? "text-white text-xl flex m-auto gap-2"
               : status === "higher"
-              ? "text-green-300 text-xl flex m-auto gap-2"
-              : "text-red-600 text-xl flex m-auto gap-2"
+              ? "text-[#5CEE21] text-xl flex m-auto gap-2"
+              : "text-[#FB512D] text-xl flex m-auto gap-2"
           }
         >
           {icon}

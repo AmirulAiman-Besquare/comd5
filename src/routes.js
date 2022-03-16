@@ -5,11 +5,11 @@ import {
   TransactionHistory,
   TradePage,
   Wallet,
-  Layout,
   Notification,
   DashBoard,
   Register,
   Login,
+  NotFoundPage,
 } from "components";
 import Home from "components/LandingPage/pages/Home";
 import { ForgotPassword } from "components/ForgotPassword/ForgotPassword";
@@ -29,7 +29,7 @@ export const PageRoute = () => {
 
   async function checkAuth() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/user/verify", {
+      const response = await fetch("https://api.comd5.xyz/user/verify", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -150,6 +150,7 @@ export const PageRoute = () => {
             )
           }
         />
+        <Route exact path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

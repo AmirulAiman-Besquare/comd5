@@ -9,12 +9,12 @@ import ComD5White from "../../asset/CompanyLogo/comD5-white.png";
 function Footer() {
   let oneLine = {
     flexDirection: "row",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   };
-  let iconStyles = { color: "white", fontSize: "1.8em" };
+  let iconStyles = { color: "white", fontSize: "18px" };
   let textStyle = {
     fontFamily: "Roboto",
-    fontSize: "28px",
+    fontSize: "24px",
     fontStyle: "italic",
     lineHeight: "33px",
     letterSpacing: "0.06em",
@@ -49,7 +49,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <img className="comD5-logo-white" src={ComD5White} />
+      <img className="comD5-logo-white" src={ComD5White} alt="COMD5" />
     </div>
   );
 }

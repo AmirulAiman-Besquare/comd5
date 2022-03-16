@@ -26,6 +26,7 @@ export const AssetAnalysisRow = ({ asset }) => {
     ws.onmessage = (evt) => {
       let res = JSON.parse(evt.data);
       latestPrice = parseFloat(res.tick.quote).toFixed(2);
+
       setPrice(latestPrice);
       setLastPrice(price);
     };
@@ -54,15 +55,22 @@ export const AssetAnalysisRow = ({ asset }) => {
 
   const CalPercent = () => {
     setLastPrice(price);
-    setChange((parseFloat(price) - parseFloat(lastPrice)).toFixed(2));
     if (parseFloat(lastPrice) === 0) {
       setIcon(<></>);
       setChangePercent(<ScaleLoader color="#00B2FF" height={15} />);
       setChange(<ScaleLoader color="#00B2FF" height={15} />);
     } else {
       setPercent("%");
-      let changes = parseFloat(price) - parseFloat(lastPrice);
-      setChangePercent((changes * 100).toFixed(2));
+      let changes =
+        (parseFloat(price) - parseFloat(lastPrice)) / parseFloat(lastPrice);
+      if (isNaN(changes)) {
+        setIcon(<></>);
+        setChange(0);
+        setChangePercent(0);
+      } else {
+        setChange((parseFloat(price) - parseFloat(lastPrice)).toFixed(2));
+        setChangePercent((changes * 100).toFixed(4));
+      }
     }
   };
 
@@ -73,7 +81,7 @@ export const AssetAnalysisRow = ({ asset }) => {
   return (
     <>
       <tr className="">
-        <td className="px-6 py-4 text-sm font-medium text-white whitespace-nowrap">
+        <td className="px-6 py-4 text-base font-medium text-white whitespace-nowrap">
           {asset === "frxXAUUSD"
             ? "Gold/USD"
             : asset === "frxXAGUSD"
@@ -84,16 +92,18 @@ export const AssetAnalysisRow = ({ asset }) => {
         </td>
         <td
           className={
-            "px-6 py-4 text-sm font-light whitespace-nowrap text-white"
+            "px-6 py-4 text-base font-light whitespace-nowrap text-white"
           }
         >
           {price}
         </td>
         <td
           className={
-            change >= 0
-              ? "text-green-600 flex px-6 py-4 text-sm font-light whitespace-nowrap gap-1 justify-center"
-              : "text-red-600 flex px-6 py-4 text-sm font-light whitespace-nowrap gap-1 justify-center"
+            change === 0
+              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              : change >= 0
+              ? "text-[#5CEE21] flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
+              : "text-[#FB512D] flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
           }
         >
           {icon}
@@ -101,9 +111,11 @@ export const AssetAnalysisRow = ({ asset }) => {
         </td>
         <td
           className={
-            changePercent >= 0
-              ? "text-green-600 px-6 py-4 text-sm font-light whitespace-nowrap"
-              : "text-red-600  px-6 py-4 text-sm font-light whitespace-nowrap"
+            changePercent === 0
+              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              : changePercent >= 0
+              ? "text-[#5CEE21] px-6 py-4 text-base font-light whitespace-nowrap"
+              : "text-[#FB512D]  px-6 py-4 text-base font-light whitespace-nowrap"
           }
         >
           {changePercent}

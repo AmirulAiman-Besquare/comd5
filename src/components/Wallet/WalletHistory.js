@@ -17,8 +17,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     color: "white",
-    fontSize: 14,
-    fontWeight: 600,
+    fontSize: 16,
+    fontWeight: "medium",
   },
 }));
 
@@ -42,13 +42,10 @@ export const WalletHistory = () => {
 
   async function getWalletHistory() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/payment",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/payment", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       console.log(parseRes);
@@ -68,25 +65,27 @@ export const WalletHistory = () => {
   }, []);
 
   return (
-    <div className="p-10 border-8 App box border-[#376db3] rounded-xl mx-60 ">
-      <div className="flex mb-5">
-        <p className="mr-10 text-4xl font-bold text-white">History</p>
-        <input
+    <div className="mx-3 p-1 border-8 App box border-[#376db3] rounded-xl mb-7 xl:mx-24">
+      <div className="flex mb-2">
+        <p className="w-full text-2xl font-bold text-center text-white pt-7 sm:text-left sm:pl-10 sm:pb-4">
+          TRANSACTION HISTORY
+        </p>
+        {/* <input
           type="text"
           placeholder="Search"
-          className="rounded-xl"
+          className="w-32 h-8 mt-1 mr-1 rounded"
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-        />
+        /> */}
       </div>
       <TableContainer
         component={Paper}
-        className="overflow-y-auto max-h-60 scrollbar"
+        className="max-h-[32rem] xl:max-h-[18rem] overflow-y-auto scrollbar"
       >
         <Table
-          aria-label="customized table"
-          className="overflow-scroll text-xl font-bold text-white rounded table-fixed "
+          className="overflow-scroll text-xl font-bold text-white rounded "
+          stickyHeader
         >
           <TableHead>
             <TableRow>
@@ -114,7 +113,7 @@ export const WalletHistory = () => {
                     <StyledTableCell component="th" scope="row" align="center">
                       {item.payment_id}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="center" sx={{ fontWeight: "bold" }}>
                       {item.payment_type}
                     </StyledTableCell>
                     <StyledTableCell align="center">
@@ -124,7 +123,7 @@ export const WalletHistory = () => {
                         item.payment_timestamp * 1000
                       ).toLocaleTimeString()}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="center" sx={{ fontWeight: "bold" }}>
                       ${item.payment_amount}
                     </StyledTableCell>
                     <StyledTableCell align="center">

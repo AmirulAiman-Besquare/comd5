@@ -1,5 +1,5 @@
 import React from "react";
-import Gold from "../../asset/images/gold1.png";
+import Gold from "../../asset/images/gold.png";
 import Silver from "../../asset/images/silver-p-p.png";
 import "./Asset.css";
 import AssetItems from "./AssetItems";
@@ -8,6 +8,9 @@ function Asset() {
   return (
     <div className="asset-page">
       <h1 className="asset-title">Know Our Assets</h1>
+      <h2 className="asset-subtitle">
+        Navigate your commodities through Commodify
+      </h2>
       <div className="gold-asset-container">
         <div className="asset-wrapper">
           <ul className="asset-items">

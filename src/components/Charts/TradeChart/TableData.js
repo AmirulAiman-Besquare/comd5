@@ -3,10 +3,12 @@ import useState from "react-usestateref";
 import { CandleStick } from "./CandleStick";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/react";
+import loadingicon from "../../asset/images/loading.png";
 
 const app_id = 1089; //app_id for testing only
 
-const GoldTableData = ({ asset }) => {
+const TableData = ({ asset, granularity }) => {
+  console.log(granularity);
   const data = [];
   let latesttime = 0;
   let latestohlc = {};
@@ -14,12 +16,15 @@ const GoldTableData = ({ asset }) => {
   const [ws, setWs] = useState(null);
   const [tableData, setTableData] = useState([]);
   const [realhistory, setRealHistory, refRealHistoryData] = useState([]);
-  const [selectedTime, setSelectedTime] = useState(0);
-  const [selectedCommodity, setselectedCommodity] = useState(asset);
+  const [selectedCommodity, setselectedCommodity, refSelectedCommodity] =
+    useState(asset);
+  const [selectedTime, setSelectedTime, refSelectedTime] =
+    useState(granularity);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setselectedCommodity(asset);
+    setSelectedTime(granularity);
     const wsClient = new WebSocket(
       "wss://ws.binaryws.com/websockets/v3?app_id=" + app_id
     );
@@ -28,12 +33,12 @@ const GoldTableData = ({ asset }) => {
       //send request to ws for tick history and subsribe to it.
       wsClient.send(
         JSON.stringify({
-          ticks_history: selectedCommodity,
+          ticks_history: refSelectedCommodity.current,
           adjust_start_time: 1,
-          count: 1000,
+          count: 100,
           end: "latest",
-          granularity: 300,
           start: 1,
+          granularity: refSelectedTime.current,
           subscribe: 1,
           style: "candles",
         })
@@ -70,7 +75,7 @@ const GoldTableData = ({ asset }) => {
             low: parseFloat(parsedData.ohlc.low),
             close: parseFloat(parsedData.ohlc.close),
           };
-          //combine the historyacandles with real candles
+          //combine the history candles with real candles
           setLoading(false);
 
           let combinedarr = refRealHistoryData.current.concat(
@@ -96,30 +101,23 @@ const GoldTableData = ({ asset }) => {
     return () => {
       wsClient.close();
     };
-  }, [asset]);
+  }, [asset, granularity]);
 
-  const override = css`
-    position: absolute;
-    display: block;
-    margin: auto;
-    border-color: red;
-    z-index: 5;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  `;
   return (
     <>
-      <ClimbingBoxLoader
-        color={"#00B2FF "}
-        loading={loading}
-        size={40}
-        css={override}
-      />
+      {loading ? (
+        <div className="absolute z-10 left-[50%] top-[60%] -translate-y-2/4 -translate-x-2/4 ">
+          <img
+            src={loadingicon}
+            className="block m-auto animate__bounce animate__animated animate__infinite"
+          />
+        </div>
+      ) : (
+        <></>
+      )}
       {loading ? <div className="dark-overlay"></div> : <></>}
       <CandleStick data={tableData} />
     </>
   );
 };
-export default GoldTableData;
+export default TableData;
