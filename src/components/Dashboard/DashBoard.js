@@ -4,7 +4,6 @@ import { TicksPriceWs } from "./TicksPriceWs";
 import walleticon from "../asset/images/Wallet.svg";
 import { Header } from "components/Header";
 import { AssestAnalysis } from "./AssestAnalysis";
-import LineTableData from "../Charts/DashBoardChart/LineTableData";
 import { DoughnutChart } from "components/Charts/DashBoardChart/DoughnutChart";
 import { ActivitySummary } from "./ActivitySummary";
 

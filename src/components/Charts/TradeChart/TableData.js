@@ -3,10 +3,11 @@ import useState from "react-usestateref";
 import { CandleStick } from "./CandleStick";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/react";
+import loadingicon from "../../asset/images/loading.png";
 
 const app_id = 1089; //app_id for testing only
 
-const GoldTableData = ({ asset }) => {
+const TableData = ({ asset }) => {
   const data = [];
   let latesttime = 0;
   let latestohlc = {};
@@ -70,7 +71,7 @@ const GoldTableData = ({ asset }) => {
             low: parseFloat(parsedData.ohlc.low),
             close: parseFloat(parsedData.ohlc.close),
           };
-          //combine the historyacandles with real candles
+          //combine the history candles with real candles
           setLoading(false);
 
           let combinedarr = refRealHistoryData.current.concat(
@@ -98,28 +99,21 @@ const GoldTableData = ({ asset }) => {
     };
   }, [asset]);
 
-  const override = css`
-    position: absolute;
-    display: block;
-    margin: auto;
-    border-color: red;
-    z-index: 5;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  `;
   return (
     <>
-      <ClimbingBoxLoader
-        color={"#00B2FF "}
-        loading={loading}
-        size={40}
-        css={override}
-      />
+      {loading ? (
+        <div className="absolute z-10 left-[50%] top-[60%] -translate-y-2/4 -translate-x-2/4 ">
+          <img
+            src={loadingicon}
+            className="block m-auto animate__bounce animate__animated animate__infinite"
+          />
+        </div>
+      ) : (
+        <></>
+      )}
       {loading ? <div className="dark-overlay"></div> : <></>}
       <CandleStick data={tableData} />
     </>
   );
 };
-export default GoldTableData;
+export default TableData;

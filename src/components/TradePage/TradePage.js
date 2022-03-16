@@ -8,7 +8,7 @@ import walleticon from "../asset/images/Wallet.svg";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import downicon from "../asset/images/down.png";
 import upicon from "../asset/images/up.png";
-import GoldTableData from "../Charts/TradeChart/GoldTableData";
+import GoldTableData from "../Charts/TradeChart/TableData";
 import { toast } from "react-toastify";
 
 export const TradePage = () => {
@@ -30,7 +30,7 @@ export const TradePage = () => {
   const [PladAsset, setPladAsset] = useState(
     <ScaleLoader color="#00B2FF" height={15} />
   );
-  const [balance, setBalance] = useState();
+  const [balance, setBalance] = useState(0);
   const [status, setStatus] = useState("similar");
   const app_id = 1089; //app_id for testing only
   let latestPrice = null;
@@ -70,12 +70,11 @@ export const TradePage = () => {
     return () => {
       ws.close();
       setAssetQuote();
-      // setLastPrice();
+      setLastPrice();
     };
   }, [commodity]);
 
   const setColour = () => {
-    console.log(assetQuote, lastPrice);
     if (lastPrice === assetQuote) {
       setStatus("similar");
       setLastPrice(assetQuote);
@@ -97,30 +96,60 @@ export const TradePage = () => {
     setColour();
   }, [assetQuote]);
 
-  const [Inputs, setInputs] = useState({
-    amount: "",
+  const [BuyInputs, setBuyInputs] = useState({
+    buy_amount: "",
   });
+  const [SellInputs, setSellInputs] = useState({
+    sell_amount: "",
+  });
+  const { buy_amount } = BuyInputs;
+  const { sell_amount } = SellInputs;
 
-  const { amount } = Inputs;
+  const onChangeBuy = (e) => {
+    const { value } = e.target;
+    // check if value includes a decimal point
+    if (value.match(/\./g)) {
+      const [, decimal] = value.split(".");
+      // restrict value to only 2 decimal places
+      if (decimal?.length > 2) {
+        // do nothing
+        return;
+      }
+    }
+    // otherwise, update value in state
+    setBuyInputs({ ...BuyInputs, [e.target.name]: e.target.value });
+  };
 
-  const onChange = (e) => {
-    setInputs({ ...Inputs, [e.target.name]: e.target.value });
+  const onChangeSell = (e) => {
+    const { value } = e.target;
+    // check if value includes a decimal point
+    if (value.match(/\./g)) {
+      const [, decimal] = value.split(".");
+      // restrict value to only 2 decimal places
+      if (decimal?.length > 3) {
+        // do nothing
+        return;
+      }
+    }
+    // otherwise, update value in state
+    setSellInputs({ ...SellInputs, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    if (parseInt(amount) <= -1) {
+    if (parseInt(buy_amount) <= -1) {
+      setDisableBtn(true);
+    } else if (parseInt(sell_amount) <= -1) {
       setDisableBtn(true);
     } else {
       setDisableBtn(false);
     }
-  }, [amount]);
+  }, [buy_amount, sell_amount]);
 
   const onSubmitBuy = async (e) => {
     e.preventDefault();
-    console.log(typeof amount);
 
     try {
-      const body = { amount };
+      const body = { buy_amount };
       const response = await fetch(
         `http://157.245.57.54:5000/buy/${commodity}`,
         {
@@ -134,6 +163,7 @@ export const TradePage = () => {
       );
 
       const parseRes = await response.json();
+      console.log(JSON.stringify(body));
       console.log(parseRes);
       if (parseRes === "Purchase Failed") {
         toast.error("Purchase Failed");
@@ -151,7 +181,7 @@ export const TradePage = () => {
   const onSubmitSell = async (e) => {
     e.preventDefault();
     try {
-      const body = { amount };
+      const body = { sell_amount };
 
       const response = await fetch(
         `http://157.245.57.54:5000/sell/${commodity}`,
@@ -166,6 +196,7 @@ export const TradePage = () => {
       );
 
       const parseRes = await response.json();
+      console.log(JSON.stringify(body));
       console.log(parseRes);
       if (parseRes === "Not enough gold to sell") {
         toast.error("Sell Failed");
@@ -224,28 +255,6 @@ export const TradePage = () => {
       <div className="flex flex-col pb-4 mx-12 mt-8 mb-4 md:flex-row place-content-evenly">
         <div className="flex flex-row">
           <div className="flex justify-center">
-            <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-              <div className="flex px-4 py-1 rounded box">
-                {commodity === "Xau" ? (
-                  <img src={goldicon} className="w-12" />
-                ) : (
-                  <img src={silvericon} className="w-12" />
-                )}
-                <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
-                  <p className="mb-1 ml-1 text-sm">Asset Owned</p>
-                  <div className="font-bold">
-                    {commodity === "Xau"
-                      ? GoldAsset
-                      : commodity === "Xag"
-                      ? SilverAsset
-                      : commodity === "Xpt"
-                      ? PlatAsset
-                      : PladAsset}
-                    oz
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
               <select
                 onChange={(e) => setCommodity(e.target.value)}
@@ -259,9 +268,9 @@ export const TradePage = () => {
             </div>
           </div>
           <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-            <div className="flex px-4 py-1 rounded box">
+            <div className="flex px-4 py-1 rounded bg-[#0A2458] w-36">
               <div className="flex flex-col w-full text-xl leading-none text-center text-white align-middle">
-                <p className="mb-1 ml-1 text-sm">Price Index</p>
+                <p className="mb-1 ml-1 text-sm text-white ">Price Index</p>
                 <div
                   className={
                     status === "similar"
@@ -279,7 +288,7 @@ export const TradePage = () => {
           </div>
 
           <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-            <div className="flex px-4 py-1 rounded box">
+            <div className="flex px-4 py-1 rounded bg-[#0A2458]">
               <img src={walleticon} className="w-10" />
               <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
                 <p className="mb-1 ml-1 text-sm">Balance</p>
@@ -287,26 +296,22 @@ export const TradePage = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 w-full mx-2">
-            <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
-              <input
-                type="number"
-                placeholder="Insert Amount"
-                name="amount"
-                value={amount}
-                onKeyDown={(event) => {
-                  if (event.key === "-" || event.key === "e") {
-                    event.preventDefault();
-                  }
-                }}
-                minLength="1"
-                maxLength="10"
-                onChange={(e) => onChange(e)}
-                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-slate-500"
-              />
-            </div>
-          </div>
-          <div className="flex gap-4 p-3 m-auto mx-2 border-2 box border-[#075F93] drop-shadow rounded-xl ">
+          <div className="flex gap-4 p-3 m-auto mx-2  bg-[#075F93] drop-shadow rounded-xl ">
+            <input
+              type="number"
+              placeholder="Min 10$"
+              name="buy_amount"
+              value={buy_amount}
+              onKeyDown={(event) => {
+                if (event.key === "-" || event.key === "e") {
+                  event.preventDefault();
+                }
+              }}
+              minLength="1"
+              maxLength="10"
+              onChange={(e) => onChangeBuy(e)}
+              className="w-28 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7] "
+            />
             <form onSubmit={onSubmitBuy}>
               <button
                 type="submit"
@@ -316,6 +321,45 @@ export const TradePage = () => {
                 Buy
               </button>
             </form>
+          </div>
+          <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
+            <div className="flex px-4 py-1 rounded bg-[#0A2458]">
+              {commodity === "Xau" ? (
+                <img src={goldicon} className="w-12" />
+              ) : (
+                <img src={silvericon} className="w-12" />
+              )}
+              <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
+                <p className="mb-1 ml-1 text-sm">Asset Owned</p>
+                <div className="font-bold">
+                  {commodity === "Xau"
+                    ? GoldAsset
+                    : commodity === "Xag"
+                    ? SilverAsset
+                    : commodity === "Xpt"
+                    ? PlatAsset
+                    : PladAsset}
+                  oz
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-4 p-3 m-auto mx-2 bg-[#075F93] drop-shadow rounded-xl">
+            <input
+              type="number"
+              placeholder="oz"
+              name="sell_amount"
+              value={sell_amount}
+              onKeyDown={(event) => {
+                if (event.key === "-" || event.key === "e") {
+                  event.preventDefault();
+                }
+              }}
+              minLength="1"
+              maxLength="10"
+              onChange={(e) => onChangeSell(e)}
+              className="w-28 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7]"
+            />
             <form onSubmit={onSubmitSell}>
               <button
                 type="submit"

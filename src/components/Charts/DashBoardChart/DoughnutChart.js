@@ -49,8 +49,7 @@ export function DoughnutChart() {
   }, []);
 
   const options = {
-    aspectRatio: 3 / 3,
-    // cutoutPercentage: 8,
+    // aspectRatio: 3 / 3,
     layout: {
       padding: {
         top: 40,
@@ -75,8 +74,8 @@ export function DoughnutChart() {
         color: "white",
       },
       tooltip: {
-        // mode: "nearest",
-        // intersect: false,
+        backgroundColor: "black",
+        bodyColor: "white",
       },
       legend: {
         display: false,
@@ -97,10 +96,10 @@ export function DoughnutChart() {
         className={"flex h-full mt-[7rem] ml-10 mr-5 text-white align-middle"}
       >
         <div>
-          <p className="bg-[#64ECFF] text-xs text-[#64ECFF] mb-3 mt-1">gold</p>
-          <p className="bg-[#45BDEA] text-xs text-[#45BDEA] mb-3">silv</p>
-          <p className="bg-[#418FCC] text-xs text-[#418FCC] mb-3">plad</p>
-          <p className="bg-[#4761A4] text-xs text-[#4761A4] mb-3">plat</p>
+          <p className="bg-[#FFC533] text-xs text-[#FFC533] mb-3 mt-1">gold</p>
+          <p className="bg-[#BC95DF] text-xs text-[#BC95DF] mb-3">silv</p>
+          <p className="bg-[#02D3CC] text-xs text-[#02D3CC] mb-3">plad</p>
+          <p className="bg-[#F2726F] text-xs text-[#F2726F] mb-3">plat</p>
         </div>
         <div className="ml-5 text-base">
           <p className="pb-1 font-bold">Gold</p>
@@ -116,7 +115,7 @@ export function DoughnutChart() {
         </div>
       </div>
       {CheckData ? (
-        <div className="w-[17rem] h-full m-auto mt-7 ">
+        <div className="w-[20rem] h-full m-auto mt-7 ">
           <Doughnut
             data={{
               labels: ["Gold", "Silver", "Platinium", "Palladium"],
@@ -126,33 +125,39 @@ export function DoughnutChart() {
                     // backgroundColor: function (context) {
                     //   return context.dataset.backgroundColor;
                     // },
-                    borderRadius: 4,
+                    // borderRadius: 4,
                     // borderColor: "black",
-                    borderWidth: "1",
-                    color: "white",
+                    // borderWidth: 0,
+                    // color: "white",
                     font: {
                       weight: "bold",
-                      size: "15px",
+                      size: "16px",
                     },
-                    align: "end",
-                    anchor: "end",
                     labels: {
                       index: {
-                        align: "end",
-                        anchor: "end",
+                        align: "center",
+                        anchor: "center",
                         color: "white",
-                        font: { size: 14 },
-                        formatter: function (value, ctx) {
-                          return ctx.active
-                            ? ctx.chart.data.labels[ctx.dataIndex]
-                            : ctx.dataset.data[ctx.dataIndex];
+                        font: { size: 13 },
+                        formatter: (value, ctx) => {
+                          let sum = 0;
+                          let dataArr = ctx.chart.data.datasets[0].data;
+                          dataArr.map((data) => {
+                            sum += data;
+                          });
+                          let percentage =
+                            ((value * 100) / sum).toFixed(2) + "%";
+                          return ctx.dataset.data[ctx.dataIndex] === null
+                            ? null
+                            : percentage;
                         },
-                        offset: 8,
+                        // offset: 8,
                       },
                     },
                   },
                   data: [GoldAsset, SilverAsset, PlatAsset, PladAsset],
-                  backgroundColor: ["#64ECFF", "#45BDEA", "#418FCC", "#4761A4"],
+                  backgroundColor: ["#FFC533", "#BC95DF", "#02D3CC", "#F2726F"],
+                  borderWidth: [0, 0, 0, 0],
                 },
               ],
             }}
