@@ -16,7 +16,7 @@ export function DoughnutChart() {
 
   async function getAsset() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/display/asset", {
+      const response = await fetch("https://api.comd5.xyz/display/asset", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -108,10 +108,10 @@ export function DoughnutChart() {
           <p className="pb-1 font-bold">Palladium</p>
         </div>
         <div className="ml-4 text-base">
-          <p className="pb-1 font-normal">{GoldAsset}oz</p>
-          <p className="pb-1 font-normal">{SilverAsset}oz</p>
-          <p className="pb-1 font-normal">{PlatAsset}oz</p>
-          <p className="pb-1 font-normal">{PladAsset}oz</p>
+          <p className="pb-1 font-medium">{GoldAsset}oz</p>
+          <p className="pb-1 font-medium">{SilverAsset}oz</p>
+          <p className="pb-1 font-medium">{PlatAsset}oz</p>
+          <p className="pb-1 font-medium">{PladAsset}oz</p>
         </div>
       </div>
       {CheckData ? (
@@ -147,7 +147,8 @@ export function DoughnutChart() {
                           });
                           let percentage =
                             ((value * 100) / sum).toFixed(2) + "%";
-                          return ctx.dataset.data[ctx.dataIndex] === null
+                          return ctx.dataset.data[ctx.dataIndex] === null ||
+                            ctx.dataset.data[ctx.dataIndex] === 0
                             ? null
                             : percentage;
                         },

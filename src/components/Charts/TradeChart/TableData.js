@@ -7,7 +7,8 @@ import loadingicon from "../../asset/images/loading.png";
 
 const app_id = 1089; //app_id for testing only
 
-const TableData = ({ asset }) => {
+const TableData = ({ asset, granularity }) => {
+  console.log(granularity);
   const data = [];
   let latesttime = 0;
   let latestohlc = {};
@@ -15,13 +16,15 @@ const TableData = ({ asset }) => {
   const [ws, setWs] = useState(null);
   const [tableData, setTableData] = useState([]);
   const [realhistory, setRealHistory, refRealHistoryData] = useState([]);
-  const [selectedTime, setSelectedTime] = useState(0);
   const [selectedCommodity, setselectedCommodity, refSelectedCommodity] =
     useState(asset);
+  const [selectedTime, setSelectedTime, refSelectedTime] =
+    useState(granularity);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setselectedCommodity(asset);
+    setSelectedTime(granularity);
     const wsClient = new WebSocket(
       "wss://ws.binaryws.com/websockets/v3?app_id=" + app_id
     );
@@ -35,6 +38,7 @@ const TableData = ({ asset }) => {
           count: 100,
           end: "latest",
           start: 1,
+          granularity: refSelectedTime.current,
           subscribe: 1,
           style: "candles",
         })
@@ -97,7 +101,7 @@ const TableData = ({ asset }) => {
     return () => {
       wsClient.close();
     };
-  }, [asset]);
+  }, [asset, granularity]);
 
   return (
     <>

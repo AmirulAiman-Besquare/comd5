@@ -29,7 +29,7 @@ export const PageRoute = () => {
 
   async function checkAuth() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/user/verify", {
+      const response = await fetch("https://api.comd5.xyz/user/verify", {
         method: "GET",
         headers: { token: localStorage.token },
       });

@@ -23,7 +23,7 @@ export const Header = ({ setAuth, title }) => {
 
   async function getName() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/display/user", {
+      const response = await fetch("https://api.comd5.xyz/display/user", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -109,7 +109,7 @@ export const Header = ({ setAuth, title }) => {
                   />
                 </button>
               </span>
-              <div className="invisible transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 opacity-0 dropdown-menu">
+              <div className="z-30 invisible transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 opacity-0 dropdown-menu">
                 <div
                   className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none w-28"
                   aria-labelledby="headlessui-menu-button-1"

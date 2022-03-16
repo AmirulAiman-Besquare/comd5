@@ -15,6 +15,7 @@ export const TradePage = () => {
   const [commodity, setCommodity] = useState("Xau");
   const [selectedAsset, setSelectedAsset, refselectedAsset] =
     useState("frxXAUUSD");
+  const [granularity, setGranularity, refGranularity] = useState(60);
   const [assetQuote, setAssetQuote] = useState(
     <ScaleLoader color="#00B2FF" height={15} />
   );
@@ -150,17 +151,14 @@ export const TradePage = () => {
 
     try {
       const body = { buy_amount };
-      const response = await fetch(
-        `http://157.245.57.54:5000/buy/${commodity}`,
-        {
-          method: "PUT",
-          headers: {
-            token: localStorage.token,
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`https://api.comd5.xyz/buy/${commodity}`, {
+        method: "PUT",
+        headers: {
+          token: localStorage.token,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
@@ -183,17 +181,14 @@ export const TradePage = () => {
     try {
       const body = { sell_amount };
 
-      const response = await fetch(
-        `http://157.245.57.54:5000/sell/${commodity}`,
-        {
-          method: "PUT",
-          headers: {
-            token: localStorage.token,
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`https://api.comd5.xyz/sell/${commodity}`, {
+        method: "PUT",
+        headers: {
+          token: localStorage.token,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
@@ -212,7 +207,7 @@ export const TradePage = () => {
 
   async function getAsset() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/display/asset", {
+      const response = await fetch("https://api.comd5.xyz/display/asset", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -229,13 +224,10 @@ export const TradePage = () => {
 
   async function getBalance() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/balance",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/balance", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
@@ -255,6 +247,25 @@ export const TradePage = () => {
       <div className="flex flex-col pb-4 mx-12 mt-8 mb-4 md:flex-row place-content-evenly">
         <div className="flex flex-row">
           <div className="flex justify-center">
+            <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
+              <select
+                onChange={(e) => setGranularity(e.target.value)}
+                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-gray-800 bg-white rounded-md outline-none appearance-none placeholder:text-slate-500"
+              >
+                <option value={60}>1 Min</option>
+                <option value={120}>2 Mins</option>
+                <option value={180}>3 Mins</option>
+                <option value={300}>5 Mins</option>
+                <option value={600}>10 Mins</option>
+                <option value={900}>15 Mins</option>
+                <option value={1800}>30 Mins</option>
+                <option value={3600}>1 Hours</option>
+                <option value={7200}>2 Hours</option>
+                <option value={14400}>4 Hours</option>
+                <option value={28800}>8 Hours</option>
+                {/* <option value={86400}>1 Day</option> */}
+              </select>
+            </div>
             <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
               <select
                 onChange={(e) => setCommodity(e.target.value)}
@@ -373,7 +384,10 @@ export const TradePage = () => {
         </div>
       </div>
       <div className="mx-36 bg-[#075F93] p-10 rounded-lg">
-        <GoldTableData asset={refselectedAsset.current} />
+        <GoldTableData
+          asset={refselectedAsset.current}
+          granularity={refGranularity.current}
+        />
       </div>
     </>
   );

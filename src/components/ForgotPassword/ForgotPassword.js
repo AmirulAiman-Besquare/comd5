@@ -94,7 +94,7 @@ export const ForgotPassword = () => {
     try {
       const body = { email, password };
 
-      const response = await fetch("http://157.245.57.54:5000/resetPassword", {
+      const response = await fetch("https://api.comd5.xyz/resetPassword", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body),

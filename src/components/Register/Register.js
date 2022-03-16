@@ -91,7 +91,7 @@ export const Register = ({ setAuth }) => {
     try {
       const body = { first_name, last_name, email, password };
 
-      const response = await fetch("http://157.245.57.54:5000/user/signup", {
+      const response = await fetch("https://api.comd5.xyz/user/signup", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body),

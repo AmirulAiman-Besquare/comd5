@@ -7,31 +7,15 @@ import { AssestAnalysis } from "./AssestAnalysis";
 import { DoughnutChart } from "components/Charts/DashBoardChart/DoughnutChart";
 import { ActivitySummary } from "./ActivitySummary";
 
-const options = [
-  { value: "realtime", label: "Real-Time" },
-  { value: "5min", label: "5 Minutes" },
-  { value: "10min", label: "10 Minutes" },
-  { value: "15min", label: "15 Minutes" },
-  { value: "30min", label: "30 Minutes" },
-  { value: "1hr", label: "1 Hour" },
-  { value: "2hr", label: "2 Hours" },
-  { value: "3hr", label: "3 Hours" },
-  { value: "4hr", label: "4 Hours" },
-  { value: "1day", label: "1 Day" },
-];
-
 export const DashBoard = () => {
   const [balance, setBalance] = useState();
 
   async function getBalance() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/balance",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/balance", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
@@ -65,7 +49,7 @@ export const DashBoard = () => {
               <p>Current Balance</p>
               <img
                 src={walleticon}
-                className="w-auto my-6 h-36"
+                className="w-auto my-6 h-36 animate__swing animate__animated"
                 draggable="false"
                 dragstart="false;"
               />

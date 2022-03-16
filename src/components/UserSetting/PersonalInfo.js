@@ -18,7 +18,7 @@ export const PersonalInfo = () => {
   //retrieve data
   async function getDetails() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/display/user", {
+      const response = await fetch("https://api.comd5.xyz/display/user", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -69,7 +69,7 @@ export const PersonalInfo = () => {
       try {
         const body = { phone_number };
 
-        const response = await fetch("http://157.245.57.54:5000/updateUser", {
+        const response = await fetch("https://api.comd5.xyz/updateUser", {
           method: "PUT",
           headers: {
             token: localStorage.token,

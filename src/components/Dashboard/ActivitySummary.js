@@ -9,7 +9,7 @@ export const ActivitySummary = () => {
   async function getTransactionHistory() {
     try {
       const response = await fetch(
-        "http://157.245.57.54:5000/display/transaction",
+        "https://api.comd5.xyz/display/transaction",
         {
           method: "GET",
           headers: { token: localStorage.token },
@@ -43,13 +43,10 @@ export const ActivitySummary = () => {
 
   async function getWalletHistory() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/payment",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/payment", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       let payment_type = parseRes.map((item) => {

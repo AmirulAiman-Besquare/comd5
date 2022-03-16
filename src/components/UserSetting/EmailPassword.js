@@ -87,7 +87,7 @@ export const EmailPassword = () => {
   //retrieve data
   async function getDetails() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/display/user", {
+      const response = await fetch("https://api.comd5.xyz/display/user", {
         method: "GET",
         headers: { token: localStorage.token },
       });
