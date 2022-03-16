@@ -88,12 +88,14 @@ export function DoughnutChart() {
   };
 
   return (
-    <div className=" flex rounded-lg shadow-xl bg-[#122746] w-auto border-[#075F93] border-[1.2rem] xl:max-w-xl">
-      <p className="absolute mt-5 ml-10 text-2xl font-bold text-white">
+    <div className="m-2 flex flex-col sm:flex-row rounded shadow-xl bg-[#122746] pb-64 sm:pb-0 w-auto border-[#075F93] border-[1.2rem] xl:max-w-xl xl:rounded-xl">
+      <p className="absolute mt-5 ml-16 text-2xl font-bold text-white sm:ml-20 md:ml-44 dtitle xl:ml-10">
         Asset Owned
       </p>
       <div
-        className={"flex h-full mt-[7rem] ml-10 mr-5 text-white align-middle"}
+        className={
+          "flex h-full mt-16 sm:mt-[7rem] sm:mx-20 md:mx-32 text-white align-middle ddesc xl:ml-10 xl:mx-0 xl:mr-10"
+        }
       >
         <div>
           <p className="bg-[#FFC533] text-xs text-[#FFC533] mb-3 mt-1">gold</p>
@@ -115,7 +117,7 @@ export function DoughnutChart() {
         </div>
       </div>
       {CheckData ? (
-        <div className="w-[20rem] h-full m-auto mt-7 ">
+        <div className="absolute sm:static w-[20rem] h-full  mt-36  sm:mt-1 right right2">
           <Doughnut
             data={{
               labels: ["Gold", "Silver", "Platinium", "Palladium"],

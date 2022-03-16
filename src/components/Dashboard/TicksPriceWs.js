@@ -59,9 +59,9 @@ export const TicksPriceWs = ({ asset }) => {
   }, [price]);
 
   return (
-    <div className=" pb-1 rounded-lg shadow-xl box w-72 h-full  border-[#376db3] xl:max-w-xl flex flex-col animate__animated animate__flipInY">
-      <div className="flex flex-col justify-center w-full m-auto text-center align-middle">
-        <p className="text-2xl font-bold text-white ">
+    <div className="w-11/12 h-full p-2 m-auto rounded shadow-xl box sm:rounded-xl sm:w-64 xl:w-72 xl:max-w-xl xl:p-4 animate__animated animate__flipInY">
+      <div className="flex flex-col flex-wrap justify-center w-full m-auto text-center align-middle xl:my-3">
+        <p className="text-xl font-bold text-white sm:ml-0 xl:text-2xl">
           {asset === "frxXAUUSD"
             ? "Gold/USD"
             : asset === "frxXAGUSD"
@@ -70,9 +70,9 @@ export const TicksPriceWs = ({ asset }) => {
             ? "Platinium/USD"
             : "Palladium/USD"}
         </p>
-        <div>
+        <div className="">
           <img
-            className="mx-auto my-10"
+            className="absolute xs:static w-12 bottom-[1rem] left-[1rem] sm:mx-auto sm:my-4 tickicon xl:mx-auto xl:my-10 xl:w-24"
             src={
               asset === "frxXAUUSD"
                 ? goldicon
