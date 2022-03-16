@@ -4,11 +4,14 @@ import comD5 from "../../asset/images/Company-logo.png";
 import pcPhone from "../../asset/images/phonePCFirstPage.png";
 import history from "../../../history";
 import "animate.css";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
     <div className="hero-container">
-      <button className="login-btn">Login</button>
+      <Link to="/login">
+        <button className="login-btn">Login</button>
+      </Link>
       <img className="company-logo" src={comD5} alt="ComD5 logo" />
       <div className="hero-content">
         <div className="hero-img">
@@ -31,10 +34,11 @@ function HeroSection() {
             currency or take a view on the big picture in global <br />
             market
           </p>
-
-          <button className="start-now-btn" onClick={() => history.push("/")}>
-            Start Now
-          </button>
+          <Link to="/register">
+            <button className="start-now-btn" onClick={() => history.push("/")}>
+              Start Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

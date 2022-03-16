@@ -8,18 +8,11 @@
   right: 190px;
   background-color: #d6e5f2;
   font-weight: bold;
-  font-size: 20px;
-  border-radius: 1rem solid #0a2653;
+  font-size: 22px;
+  border-radius: 20px;
+  border: 0.2rem solid #0a2653;
 }
 
-/* .highlight {
-  position: relative;
-  bottom: 100px;
-  left: 90px;
-  width: 160px;
-  height: 100px;
-  background: #83bbee;
-} */
 .company-logo {
   position: absolute;
   top: 70px;
@@ -68,7 +61,7 @@
 .hero-container {
   background: url("../../asset/images/originalbg2.png") center center/cover
     no-repeat;
-  height: 110vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -101,7 +94,7 @@
   color: #062650;
 }
 
-@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+@media only screen and (min-width: 1281px) and (max-width: 1560px) {
   .login-btn {
     width: 140px;
     height: 50px;
@@ -128,9 +121,6 @@
   }
 
   .start-now-btn {
-    color: white;
-    font-family: Roboto;
-    font-style: normal;
     font-weight: 800;
     font-size: 25px;
     line-height: 42px;
@@ -172,7 +162,6 @@
     font-size: 24px;
     line-height: 36px;
     letter-spacing: 0.015em;
-    color: #062650;
   }
 }
 
