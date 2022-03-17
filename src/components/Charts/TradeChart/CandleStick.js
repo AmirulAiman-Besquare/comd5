@@ -86,7 +86,6 @@ export const CandleStick = ({ data }) => {
   return (
     <div id="chart" className="w-full h-[30rem]  xl:h-[45rem] ">
       <Chart
-        className="z-0"
         options={options}
         candlestickSeries={series}
         autoWidth={true}

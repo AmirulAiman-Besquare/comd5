@@ -67,7 +67,7 @@ export const TicksPriceWs = ({ asset }) => {
             : asset === "frxXAGUSD"
             ? "Silver/USD"
             : asset === "frxXPTUSD"
-            ? "Platinium/USD"
+            ? "Platinum/USD"
             : "Palladium/USD"}
         </p>
         <div className="">

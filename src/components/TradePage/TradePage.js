@@ -35,7 +35,8 @@ export const TradePage = () => {
   const [status, setStatus] = useState("similar");
   const app_id = 1089; //app_id for testing only
   let latestPrice = null;
-  const [disableBtn, setDisableBtn] = useState(false);
+  const [disableBuyBtn, setDisableBuyBtn] = useState(false);
+  const [disableSellBtn, setDisableSellBtn] = useState(false);
   const [icon, setIcon] = useState(<></>);
   const [lastPrice, setLastPrice] = useState(0);
 
@@ -138,11 +139,15 @@ export const TradePage = () => {
 
   useEffect(() => {
     if (parseInt(buy_amount) <= -1) {
-      setDisableBtn(true);
-    } else if (parseInt(sell_amount) <= -1) {
-      setDisableBtn(true);
+      setDisableBuyBtn(true);
     } else {
-      setDisableBtn(false);
+      setDisableBuyBtn(false);
+    }
+
+    if (parseInt(sell_amount) <= -1) {
+      setDisableSellBtn(true);
+    } else {
+      setDisableSellBtn(false);
     }
   }, [buy_amount, sell_amount]);
 
@@ -163,10 +168,18 @@ export const TradePage = () => {
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
       console.log(parseRes);
-      if (parseRes === "Purchase Failed") {
-        toast.error("Purchase Failed");
-      } else {
-        toast.success("Purchase Succeed");
+      if (parseRes === "Invalid Amount to Purchase") {
+        toast.error("Invalid Amount to Purchase");
+      } else if (parseRes === "Purchase Gold Successful") {
+        toast.success("Gold Purchase Successful");
+      } else if (parseRes === "Purchase Silver Successful") {
+        toast.success("Silver Purchase Successful");
+      } else if (parseRes === "Purchase Platinum Successful") {
+        toast.success("Platinum Purchase Successful");
+      } else if (parseRes === "Purchase Palladium Successful") {
+        toast.success("Palladium Purchase Successful");
+      } else if (parseRes === "Insufficient Balance") {
+        toast.error("Insufficient Balance");
       }
       getAsset();
       getBalance();
@@ -193,11 +206,26 @@ export const TradePage = () => {
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
       console.log(parseRes);
-      if (parseRes === "Not enough gold to sell") {
-        toast.error("Sell Failed");
-      } else {
-        toast.success("Sell Succeed");
+      if (parseRes === "Invalid Amount to sell") {
+        toast.error("Invalid Amount to Sell");
+      } else if (parseRes === "Selling Gold Successful") {
+        toast.success("Gold Selling Succeesful");
+      } else if (parseRes === "Selling Silver Successful") {
+        toast.success("Silver Purchase Succeesful");
+      } else if (parseRes === "Selling Platinum Successful") {
+        toast.success("Platinum Selling Succeesful");
+      } else if (parseRes === "Selling Palladium Successful") {
+        toast.success("Palladium Selling Successful");
+      } else if (parseRes === "Not enough gold to sell") {
+        toast.error("Not Enough Gold to Sell");
+      } else if (parseRes === "Not enough silver to sell") {
+        toast.error("Not Enough Silver to Sell");
+      } else if (parseRes === "Not enough platinum to sell") {
+        toast.error("Not Enough Platinum to Sell");
+      } else if (parseRes === "Not enough palladium to sell") {
+        toast.error("Not Enough Palladium to Sell");
       }
+
       getAsset();
       getBalance();
     } catch (error) {
@@ -274,7 +302,7 @@ export const TradePage = () => {
               >
                 <option value="Xau">GOLD</option>
                 <option value="Xag">SILVER</option>
-                <option value="Xpt">PLATINIUM</option>
+                <option value="Xpt">PLATINUM</option>
                 <option value="Xpd">PALLADIUM</option>
               </select>
             </div>
@@ -335,8 +363,8 @@ export const TradePage = () => {
               <form onSubmit={onSubmitBuy}>
                 <button
                   type="submit"
-                  disabled={disableBtn}
-                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
+                  disabled={disableBuyBtn}
+                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
                 >
                   Buy
                 </button>
@@ -386,8 +414,8 @@ export const TradePage = () => {
               <form onSubmit={onSubmitSell}>
                 <button
                   type="submit"
-                  disabled={disableBtn}
-                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
+                  disabled={disableSellBtn}
+                  className=" transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
                 >
                   Sell
                 </button>

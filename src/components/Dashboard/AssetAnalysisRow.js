@@ -87,7 +87,7 @@ export const AssetAnalysisRow = ({ asset }) => {
             : asset === "frxXAGUSD"
             ? "Silver/USD"
             : asset === "frxXPTUSD"
-            ? "Platinium/USD"
+            ? "Platinum/USD"
             : "Palladium/USD"}
         </td>
         <td

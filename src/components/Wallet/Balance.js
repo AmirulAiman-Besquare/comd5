@@ -151,6 +151,9 @@ export const Balance = () => {
   const CloseTopUp = () => {
     getBalance();
     getBalance();
+    getBalance();
+    getBalance();
+    getBalance();
     HideMdl2();
   };
 

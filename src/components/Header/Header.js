@@ -111,16 +111,16 @@ export const Header = ({ setAuth, title }) => {
               </span>
               <div className="z-50 invisible transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 opacity-0 dropdown-menu">
                 <div
-                  className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none w-28"
-                  aria-labelledby="headlessui-menu-button-1"
+                  className="absolute right-0 z-50 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none w-28"
+                  aria-labelledby="headlessui-menu-button-1 "
                   id="headlessui-menu-items-117"
                   role="menu"
                 >
-                  <div className="py-1">
+                  <div className="z-50 py-1">
                     <Link
                       reloadDocument
                       to={"/usersetting"}
-                      className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700"
+                      className="z-50 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700"
                     >
                       <FiSettings
                         className="mr-2"
@@ -130,11 +130,11 @@ export const Header = ({ setAuth, title }) => {
                       Settings
                     </Link>
                   </div>
-                  <div className="py-1" onClick={(e) => logout(e)}>
+                  <div className="z-50 py-1" onClick={(e) => logout(e)}>
                     <Link
                       reloadDocument
                       to={"/login"}
-                      className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700"
+                      className="z-50 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700"
                     >
                       <CgLogOut size={"1.4em"} color={"#194886"} />
                       Log Out

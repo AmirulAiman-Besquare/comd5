@@ -68,7 +68,7 @@ export const WalletHistory = () => {
     <div className="mx-3 p-1 border-8 App box border-[#376db3] rounded-xl mb-7 xl:mx-24">
       <div className="flex mb-2">
         <p className="w-full text-2xl font-bold text-center text-white pt-7 sm:text-left sm:pl-10 sm:pb-4">
-          TRANSACTION HISTORY
+          WALLET ACTIVITY
         </p>
         {/* <input
           type="text"

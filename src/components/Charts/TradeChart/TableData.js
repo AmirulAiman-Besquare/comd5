@@ -105,7 +105,7 @@ const TableData = ({ asset, granularity }) => {
   return (
     <>
       {loading ? (
-        <div className="absolute z-10 left-[50%] top-[60%] -translate-y-2/4 -translate-x-2/4 ">
+        <div className="absolute z-10 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
           <img
             src={loadingicon}
             className="block m-auto animate__bounce animate__animated animate__infinite"

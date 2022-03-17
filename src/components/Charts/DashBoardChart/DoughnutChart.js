@@ -106,7 +106,7 @@ export function DoughnutChart() {
         <div className="ml-5 text-base">
           <p className="pb-1 font-bold">Gold</p>
           <p className="pb-1 font-bold">Silver</p>
-          <p className="pb-1 font-bold">Platinium</p>
+          <p className="pb-1 font-bold">Platinum</p>
           <p className="pb-1 font-bold">Palladium</p>
         </div>
         <div className="ml-4 text-base">
@@ -120,7 +120,7 @@ export function DoughnutChart() {
         <div className="absolute sm:static w-[20rem] h-full  mt-36  sm:mt-1 right right2">
           <Doughnut
             data={{
-              labels: ["Gold", "Silver", "Platinium", "Palladium"],
+              labels: ["Gold", "Silver", "Platinum", "Palladium"],
               datasets: [
                 {
                   datalabels: {
