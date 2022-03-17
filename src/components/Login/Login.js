@@ -99,6 +99,7 @@ export const Login = ({ setAuth }) => {
                 type="email"
                 id="email"
                 name="email"
+                required
                 value={email}
                 onChange={(e) => onChange(e)}
                 autoFocus
@@ -122,6 +123,7 @@ export const Login = ({ setAuth }) => {
                   type={type}
                   id="password"
                   name="password"
+                  required
                   value={password}
                   onChange={(e) => onChange(e)}
                   className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"

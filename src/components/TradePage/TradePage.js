@@ -209,11 +209,11 @@ export const TradePage = () => {
       if (parseRes === "Invalid Amount to sell") {
         toast.error("Invalid Amount to Sell");
       } else if (parseRes === "Selling Gold Successful") {
-        toast.success("Gold Selling Succeesful");
+        toast.success("Gold Selling Successful");
       } else if (parseRes === "Selling Silver Successful") {
-        toast.success("Silver Purchase Succeesful");
+        toast.success("Silver Purchase Successful");
       } else if (parseRes === "Selling Platinum Successful") {
-        toast.success("Platinum Selling Succeesful");
+        toast.success("Platinum Selling Successful");
       } else if (parseRes === "Selling Palladium Successful") {
         toast.success("Palladium Selling Successful");
       } else if (parseRes === "Not enough gold to sell") {
@@ -225,7 +225,6 @@ export const TradePage = () => {
       } else if (parseRes === "Not enough palladium to sell") {
         toast.error("Not Enough Palladium to Sell");
       }
-
       getAsset();
       getBalance();
     } catch (error) {
