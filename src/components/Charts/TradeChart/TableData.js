@@ -8,7 +8,6 @@ import loadingicon from "../../asset/images/loading.png";
 const app_id = 1089; //app_id for testing only
 
 const TableData = ({ asset, granularity }) => {
-  console.log(granularity);
   const data = [];
   let latesttime = 0;
   let latestohlc = {};

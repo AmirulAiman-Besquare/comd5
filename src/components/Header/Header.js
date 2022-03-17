@@ -109,7 +109,7 @@ export const Header = ({ setAuth, title }) => {
                   />
                 </button>
               </span>
-              <div className="z-30 invisible transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 opacity-0 dropdown-menu">
+              <div className="z-50 invisible transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 opacity-0 dropdown-menu">
                 <div
                   className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none w-28"
                   aria-labelledby="headlessui-menu-button-1"

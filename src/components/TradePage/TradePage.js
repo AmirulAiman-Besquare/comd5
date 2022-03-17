@@ -243,14 +243,15 @@ export const TradePage = () => {
 
   return (
     <>
-      <Header title={"TRADING"} />
-      <div className="flex flex-col pb-4 mx-12 mt-8 mb-4 md:flex-row place-content-evenly">
-        <div className="flex flex-row">
-          <div className="flex justify-center">
-            <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
+      <Header title={"TRADING"} className="z-50" />
+      {/* <div className="mx-36 bg-[#075F93] p-10 rounded-lg"> */}
+      <div className="rounded-lg ">
+        <div className="absolute z-40">
+          <div className="flex flex-col w-full xl:flex-row">
+            <div className=" p-2 w-40 h-[3.8em] sm:h-[4.6em] xl:h-[5.6em] m-auto  drop-shadow rounded-xl ">
               <select
                 onChange={(e) => setGranularity(e.target.value)}
-                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-gray-800 bg-white rounded-md outline-none appearance-none placeholder:text-slate-500"
+                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-white bg-gray-800 border border-black rounded-md outline-none appearance-none placeholder:text-slate-500 hover:bg-gray-900 focus:ring-1 focus:ring-gray-300"
               >
                 <option value={60}>1 Min</option>
                 <option value={120}>2 Mins</option>
@@ -266,10 +267,10 @@ export const TradePage = () => {
                 {/* <option value={86400}>1 Day</option> */}
               </select>
             </div>
-            <div className="my-2 mx-2 p-2 w-40 h-[5.1em] m-auto bg-[#075F93] drop-shadow rounded-xl ">
+            <div className="p-2 w-40 h-[3.8em] sm:h-[4.6em] xl:h-[5.6em] m-auto  drop-shadow rounded-xl  ">
               <select
                 onChange={(e) => setCommodity(e.target.value)}
-                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-gray-800 bg-white rounded-md outline-none appearance-none placeholder:text-slate-500"
+                className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-white bg-gray-800 border border-black rounded-md outline-none appearance-none placeholder:text-slate-500 hover:bg-gray-900 focus:ring-1 focus:ring-gray-300"
               >
                 <option value="Xau">GOLD</option>
                 <option value="Xag">SILVER</option>
@@ -277,117 +278,123 @@ export const TradePage = () => {
                 <option value="Xpd">PALLADIUM</option>
               </select>
             </div>
-          </div>
-          <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-            <div className="flex px-4 py-1 rounded bg-[#0A2458] w-36">
-              <div className="flex flex-col w-full text-xl leading-none text-center text-white align-middle">
-                <p className="mb-1 ml-1 text-sm text-white ">Price Index</p>
-                <div
-                  className={
-                    status === "similar"
-                      ? "text-white text-xl flex m-auto gap-2 font-bold leading-none"
-                      : status === "higher"
-                      ? "text-[#5CEE21] text-xl flex m-auto gap-2 font-bold leading-none"
-                      : "text-[#FB512D] text-xl flex m-auto gap-2 font-bold leading-none"
-                  }
-                >
-                  {icon}
-                  {assetQuote}
+            <div className="flex gap-4 p-2 m-auto mx-2 drop-shadow rounded-xl ">
+              <div className="hidden sm:flex px-4 py-[0.35rem] bg-gray-800 rounded w-36">
+                <div className="flex flex-col w-full text-xl leading-none text-center text-white align-middle ">
+                  <p className="mb-1 ml-1 text-sm text-white ">Price Index</p>
+                  <div
+                    className={
+                      status === "similar"
+                        ? "text-white text-xl flex m-auto gap-2 font-bold leading-none"
+                        : status === "higher"
+                        ? "text-[#5CEE21] text-xl flex m-auto gap-2 font-bold leading-none"
+                        : "text-[#FB512D] text-xl flex m-auto gap-2 font-bold leading-none"
+                    }
+                  >
+                    {icon}
+                    {assetQuote}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-            <div className="flex px-4 py-1 rounded bg-[#0A2458]">
-              <img src={walleticon} className="w-10" />
-              <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
-                <p className="mb-1 ml-1 text-sm">Balance</p>
-                <div className="font-bold">${balance}</div>
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-4 p-3 m-auto mx-2  bg-[#075F93] drop-shadow rounded-xl ">
-            <input
-              type="number"
-              placeholder="Min 10$"
-              name="buy_amount"
-              value={buy_amount}
-              onKeyDown={(event) => {
-                if (event.key === "-" || event.key === "e") {
-                  event.preventDefault();
-                }
-              }}
-              minLength="1"
-              maxLength="10"
-              onChange={(e) => onChangeBuy(e)}
-              className="w-28 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7] "
-            />
-            <form onSubmit={onSubmitBuy}>
-              <button
-                type="submit"
-                disabled={disableBtn}
-                className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
-              >
-                Buy
-              </button>
-            </form>
-          </div>
-          <div className="mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
-            <div className="flex px-4 py-1 rounded bg-[#0A2458]">
-              {commodity === "Xau" ? (
-                <img src={goldicon} className="w-12" />
-              ) : (
-                <img src={silvericon} className="w-12" />
-              )}
-              <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
-                <p className="mb-1 ml-1 text-sm">Asset Owned</p>
-                <div className="font-bold">
-                  {commodity === "Xau"
-                    ? GoldAsset
-                    : commodity === "Xag"
-                    ? SilverAsset
-                    : commodity === "Xpt"
-                    ? PlatAsset
-                    : PladAsset}
-                  oz
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-4 p-3 m-auto mx-2 bg-[#075F93] drop-shadow rounded-xl">
-            <input
-              type="number"
-              placeholder="oz"
-              name="sell_amount"
-              value={sell_amount}
-              onKeyDown={(event) => {
-                if (event.key === "-" || event.key === "e") {
-                  event.preventDefault();
-                }
-              }}
-              minLength="1"
-              maxLength="10"
-              onChange={(e) => onChangeSell(e)}
-              className="w-28 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7]"
-            />
-            <form onSubmit={onSubmitSell}>
-              <button
-                type="submit"
-                disabled={disableBtn}
-                className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
-              >
-                Sell
-              </button>
-            </form>
           </div>
         </div>
-      </div>
-      <div className="mx-36 bg-[#075F93] p-10 rounded-lg">
         <GoldTableData
           asset={refselectedAsset.current}
           granularity={refGranularity.current}
         />
+      </div>
+      <div className="flex flex-col sm:pb-4 sm:mx-12 sm:mt-8 sm:mb-4 md:flex-row place-content-evenly">
+        <div className="flex flex-col xl:flex-row gap-y-2">
+          <div className="flex flex-col justify-center gap-y-2 sm:flex-row">
+            <div className="sm:w-[15rem]  mx-2 p-2 flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
+              <div className="flex px-4 py-1 w-full rounded bg-[#0A2458]">
+                <img src={walleticon} className="w-10" />
+                <div className="flex flex-col w-full ml-3 text-xl leading-none text-center text-white align-middle">
+                  <p className="mb-1 ml-1 text-sm">Balance</p>
+                  <div className="font-bold">${balance}</div>
+                </div>
+              </div>
+            </div>
+            <div className=" sm:w-[15rem] flex gap-4 p-3 m-auto mx-2  bg-[#075F93] drop-shadow rounded-xl ">
+              <input
+                type="number"
+                placeholder="Min 10$"
+                name="buy_amount"
+                value={buy_amount}
+                onKeyDown={(event) => {
+                  if (event.key === "-" || event.key === "e") {
+                    event.preventDefault();
+                  }
+                }}
+                minLength="1"
+                maxLength="10"
+                onChange={(e) => onChangeBuy(e)}
+                className=" px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7] w-full sm:w-28"
+              />
+              <form onSubmit={onSubmitBuy}>
+                <button
+                  type="submit"
+                  disabled={disableBtn}
+                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
+                >
+                  Buy
+                </button>
+              </form>
+            </div>
+          </div>
+          <div className="hidden w-20 xl:block"></div>
+          <div className="flex flex-col justify-center gap-y-2 sm:flex-row">
+            <div className="sm:w-[15rem] mx-2 p-2  flex gap-4 m-auto bg-[#075F93] drop-shadow rounded-xl ">
+              <div className="flex px-4 py-1 w-full rounded bg-[#0A2458]">
+                {commodity === "Xau" ? (
+                  <img src={goldicon} className="w-12" />
+                ) : (
+                  <img src={silvericon} className="w-12" />
+                )}
+                <div className="flex flex-col ml-3 text-xl leading-none text-center text-white align-middle grow w-34">
+                  <p className="w-full mb-1 ml-1 text-sm">Asset Owned</p>
+                  <div className="font-bold">
+                    {commodity === "Xau"
+                      ? GoldAsset
+                      : commodity === "Xag"
+                      ? SilverAsset
+                      : commodity === "Xpt"
+                      ? PlatAsset
+                      : PladAsset}
+                    oz
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className=" sm:w-[15rem] flex gap-4 p-3 m-auto mx-2 bg-[#075F93] drop-shadow rounded-xl">
+              <input
+                type="number"
+                placeholder="oz"
+                name="sell_amount"
+                value={sell_amount}
+                onKeyDown={(event) => {
+                  if (event.key === "-" || event.key === "e") {
+                    event.preventDefault();
+                  }
+                }}
+                minLength="1"
+                maxLength="10"
+                onChange={(e) => onChangeSell(e)}
+                className="w-full sm:w-28 px-2 m-auto text-base font-bold text-center text-gray-800 rounded-md outline-none appearance-none placeholder:text-[#878787] shadow-inner bg-[#F9F7F7]"
+              />
+              <form onSubmit={onSubmitSell}>
+                <button
+                  type="submit"
+                  disabled={disableBtn}
+                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold"
+                >
+                  Sell
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

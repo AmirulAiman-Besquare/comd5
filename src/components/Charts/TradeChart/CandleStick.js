@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Chart from "@qognicafinance/react-lightweight-charts";
-import { pink } from "@mui/material/colors";
 
 export const CandleStick = ({ data }) => {
   const options = {
@@ -18,13 +17,13 @@ export const CandleStick = ({ data }) => {
     layout: {
       backgroundColor: "black",
       textColor: "#F2EAD0",
-      fontSize: 12,
-      fontFamily: "monospace",
+      fontSize: 15,
+      fontFamily: "Roboto",
     },
     legend: {
       textColor: "#F2EAD0",
       fontSize: 12,
-      fontFamily: "monospace",
+      fontFamily: "Roboto",
     },
     timeScale: {
       barSpacing: 20,
@@ -40,9 +39,6 @@ export const CandleStick = ({ data }) => {
     //     "$" + price,
     // },
     priceScale: {
-      // autoScale: false,
-      // invertScale: true,
-      // alignLabels: false,
       borderColor: "#194886",
 
       scaleMargins: {
@@ -54,14 +50,13 @@ export const CandleStick = ({ data }) => {
       vertLine: {
         color: "#204990",
         width: 1.5,
-        style: 1,
+        style: 3,
       },
       horzLine: {
         color: "#204990",
         width: 1.5,
-        style: 1,
+        style: 3,
       },
-      mode: 1,
     },
   };
 
@@ -89,11 +84,13 @@ export const CandleStick = ({ data }) => {
   }, [data]);
 
   return (
-    <div id="chart">
+    <div id="chart" className="w-full h-[30rem]  xl:h-[45rem] ">
       <Chart
+        className="z-0"
         options={options}
         candlestickSeries={series}
         autoWidth={true}
+        autoHeight={true}
         darkTheme
       />
     </div>
