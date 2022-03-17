@@ -99,7 +99,7 @@ export const Header = ({ setAuth, title }) => {
             />
           </li>
           <li>
-            <div className="relative inline-block mr-6 text-left dropdown">
+            <div className="relative z-50 inline-block mr-6 text-left dropdown">
               <span className="rounded-md shadow-sm">
                 <button>
                   <FiChevronDown

@@ -10,6 +10,8 @@ import downicon from "../asset/images/down.png";
 import upicon from "../asset/images/up.png";
 import GoldTableData from "../Charts/TradeChart/TableData";
 import { toast } from "react-toastify";
+import platicon from "../asset/images/platinumcoin.png";
+import pladicon from "../asset/images/palladiumcoin.png";
 
 export const TradePage = () => {
   const [commodity, setCommodity] = useState("Xau");
@@ -164,7 +166,7 @@ export const TradePage = () => {
         },
         body: JSON.stringify(body),
       });
-
+      clearInput();
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
       console.log(parseRes);
@@ -202,7 +204,7 @@ export const TradePage = () => {
         },
         body: JSON.stringify(body),
       });
-
+      clearInput();
       const parseRes = await response.json();
       console.log(JSON.stringify(body));
       console.log(parseRes);
@@ -263,10 +265,27 @@ export const TradePage = () => {
     }
   }
 
+  const clearInput = () => {
+    setBuyInputs({
+      buy_amount: "",
+    });
+    setSellInputs({
+      sell_amount: "",
+    });
+  };
+
   useEffect(() => {
     getAsset();
     getBalance();
   }, []);
+
+  useEffect(() => {
+    clearInput();
+
+    return () => {
+      clearInput();
+    };
+  }, [granularity, commodity]);
 
   return (
     <>
@@ -376,8 +395,12 @@ export const TradePage = () => {
               <div className="flex px-4 py-1 w-full rounded bg-[#0A2458]">
                 {commodity === "Xau" ? (
                   <img src={goldicon} className="w-12" />
-                ) : (
+                ) : commodity === "Xag" ? (
                   <img src={silvericon} className="w-12" />
+                ) : commodity === "Xpt" ? (
+                  <img src={platicon} className="w-12" />
+                ) : (
+                  <img src={pladicon} className="w-12" />
                 )}
                 <div className="flex flex-col ml-3 text-xl leading-none text-center text-white align-middle grow w-34">
                   <p className="w-full mb-1 ml-1 text-sm">Asset Owned</p>

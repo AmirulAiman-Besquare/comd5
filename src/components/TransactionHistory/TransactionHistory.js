@@ -13,6 +13,8 @@ import sellicon from "../asset/images/sell_icon.png";
 import { Header } from "components/Header";
 import goldicon from "../asset/images/goldcoin.png";
 import silvericon from "../asset/images/silvercoin.png";
+import platicon from "../asset/images/platinumcoin.png";
+import pladicon from "../asset/images/palladiumcoin.png";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -86,9 +88,7 @@ export const TransactionHistory = () => {
           <Table sx={{ minWidth: 700 }} stickyHeader>
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">
-                  Transaction Type
-                </StyledTableCell>
+                <StyledTableCell align="center">Asset Type</StyledTableCell>
                 <StyledTableCell align="center">Ref ID</StyledTableCell>
                 <StyledTableCell align="center">Date</StyledTableCell>
                 <StyledTableCell align="center">Transaction</StyledTableCell>
@@ -116,10 +116,16 @@ export const TransactionHistory = () => {
                         align="center"
                         sx={{ fontWeight: "bold" }}
                       >
+                        {item.tx_asset === "gold" ? (
+                          <img src={goldicon} className="pb-2 m-auto w-14" />
+                        ) : item.tx_asset === "silver" ? (
+                          <img src={silvericon} className="pb-2 m-auto w-14" />
+                        ) : item.tx_asset === "platinium" ? (
+                          <img src={platicon} className="pb-2 m-auto w-14" />
+                        ) : (
+                          <img src={pladicon} className="pb-2 m-auto w-14" />
+                        )}
                         {item.tx_asset.toUpperCase()}
-                        {/* // ? ( // <img src={goldicon} className="m-auto" />
-                        // ) : ( // <img src={silvericon} className="m-auto" />
-                        // ) */}
                       </StyledTableCell>
                       <StyledTableCell align="center">
                         {item.tx_id}

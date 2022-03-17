@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const WalletHistory = () => {
+export const WalletHistory = (props) => {
   const [fetchingdata, setFetchingData] = useState(true);
   const [walletHistory, setWalletHistory] = useState([]);
   const [search, setSearch] = useState("");
@@ -48,7 +48,6 @@ export const WalletHistory = () => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
       setWalletHistory(parseRes.reverse());
       setFetchingData(false);
     } catch (error) {
@@ -62,7 +61,7 @@ export const WalletHistory = () => {
     return () => {
       setWalletHistory([]);
     };
-  }, []);
+  }, [props.func]);
 
   return (
     <div className="mx-3 p-1 border-8 App box border-[#376db3] rounded-xl mb-7 xl:mx-24">

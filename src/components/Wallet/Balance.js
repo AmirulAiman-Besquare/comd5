@@ -6,7 +6,7 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast } from "react-toastify";
 
-export const Balance = () => {
+export const Balance = (props) => {
   const [topupInputs, setTopupInputs] = useState({
     amount: "",
   });
@@ -58,7 +58,7 @@ export const Balance = () => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      props.func(1);
       toast.success("Top-Up Succeed");
     } catch (error) {
       console.error(error.message);
@@ -83,7 +83,7 @@ export const Balance = () => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      props.func(1);
       if (parseRes === "Insufficient Balance") {
         toast.error("Withdraw Failed");
       } else {

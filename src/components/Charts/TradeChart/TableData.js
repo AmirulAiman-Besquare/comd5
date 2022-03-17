@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import useState from "react-usestateref";
 import { CandleStick } from "./CandleStick";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
-import { css } from "@emotion/react";
 import loadingicon from "../../asset/images/loading.png";
 
 const app_id = 1089; //app_id for testing only
@@ -105,7 +103,7 @@ const TableData = ({ asset, granularity }) => {
   return (
     <>
       {loading ? (
-        <div className="absolute z-10 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
+        <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
           <img
             src={loadingicon}
             className="block m-auto animate__bounce animate__animated animate__infinite"
@@ -114,7 +112,7 @@ const TableData = ({ asset, granularity }) => {
       ) : (
         <></>
       )}
-      {loading ? <div className="dark-overlay"></div> : <></>}
+      {loading ? <div className="z-40 dark-overlay"></div> : <></>}
       <CandleStick data={tableData} />
     </>
   );
