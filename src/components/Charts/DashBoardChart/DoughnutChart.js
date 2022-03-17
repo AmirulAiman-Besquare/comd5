@@ -94,7 +94,7 @@ export function DoughnutChart() {
       </p>
       <div
         className={
-          "flex h-full mt-16 sm:mt-[7rem] sm:mx-20 md:mx-32 text-white align-middle ddesc xl:ml-10 xl:mx-0 xl:mr-10"
+          "flex h-full mt-16 sm:mt-[7rem] sm:mx-20 md:mx-32 text-white align-middle ddesc xl:ml-10 xl:mx-0 xl:mr-4"
         }
       >
         <div>
