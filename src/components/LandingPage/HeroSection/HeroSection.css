@@ -17,8 +17,8 @@
   position: absolute;
   top: 70px;
   left: 190px;
-  height: 50px;
-  width: 150px;
+  height: 80px;
+  width: 230px;
 }
 
 .hero-content {
@@ -343,7 +343,7 @@
     line-height: 42px;
     letter-spacing: 0.015em;
     border-radius: 20px;
-    margin: 40px 150px;
+    margin: 40px 140px;
   }
 
   .hero-content {

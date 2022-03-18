@@ -86,7 +86,7 @@
 
 @media only screen and (max-width: 1200px) {
   .cards-final-section {
-    height: 70vh;
+    height: 80vh;
   }
 
   .text-description-color-final {
@@ -133,6 +133,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .cards-final-section {
+    height: 70vh;
+  }
+
   .text-description-color-final {
     font-size: 23px;
     line-height: 42px;
@@ -209,14 +213,15 @@
     height: 80px;
   }
 
-  .title {
-    /* padding-top: 50px; */
-  }
+  
 }
 
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 52px;
+  }
+  .cards-final-section{
+    height: 80vh;
   }
 }
 
@@ -224,10 +229,29 @@
   .title {
     font-size: 42px;
   }
+  .cards-final-section {
+    height: 90vh;
+  }
+  .text-description-color-final{
+    font-size: 18px;
+    margin: 0 10px 0 10px;
+  }
+  .text-description-comD5{
+    padding-top: 30px;
+    font-size: 18px;
+    margin: 0 10px 0 10px;
+  }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 300px)and (max-width: 400px) {
   .title {
     font-size: 42px;
   }
+  .text-description-color-final{
+    font-size: 16px;
+  }
+  .text-description-comD5{
+    font-size: 16px;
+  }
+  
 }
