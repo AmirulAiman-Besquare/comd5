@@ -1,5 +1,5 @@
 import React from "react";
-import firstFeature from "../../asset/images/realTimeFeature.png";
+import firstFeature from "../../asset/images/realtime.png";
 import "./Card.css";
 
 function CardRealTime() {

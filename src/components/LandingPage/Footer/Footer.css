@@ -15,7 +15,7 @@
   max-width: 1000px; */
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 .footer-link-wrapper {
@@ -56,4 +56,13 @@ footer-location > .location-icon {
     margin-bottom: 15px;
     letter-spacing: 0.06em;
   }
+  .footer-links {
+    width: 85%;
+    /* margin-left: 15px;
+    max-width: 1000px; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
 }

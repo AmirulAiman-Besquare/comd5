@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeroSection.css";
 import comD5 from "../../asset/images/Company-logo.png";
-import pcPhone from "../../asset/images/phonePCFirstPage.png";
+import pcPhone from "../../asset/images/device.png";
 import history from "../../../history";
 import "animate.css";
 import { Link } from "react-router-dom";

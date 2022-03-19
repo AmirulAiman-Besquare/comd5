@@ -12,7 +12,7 @@ function Footer() {
           <div className="footer-link-items">
             <div className="footer-details">
               <p >
-              © All right reserved
+              © All right reserved | COMD5
               </p>
             </div>
         </div>
