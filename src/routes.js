@@ -5,30 +5,31 @@ import {
   TransactionHistory,
   TradePage,
   Wallet,
-  Layout,
   Notification,
   DashBoard,
   Register,
   Login,
+  NotFoundPage,
 } from "components";
 import Home from "components/LandingPage/pages/Home";
 import { ForgotPassword } from "components/ForgotPassword/ForgotPassword";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HashLoader from "react-spinners/HashLoader";
 
 toast.configure();
 
 export const PageRoute = () => {
   const [IsAuthenticated, setIsAuthenticated] = useState(true);
-  console.log(IsAuthenticated);
+  const [isLoading, setIsLoading] = useState(true);
   const setAuth = (Boolean) => {
     setIsAuthenticated(Boolean);
   };
 
   async function checkAuth() {
     try {
-      const response = await fetch("http://157.245.57.54:5000/user/verify", {
+      const response = await fetch("https://api.comd5.xyz/user/verify", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -36,6 +37,7 @@ export const PageRoute = () => {
       const parseRes = await response.json();
 
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      setIsLoading(false);
     } catch (error) {
       console.error(error.message);
     }
@@ -55,6 +57,10 @@ export const PageRoute = () => {
           element={
             !IsAuthenticated ? (
               <Login setAuth={setAuth} />
+            ) : isLoading ? (
+              <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
+                <HashLoader color="#00B2FF" size={100} className="mt-10" />
+              </div>
             ) : (
               <Navigate to="/dashboard" />
             )
@@ -67,97 +73,85 @@ export const PageRoute = () => {
           element={
             !IsAuthenticated ? (
               <Register setAuth={setAuth} />
+            ) : isLoading ? (
+              <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
+                <HashLoader color="#00B2FF" size={100} />
+              </div>
             ) : (
               <Navigate to="/dashboard" />
             )
           }
         />
-      </Routes>
-      {window.location.href === "http://localhost:3000/" ||
-      window.location.href === "http://localhost:3001/" ||
-      window.location.href === "http://localhost:3002/" ||
-      window.location.href === "http://localhost:3003/" ||
-      window.location.href === "http://localhost:3004/" ||
-      window.location.href === "http://localhost:3005/" ? (
-        <></>
-      ) : (
-        <Layout>
-          {" "}
-          <Routes>
-            {/* Default Page */}
-            <Route
-              exact
-              path="/dashboard"
-              element={
-                IsAuthenticated ? (
-                  <DashBoard setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
 
-            {/* Other Page */}
-            {/* <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} /> */}
-            <Route
-              exact
-              path="/usersetting"
-              element={
-                IsAuthenticated ? (
-                  <UserSetting setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/trade"
-              element={
-                IsAuthenticated ? (
-                  <TradePage setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/transactionhistory"
-              element={
-                IsAuthenticated ? (
-                  <TransactionHistory setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/wallet"
-              element={
-                IsAuthenticated ? (
-                  <Wallet setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/notification"
-              element={
-                IsAuthenticated ? (
-                  <Notification setAuth={setAuth} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-          </Routes>
-        </Layout>
-      )}
+        {/* Default Page */}
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            IsAuthenticated ? (
+              <DashBoard setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/usersetting"
+          element={
+            IsAuthenticated ? (
+              <UserSetting setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/trade"
+          element={
+            IsAuthenticated ? (
+              <TradePage setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/transactionhistory"
+          element={
+            IsAuthenticated ? (
+              <TransactionHistory setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/wallet"
+          element={
+            IsAuthenticated ? (
+              <Wallet setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/notification"
+          element={
+            IsAuthenticated ? (
+              <Notification setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route exact path="*" element={<NotFoundPage />} />
+      </Routes>
     </>
   );
 };

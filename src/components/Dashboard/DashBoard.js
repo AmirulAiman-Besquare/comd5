@@ -1,83 +1,22 @@
-import "./styles.modules.css";
+import styles from "./Dashboard.modules.css";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { DashBoardFav } from "./DashboardFav";
-import linegraph from "../asset/images/linegraph.png";
+import { TicksPriceWs } from "./TicksPriceWs";
 import walleticon from "../asset/images/Wallet.svg";
-import Select, { components } from "react-select";
-
-const colourStyles = {
-  control: (styles) => ({
-    ...styles,
-    backgroundColor: "#509AC6",
-    border: "0",
-    boxShadow: "none",
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: "#509AC6",
-      color: "white", //option text color
-      cursor: isDisabled ? "not-allowed" : "default",
-    };
-  },
-  singleValue: (defaultStyles) => {
-    return {
-      ...defaultStyles,
-      color: "white",
-    };
-  },
-  dropdownIndicator: (provided) => ({
-    ...provided,
-    svg: {
-      fill: "white",
-    },
-  }),
-  menuList: (base) => ({
-    ...base,
-
-    "::-webkit-scrollbar": {
-      width: "4px",
-      height: "0px",
-    },
-    "::-webkit-scrollbar-track": {
-      background: "#f1f1f1",
-    },
-    "::-webkit-scrollbar-thumb": {
-      background: "gray",
-    },
-    "::-webkit-scrollbar-thumb:hover": {
-      background: "#555",
-    },
-  }),
-};
-const options = [
-  { value: "realtime", label: "Real-Time" },
-  { value: "5min", label: "5 Minutes" },
-  { value: "10min", label: "10 Minutes" },
-  { value: "15min", label: "15 Minutes" },
-  { value: "30min", label: "30 Minutes" },
-  { value: "1hr", label: "1 Hour" },
-  { value: "2hr", label: "2 Hours" },
-  { value: "3hr", label: "3 Hours" },
-  { value: "4hr", label: "4 Hours" },
-  { value: "1day", label: "1 Day" },
-];
+import { Header } from "components/Header";
+import { AssestAnalysis } from "./AssestAnalysis";
+import { DoughnutChart } from "components/Charts/DashBoardChart/DoughnutChart";
+import { ActivitySummary } from "./ActivitySummary";
+import { Link } from "react-router-dom";
 
 export const DashBoard = () => {
-  const [open, setOpen] = useState(false);
-
   const [balance, setBalance] = useState();
 
   async function getBalance() {
     try {
-      const response = await fetch(
-        "http://157.245.57.54:5000/display/balance",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("https://api.comd5.xyz/display/balance", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
@@ -87,58 +26,67 @@ export const DashBoard = () => {
   }
 
   useEffect(() => {
-    getBalance();
+    const unsubscribe = getBalance(); //subscribe
+    return unsubscribe; //unsubscribe
   }, []);
 
   return (
-    <div className="m-10">
-      <div className="flex w-full gap-x-10">
-        <div className="flex flex-col w-full gap-y-10">
-          <div className="bg-[#075F93] p-3 rounded-xl">
-            <div className="flex flex-row items-center pb-5 text-2xl text-white testt">
-              <img className="ml-10 mr-20 w-96" src={linegraph} />
-              <p className="flex-grow mt-2 ml-3 font-bold leading-none">
-                Come And Modify Your Life With Commodify!
-              </p>
-              <Link to={"/tx"}>
-                <button className="px-6 py-1 mt-4 mr-4 font-bold text-center justify-self-end dashboard-button">
-                  Go Trade
-                </button>
-              </Link>
+    <>
+      <Header title={"DASHBOARD"} />
+      <div className="lg:mx-0 lg:mt-0 xl:mx-20 xl:mt-5">
+        <div className="flex flex-col w-full xl:flex-row gap-x-10 xl:gap-x-7 xl:items-start xl:mb-6 xl:align-middle xl:justify-center">
+          <div className="lg:h-80 bg-[#075F93] xl:w-96 p-2 m-2 rounded sm:rounded-xl xl:hidden">
+            <a
+              href="/wallet"
+              className="flex flex-col justify-center h-full text-center text-white sm:py-2 testt "
+            >
+              <p className="text-xl sm:text-2xl">Current Balance</p>
+              <img
+                src={walleticon}
+                className="absolute left-[2rem] sm:left-[15rem]  lg:left-0 w-auto h-10 lg:static lg:my-6 lg:h-36 animate__swing animate__animated transition duration-500 transform hover:scale-105"
+              />
+
+              {balance === 0 ? (
+                <p className="text-base sm:text-2xl">Click Me To Reload</p>
+              ) : (
+                <p className="text-xl sm:text-2xl">$ {balance}</p>
+              )}
+            </a>
+          </div>
+          <div className="bg-[#075F93] rounded sm:rounded-xl m-2 w-auto py-2 xl:m-0 xl:py-0 xl:px-2 h-full">
+            <div className="flex flex-col justify-center w-full h-full gap-2 px-5 sm:flex-row lg:justify-around lg:py-6 xl:gap-14 ">
+              <TicksPriceWs asset={"frxXAUUSD"} />
+              <TicksPriceWs asset={"frxXAGUSD"} />
+              <TicksPriceWs asset={"frxXPTUSD"} />
+              <TicksPriceWs asset={"frxXPDUSD"} />
             </div>
           </div>
-          <DashBoardFav />
-        </div>
-        <div className="h-80 bg-[#075F93] w-96 p-4 rounded-xl">
-          <div className="flex flex-col justify-center h-full text-2xl text-center text-white testt">
-            <p>Current Balance</p>
-            <img
-              src={walleticon}
-              className="w-auto my-6 h-36"
-              draggable="false"
-              dragstart="false;"
-            />
-            <p>${balance}</p>
+          <div className="hidden xl:block h-[20.5rem] bg-[#075F93] w-96 p-5 rounded-xl ">
+            <a
+              href="/wallet"
+              className="flex flex-col justify-center h-full text-2xl text-center text-white transition duration-500 transform testt hover:scale-105"
+            >
+              <p>Current Balance</p>
+              <img
+                src={walleticon}
+                className="w-auto my-6 h-36 animate__swing animate__animated"
+                draggable="false"
+                dragstart="false;"
+              />
+              <div className="animate__animated animate__bounce">
+                {balance === 0 ? "Click Me To Reload!" : <p>$ {balance}</p>}
+              </div>
+            </a>
           </div>
         </div>
-      </div>
-      <div>
-        <div className="h-full mt-10 bg-[#075F93] rounded-lg">
-          <div className="flex flex-row">
-            <p className="flex-grow p-6 ml-8 text-3xl font-bold text-white ">
-              Market Overview
-            </p>
-            <Select
-              styles={colourStyles}
-              options={options}
-              className="p-6 mr-8 text-base font-bold"
-              isSearchable={false}
-              defaultValue={options[0]}
-              onBlur={() => setOpen(false)}
-            />
-          </div>
+        <div className="flex flex-col justify-center w-full h-full m-auto align-middle xl:flex-row gap-x-4">
+          <AssestAnalysis />
+
+          <DoughnutChart />
+
+          <ActivitySummary />
         </div>
       </div>
-    </div>
+    </>
   );
 };

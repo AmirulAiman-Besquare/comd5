@@ -1,17 +1,22 @@
 import React from "react";
-import Gold from "../../asset/images/gold1.png";
-import Silver from "../../asset/images/silver-p-p.png";
-import "./Asset.css";
-import AssetItems from "./AssetItems";
+import Gold from "../../asset/images/gold_lp.png";
+import Silver from "../../asset/images/silverlp.png";
+import Platinum from "../../asset/images/platinum_lp.png";
+import Palladium from "../../asset/images/palladium_lp.png";
+import "./Assets.css";
+import AssetsItems from "./AssetsItems";
 
-function Asset() {
+function Assets() {
   return (
     <div className="asset-page">
       <h1 className="asset-title">Know Our Assets</h1>
+      <h2 className="asset-subtitle">
+        Navigate your commodities through Commodify
+      </h2>
       <div className="gold-asset-container">
         <div className="asset-wrapper">
           <ul className="asset-items">
-            <AssetItems
+            <AssetsItems
               title="Gold"
               src={Gold}
               text="The rarity and many uses of
@@ -21,7 +26,7 @@ function Asset() {
               path="/gold"
             />
 
-            <AssetItems
+            <AssetsItems
               title="Silver"
               src={Silver}
               text="Has been predominantly part 
@@ -31,9 +36,9 @@ function Asset() {
             />
           </ul>
           <ul className="asset-items">
-            <AssetItems
+            <AssetsItems
               title="Platinum"
-              src={Silver}
+              src={Platinum}
               text="Has a higher value and low 
                     maintainence which involves 
                     re-polished without losing 
@@ -41,9 +46,9 @@ function Asset() {
               path="/gold"
             />
 
-            <AssetItems
+            <AssetsItems
               title="Palladium"
-              src={Silver}
+              src={Palladium}
               text="Part of metal family, it is 
                     lighter, cheaper and more  scratch 
                     resistant compared  to its sibling, platinum."
@@ -56,4 +61,4 @@ function Asset() {
   );
 }
 
-export default Asset;
+export default Assets;

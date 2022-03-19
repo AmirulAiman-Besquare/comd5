@@ -11,8 +11,14 @@ h2,
 p {
   font-weight: 500;
 }
+.cancelBtn {
+  background: #fff !important;
+}
 
-#button {
+.cancelBtn:hover {
+  background: #10a6f1 !important;
+}
+.button {
   background: linear-gradient(
     101.43deg,
     #13a9f1 -2.83%,
@@ -20,10 +26,11 @@ p {
     #679ce2 73.19%
   );
 }
-#button:hover {
+.button:hover {
   background: pink;
 }
 .box {
+  border-radius: 100%;
   background: linear-gradient(
     145.49deg,
     #122746 12.32%,
@@ -31,4 +38,33 @@ p {
     #031320 79.63%
   );
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.text-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+.toggleVisibility {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  transition: right 0.2s;
+}
+
+.input-field span {
+  cursor: pointer;
+}
+
+.input-field {
+  display: flex;
+}
+
+.input-field input {
+  /* width: 100%;
+  height: 100%; */
+}
+
+.input-field span {
+  cursor: pointer;
 }

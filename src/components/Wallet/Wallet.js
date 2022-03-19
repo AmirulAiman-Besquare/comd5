@@ -1,17 +1,26 @@
 import "./styles.modules.css";
-import { MdAccountBalanceWallet } from "react-icons/md";
 import { Balance } from "./Balance";
 import { PaymentMethod } from "./PaymentMethod";
 import { WalletHistory } from "./WalletHistory";
+import { Header } from "components/Header";
+import { useState } from "react";
 
 export const Wallet = () => {
+  const [trigger, settrigger] = useState(0);
+  const pull_data = (data) => {
+    settrigger(trigger + data);
+  };
+
   return (
-    <div>
-      <div className="flex flex-col flex-wrap items-center justify-center pt-4 mt-2 ml-2 xl:items-start xl:mt-10 xl:gap-x-20 xl:flex-row ">
-        <Balance />
-        <PaymentMethod />
-        <WalletHistory />
+    <>
+      <Header title={"WALLET"} />
+      <div className="flex flex-col">
+        <div className="justify-center mt-3 align-middle xl:mb-10 xl:flex-row xl:flex xl:mt-10">
+          <Balance func={pull_data} />
+          <PaymentMethod />
+        </div>
+        <WalletHistory func={trigger} />
       </div>
-    </div>
+    </>
   );
 };

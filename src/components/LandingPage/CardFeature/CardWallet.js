@@ -1,5 +1,5 @@
 import React from "react";
-import secondFeature from "../../asset/images/walletFeature.png";
+import secondFeature from "../../asset/images/wallet-device.png";
 import "./Card.css";
 
 function CardWallet() {

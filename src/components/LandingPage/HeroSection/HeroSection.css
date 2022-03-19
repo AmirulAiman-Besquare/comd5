@@ -1,43 +1,39 @@
 .login-btn {
   color: #0a2653;
-  width: 140px;
-  height: 50px;
+  width: 150px;
+  height: 60px;
   border-radius: 20px;
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 70px;
+  right: 190px;
   background-color: #d6e5f2;
   font-weight: bold;
-}
-.rectangle-size {
-  width: 26%;
-  position: relative;
-  top: 10px;
-  transform: translate(0%, 5%);
+  font-size: 22px;
+  border-radius: 20px;
+  border: 0.2rem solid #0a2653;
 }
 
-.highlight {
-  position: relative;
-  bottom: 100px;
-  left: 90px;
-  width: 160px;
-  height: 100px;
-  background: #83bbee;
-}
 .company-logo {
   position: absolute;
-  top: 20px;
-  left: 90px;
-  height: 50px;
-  width: 150px;
+  top: 70px;
+  left: 190px;
+  height: 80px;
+  width: 230px;
 }
 
-.pcPhone-comd5 {
+.hero-content {
+  flex-direction: row;
+}
+
+.hero-img > .pcPhone-comd5 {
   position: absolute;
-  top: 25%;
-  right: 5%;
-  height: 65%;
-  width: 40%;
+  top: 190px;
+  right: 190px;
+  display: flex;
+  flex: 190px 0 0 190px;
+  height: 60%;
+  width: 35%;
+  bottom: 90px;
 }
 
 .start-now-btn {
@@ -51,298 +47,499 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: 800;
-  font-size: 25px;
+  font-size: 28px;
   line-height: 42px;
   letter-spacing: 0.015em;
   display: justify;
   border-radius: 20px;
-  margin: 40px 270px 10px;
+  margin: 40px 400px;
   width: 200px;
-  height: 60px;
+  height: 70px;
   cursor: pointer;
 }
 
 .hero-container {
   background: url("../../asset/images/originalbg2.png") center center/cover
     no-repeat;
-
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
   object-fit: contain;
 }
 
-.hero-container > .Header-intro {
-  margin-top: 30px;
-  margin-left: 90px;
-  font-family: Readex Pro;
+.hero-text > .Header-intro {
+  margin-top: 10%;
+  margin-left: 190px;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: bold;
-  font-size: 68px;
+  font-size: 76px;
   line-height: 80px;
   letter-spacing: 0.06em;
-
+  text-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
   color: #275187;
 }
 
-.center-description {
-  margin-top: 22px;
-  margin-left: 90px;
-  font-family: Glory;
+.hero-text > p {
+  margin-top: 3%;
+  margin-left: 190px;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 28px;
   line-height: 36px;
   letter-spacing: 0.015em;
-
   color: #062650;
 }
 
-@media only screen and (max-width: 1200px) {
-  .pcPhone-comd5 {
+@media only screen and (min-width: 1281px) and (max-width: 1560px) {
+  .login-btn {
+    width: 140px;
+    height: 50px;
     position: absolute;
-    top: 30%;
-    right: 3%;
-    height: 50%;
-    width: 33%;
+    top: 20px;
+    right: 90px;
+    font-size: 18px;
+  }
+
+  .company-logo {
+    position: absolute;
+    top: 20px;
+    left: 90px;
+    height: 50px;
+    width: 150px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    position: absolute;
+    top: 20%;
+    right: 90px;
+    height: 410px;
+    width: 500px;
+  }
+
+  .start-now-btn {
+    font-size: 25px;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    display: justify;
+    border-radius: 20px;
+    margin: 40px 250px;
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
   }
 
   .hero-container {
     background: url("../../asset/images/originalbg2.png") center center/cover
       no-repeat;
 
-    height: 125vh;
+    height: 110vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
     object-fit: contain;
     white-space: nowrap;
   }
 
-  .hero-container {
-    background: url("../../asset/images/originalbg2.png") center center/cover
-      no-repeat;
-
-    height: 120vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
-    white-space: nowrap;
-  }
-  .hero-container > h1 {
-    margin-top: 30px;
+  .hero-text > .Header-intro {
     margin-left: 90px;
-    font-family: Readex Pro;
+    font-family: "Roboto";
     font-style: normal;
     font-weight: bold;
-    font-size: 49px;
+    font-size: 68px;
     line-height: 80px;
     letter-spacing: 0.06em;
-
-    color: #275187;
   }
 
-  .rectangle-size {
-    width: 28%;
-    position: relative;
-    top: 10px;
-    transform: translate(0%, 5%);
-  }
-
-  .center-description {
-    margin-top: 22px;
+  .hero-text > p {
+    margin-top: 50px;
     margin-left: 90px;
-    font-family: Glory;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.015em;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .login-btn {
+    width: 140px;
+    height: 50px;
+    border-radius: 20px;
+    top: 20px;
+    right: 90px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .company-logo {
+    position: absolute;
+    top: 20px;
+    left: 90px;
+    height: 50px;
+    width: 150px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    position: absolute;
+    top: 20%;
+    right: 90px;
+    height: 310px;
+    width: 385px;
+  }
+
+  .start-now-btn {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    display: justify;
+    margin: 40px 250px;
+    width: 160px;
+    height: 60px;
+  }
+
+  .hero-container {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    object-fit: contain;
+  }
+
+  .hero-text > .Header-intro {
+    margin-top: 70px;
+    margin-left: 90px;
+    font-size: 56px;
+    line-height: 60px;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-text > p {
+    margin-top: 40px;
+    margin-left: 90px;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
-    line-height: 36px;
+    line-height: 30px;
     letter-spacing: 0.015em;
-
-    color: #062650;
   }
 }
 
-@media screen and (max-width: 970px) {
-  .pcPhone-comd5 {
-    display: block;
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .login-btn {
+    width: 120px;
+    height: 50px;
+    right: 10%;
+  }
+
+  .company-logo {
+    height: 50px;
+    width: 150px;
+    left: 10%;
+  }
+
+  .hero-img {
+    margin-bottom: 450px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    /* display: block; */
     margin-left: auto;
     margin-right: auto;
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    height: 40%;
-    width: 45%;
-    white-space: nowrap;
+    top: 20%;
+    left: 18%;
+    /* white-space: nowrap; */
+    justify-content: center;
+    height: 285px;
+    width: 370px;
   }
-  .hero-container {
-    background: url("../../asset/images/originalbg2.png") center center/cover
-      no-repeat;
 
+  .start-now-btn {
+    /* display: none; */
+    align-items: center;
+    justify-content: center;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    border-radius: 20px;
+    margin: 40px 285px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-container {
     height: 125vh;
     width: 100%;
     display: flex;
+    justify-content: center;
+  }
+
+  /* .hero-text{
+    justify-content: center;
+  } */
+
+  .hero-text > .Header-intro {
+    font-size: 52px;
+    line-height: 50px;
+    justify-content: center;
+    margin: 0 0 0 0;
+    text-align: center;
+    /* top: 62%;
+    left: 15%; */
+  }
+
+  .hero-text > p {
+    justify-content: center;
+    margin: 20px 0 0 0;
+    text-align: center;
+    top: 10%;
+    /* position: relative; */
+    /* top: 280px; */
+    /* right: 40px; */
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .login-btn {
+    width: 120px;
+    height: 50px;
+    right: 10%;
+  }
+
+  .company-logo {
+    height: 50px;
+    width: 150px;
+    left: 10%;
+  }
+
+  .hero-img {
+    margin-bottom: 450px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+    top: 20%;
+    left: 18%;
+    /* white-space: nowrap; */
+    justify-content: center;
+    height: 320px;
+    width: 370px;
+  }
+
+  .start-now-btn {
+    /* display: none; */
+    justify-content: center;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    border-radius: 20px;
+    margin: 40px 280px;
+  }
+
+  .hero-content {
     flex-direction: column;
     justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
-    white-space: nowrap;
-  }
-  .hero-container > .Header-intro {
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 50px;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    color: #275187;
-    position: absolute;
-    margin-top: 10px;
-    margin-right: 25%;
-    top: 62%;
-    left: 17%;
-    display: block;
   }
 
-  .rectangle-size {
-    width: 220px;
-    height: 60px;
-
-    position: relative;
-    top: -68px;
-    left: 27%;
-    transform: translate(0%, 5%);
-    display: block;
-  }
-
-  .center-description {
+  .hero-container {
+    height: 125vh;
+    width: 100%;
     display: flex;
     justify-content: center;
-    position: relative;
-    top: 280px;
-    right: 40px;
+  }
+
+  /* .hero-text{
+    justify-content: center;
+  } */
+
+  .hero-text > .Header-intro {
+    font-size: 40px;
+    line-height: 50px;
+    justify-content: center;
+    margin: 0 0 0 0;
+    text-align: center;
+    /* top: 62%;
+    left: 15%; */
+  }
+
+  .hero-text > p {
+    justify-content: center;
+    margin: 20px 0 0 0;
+    text-align: center;
+    top: 10%;
+    /* position: relative; */
+    /* top: 280px; */
+    /* right: 40px; */
     font-size: 17px;
     line-height: 30px;
   }
-
-  .hero-container > .start-now-btn {
-    background: linear-gradient(
-      98.83deg,
-      #00b2ff 11.6%,
-      #106fb3 56.89%,
-      #194886 83.7%
-    );
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 30px;
-    width: 160px;
-    height: 60px;
-    cursor: pointer;
-    position: relative;
-    top: 28%;
-  }
 }
 
-@media screen and (max-width: 900px) {
-  .hero-container {
-    background: url("../../asset/images/originalbg2.png") center center/cover
-      no-repeat;
+@media only screen and (min-width: 375px) and (max-width: 480px) {
+  .login-btn {
+    width: 100px;
+    height: 40px;
+    right: 10%;
+    font-size: 18px;
+  }
 
+  .company-logo {
+    height: 50px;
+    width: 150px;
+    left: 10%;
+  }
+
+  .hero-img {
+    margin-bottom: 450px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+    top: 20%;
+    left: 10%;
+    /* white-space: nowrap; */
+    justify-content: center;
+    height: 260px;
+    width: 300px;
+  }
+
+  .start-now-btn {
+    /* display: none; */
+    justify-content: center;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    border-radius: 20px;
+    margin: 40px 85px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-container {
     height: 125vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
-    white-space: nowrap;
   }
-  .hero-container > .Header-intro {
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
+
+  /* .hero-text{
+    justify-content: center;
+  } */
+
+  .hero-text > .Header-intro {
     font-size: 40px;
     line-height: 50px;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    color: #275187;
-    position: absolute;
-    margin-top: 10px;
-    margin-right: 25%;
-    top: 62%;
-    left: 5%;
-    display: block;
+    justify-content: center;
+    margin: 0 10px 0 10px;
+    text-align: center;
+    /* top: 62%;
+    left: 15%; */
   }
 
-  .rectangle-size {
-    width: 220px;
-    height: 60px;
-
-    position: relative;
-    top: -68px;
-    left: 27%;
-    transform: translate(0%, 5%);
-    display: block;
+  .hero-text > p {
+    justify-content: center;
+    margin: 20px 10px 0 10px;
+    text-align: center;
+    top: 10%;
+    /* position: relative; */
+    /* top: 280px; */
+    /* right: 40px; */
+    font-size: 17px;
+    line-height: 30px;
   }
 }
+@media only screen and (min-width: 275px) and (max-width: 374px) {
+  .login-btn {
+    width: 100px;
+    height: 40px;
+    right: 10%;
+    font-size: 18px;
+  }
 
-@media screen and (max-width: 800px) {
+  .company-logo {
+    height: 40px;
+    width: 120px;
+    left: 10%;
+  }
+
+  .hero-img {
+    margin-bottom: 400px;
+  }
+
+  .hero-img > .pcPhone-comd5 {
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+    top: 20%;
+    left: 10%;
+    /* white-space: nowrap; */
+    justify-content: center;
+    height: 220px;
+    width: 270px;
+  }
+
+  .start-now-btn {
+    /* display: none; */
+    align-items: center;
+    justify-content: center;
+    line-height: 42px;
+    letter-spacing: 0.015em;
+    border-radius: 20px;
+    margin: 40px 75px;
+    height: 60px;
+    width: 180px;
+    font-size: 24px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .hero-container {
-    background: url("../../asset/images/originalbg2.png") center center/cover
-      no-repeat;
-
-    height: 120vh;
+    height: 125vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
-    white-space: nowrap;
   }
-  .hero-container > .Header-intro {
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
+
+  /* .hero-text{
+    justify-content: center;
+  } */
+
+  .hero-text > .Header-intro {
+    font-size: 30px;
     line-height: 50px;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    color: #275187;
-    position: absolute;
-    margin-top: 10px;
-    margin-right: 25%;
-    top: 60%;
-    left: 3%;
-    display: block;
+    justify-content: center;
+    margin: 0 10px 0 10px;
+    text-align: center;
+    /* top: 62%;
+    left: 15%; */
   }
 
-  .rectangle-size {
-    width: 220px;
-    height: 60px;
-
-    position: relative;
-    top: -68px;
-    left: 27%;
-    transform: translate(0%, 5%);
-    display: block;
+  .hero-text > p {
+    justify-content: center;
+    margin: 20px 10px 0 10px;
+    text-align: center;
+    top: 10%;
+    /* position: relative; */
+    /* top: 280px; */
+    /* right: 40px; */
+    font-size: 17px;
+    line-height: 30px;
   }
-}
-
-@media only screen and (max-width: 700px) {
-}
-@media only screen and (max-width: 600px) {
 }
