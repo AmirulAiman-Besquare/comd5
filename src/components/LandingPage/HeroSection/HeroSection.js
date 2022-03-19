@@ -10,13 +10,19 @@ function HeroSection() {
   return (
     <div className="hero-container">
       <Link to="/login">
-        <button className="login-btn">Login</button>
+        <button className="login-btn animate__animated animate__fadeInDown">
+          Login
+        </button>
       </Link>
-      <img className="company-logo" src={comD5} alt="ComD5 logo" />
+      <img
+        className="company-logo animate__animated animate__fadeInDown"
+        src={comD5}
+        alt="ComD5 logo"
+      />
       <div className="hero-content">
         <div className="hero-img">
           <img
-            className="pcPhone-comd5"
+            className="pcPhone-comd5 animate__animated animate__fadeInDown"
             src={pcPhone}
             alt="Devices showing ComD5 services"
           />

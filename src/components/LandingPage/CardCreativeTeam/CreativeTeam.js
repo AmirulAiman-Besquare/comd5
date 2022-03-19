@@ -24,14 +24,26 @@ function CreativeTeam() {
       <div className="cards__container">
         <div className="cards__wrapper">
           <ul className="cards__items">
-            <CreativeTeamList src={Aiman} text="Amirul Aiman" />
-            <CreativeTeamList src={Vishnu} text="Vishnu " />
-            <CreativeTeamList src={Yazeed} text="Yazeed" />
+            <a href="https://github.com/AmirulAiman-Besquare">
+              <CreativeTeamList src={Aiman} text="Amirul Aiman" />
+            </a>
+            <a href="https://github.com/vishnu-besquare">
+              <CreativeTeamList src={Vishnu} text="Vishnu " />
+            </a>
+            <a href="https://github.com/yazeedwong">
+              <CreativeTeamList src={Yazeed} text="Yazeed" />
+            </a>
           </ul>
           <ul className="cards__items">
-            <CreativeTeamList src={Nadiah} text="Nadiah" />
-            <CreativeTeamList src={Rusydiah} text="Rusydiah" />
-            <CreativeTeamList src={Syafiqah} text="Syafiqah" />
+            <a href="https://github.com/nadizeq">
+              <CreativeTeamList src={Nadiah} text="Nadiah" />
+            </a>
+            <a href="https://github.com/rsydh">
+              <CreativeTeamList src={Rusydiah} text="Rusydiah" />
+            </a>
+            <a href="https://github.com/Izzan54">
+              <CreativeTeamList src={Syafiqah} text="Syafiqah" />
+            </a>
           </ul>
         </div>
       </div>
