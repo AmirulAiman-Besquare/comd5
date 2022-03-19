@@ -114,7 +114,7 @@ export const Register = ({ setAuth }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-[url('../asset/images/mainbg.png')] lg:justify-center bg-center bg-no-repeat bg-cover">
-      <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md ">
+      <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg animate__animated animate__fadeInDown max md:flex-row md:flex-1 lg:max-w-screen-md ">
         <div className="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly ">
           <img
             className="object-center mx-auto h-72"
@@ -147,6 +147,7 @@ export const Register = ({ setAuth }) => {
               </label>
               <input
                 type="text"
+                required
                 id="first_name"
                 name="first_name"
                 value={first_name}
@@ -161,6 +162,7 @@ export const Register = ({ setAuth }) => {
               </label>
               <input
                 type="text"
+                required
                 id="last_name"
                 name="last_name"
                 value={last_name}
@@ -176,6 +178,7 @@ export const Register = ({ setAuth }) => {
               <input
                 type="email"
                 id="email"
+                required
                 name="email"
                 value={email}
                 onChange={(e) => onChange(e)}
@@ -195,6 +198,7 @@ export const Register = ({ setAuth }) => {
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
+                  required
                   onFocus={handleOnFocus}
                   onBlur={handleOnBlur}
                   onKeyUp={handleOnKeyUp}
@@ -223,6 +227,7 @@ export const Register = ({ setAuth }) => {
 
             <div className="flex items-center space-x-2">
               <input
+                required
                 type="checkbox"
                 id="remember"
                 className="w-4 h-4 transition duration-300 rounded focus:ring-2 focus:ring-offset-0 focus:outline-none focus:ring-blue-200"
@@ -242,8 +247,8 @@ export const Register = ({ setAuth }) => {
             <div>
               <button
                 type="submit"
-                className={btnSubmitColor}
-                disabled={btnSubmitState}
+                className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 rounded-md shadow bg-gradient-to-r from-cyan-500 to-blue-700 hover:from-cyan-600 hover:to-blue-900 focus:outline-none focus:ring-blue-200 focus:ring-4"
+                // disabled={btnSubmitState}
               >
                 Sign Up
               </button>

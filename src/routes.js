@@ -58,8 +58,8 @@ export const PageRoute = () => {
             !IsAuthenticated ? (
               <Login setAuth={setAuth} />
             ) : isLoading ? (
-              <div className="flex items-center justify-center h-full ">
-                <HashLoader color="#00B2FF" size={100} />
+              <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
+                <HashLoader color="#00B2FF" size={100} className="mt-10" />
               </div>
             ) : (
               <Navigate to="/dashboard" />
@@ -74,7 +74,7 @@ export const PageRoute = () => {
             !IsAuthenticated ? (
               <Register setAuth={setAuth} />
             ) : isLoading ? (
-              <div className="flex items-center justify-center h-full ">
+              <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
                 <HashLoader color="#00B2FF" size={100} />
               </div>
             ) : (

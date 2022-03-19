@@ -1,7 +1,7 @@
 import React from "react";
-import "./Asset.css";
+import "./Assets.css";
 
-function AssetItems(props) {
+function AssetsItems(props) {
   return (
     <>
       <li className="asset_items">
@@ -21,4 +21,4 @@ function AssetItems(props) {
   );
 }
 
-export default AssetItems;
+export default AssetsItems;

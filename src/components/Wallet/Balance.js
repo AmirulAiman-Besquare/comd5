@@ -6,7 +6,7 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { toast } from "react-toastify";
 
-export const Balance = () => {
+export const Balance = (props) => {
   const [topupInputs, setTopupInputs] = useState({
     amount: "",
   });
@@ -17,7 +17,7 @@ export const Balance = () => {
 
   const [showModal1, setShowModal1] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
-  const [disableTopup, setDisableTopup] = useState(0);
+  const [disableTopup, setDisableTopup] = useState(false);
   const [showCfmModal1, setshowCfmModal1] = useState(false);
 
   const { amount } = topupInputs;
@@ -58,7 +58,7 @@ export const Balance = () => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      props.func(1);
       toast.success("Top-Up Succeed");
     } catch (error) {
       console.error(error.message);
@@ -72,7 +72,6 @@ export const Balance = () => {
     withdraw_amount = w_amount;
     try {
       const body = { withdraw_amount };
-      console.log(body);
       const response = await fetch("https://api.comd5.xyz/withdraw/", {
         method: "PUT",
         headers: {
@@ -83,7 +82,7 @@ export const Balance = () => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      props.func(1);
       if (parseRes === "Insufficient Balance") {
         toast.error("Withdraw Failed");
       } else {
@@ -107,8 +106,8 @@ export const Balance = () => {
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
-      if (balance > 5000) {
-        setDisableTopup(true);
+      if (balance < 10000) {
+        setDisableTopup(false);
       }
     } catch (error) {
       console.error(error.message);
@@ -149,6 +148,9 @@ export const Balance = () => {
     HideCfmMdl1();
   };
   const CloseTopUp = () => {
+    getBalance();
+    getBalance();
+    getBalance();
     getBalance();
     getBalance();
     HideMdl2();

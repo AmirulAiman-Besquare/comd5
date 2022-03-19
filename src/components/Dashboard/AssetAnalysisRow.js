@@ -81,18 +81,18 @@ export const AssetAnalysisRow = ({ asset }) => {
   return (
     <>
       <tr className="">
-        <td className="px-6 py-4 text-base font-medium text-white whitespace-nowrap">
+        <td className="px-2 py-4 text-base font-medium text-white whitespace-nowrap xl:px-6 ">
           {asset === "frxXAUUSD"
             ? "Gold/USD"
             : asset === "frxXAGUSD"
             ? "Silver/USD"
             : asset === "frxXPTUSD"
-            ? "Platinium/USD"
+            ? "Platinum/USD"
             : "Palladium/USD"}
         </td>
         <td
           className={
-            "px-6 py-4 text-base font-light whitespace-nowrap text-white"
+            "px-3 py-4 text-base font-light whitespace-nowrap text-white xl:px-6"
           }
         >
           {price}
@@ -100,10 +100,10 @@ export const AssetAnalysisRow = ({ asset }) => {
         <td
           className={
             change === 0
-              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              ? "text-white px-3 py-4 text-base font-light whitespace-nowrap xl:px-6"
               : change >= 0
-              ? "text-[#5CEE21] flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
-              : "text-[#FB512D] flex px-6 py-4 text-base font-light whitespace-nowrap gap-1 justify-center"
+              ? "text-[#5CEE21] flex px-3 py-4 text-base font-light whitespace-nowrap gap-1 justify-center xl:px-6"
+              : "text-[#FB512D] flex px-3 py-4 text-base font-light whitespace-nowrap gap-1 justify-center xl:px-6"
           }
         >
           {icon}
@@ -112,10 +112,10 @@ export const AssetAnalysisRow = ({ asset }) => {
         <td
           className={
             changePercent === 0
-              ? "text-white px-6 py-4 text-base font-light whitespace-nowrap"
+              ? "text-white px-3 py-4 text-base font-light whitespace-nowrap xl:px-6"
               : changePercent >= 0
-              ? "text-[#5CEE21] px-6 py-4 text-base font-light whitespace-nowrap"
-              : "text-[#FB512D]  px-6 py-4 text-base font-light whitespace-nowrap"
+              ? "text-[#5CEE21] px-3 py-4 text-base font-light whitespace-nowrap xl:px-6"
+              : "text-[#FB512D]  px-3 py-4 text-base font-light whitespace-nowrap xl:px-6"
           }
         >
           {changePercent}

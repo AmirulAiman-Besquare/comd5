@@ -119,3 +119,56 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@media (max-width: 321px) {
+  .right {
+    right: 0px !important;
+    left: 0px !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .right2 {
+    left: 45px;
+  }
+  .dtitle {
+    position: static;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .ddesc {
+    margin-top: 2rem;
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-device-width: 500px) and (max-device-width: 550px) {
+  .tickicon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .right2 {
+    left: 120px !important;
+  }
+  .dtitle {
+    position: static;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .ddesc {
+    margin-top: 2rem;
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

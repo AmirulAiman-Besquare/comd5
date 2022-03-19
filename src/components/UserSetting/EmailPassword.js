@@ -10,8 +10,8 @@ import PasswordCriteria from "../PasswordCriteriaChecker/PasswordCriteira";
 import "../PasswordCriteriaChecker/PasswordCriteria.css";
 
 export const EmailPassword = () => {
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
   //Email & Password section
   const [isDisabledEmailPassword, setIsDisabledEmailPassword] = useState(true);
@@ -77,7 +77,7 @@ export const EmailPassword = () => {
   };
 
   //clear user input for password
-  const [valuePass, setValuePass] = useState();
+  const [valuePass, setValuePass] = useState("");
 
   //update user input for Password
   const handleUserInputPass = (e) => {
@@ -165,7 +165,6 @@ export const EmailPassword = () => {
           
         md:my-3 md:mb-10 lg:mb-0 2xl:mb-8 lg:pb-1 border-[#376db3] border-8 xl:max-w-xl  xl:w-full"
         >
-          {" "}
           <div className="h-full mx-3 my-5 sm:mx-20 sm:my-10">
             <p className="mb-3 text-xl font-bold text-white md:text-4xl xl:text-4xl lg:text-2xl sm:text-2xl">
               Email & Password
@@ -242,7 +241,7 @@ export const EmailPassword = () => {
               </div>
 
               <button
-                className={btnSubmitColor}
+                className="px-4 py-2 mt-3 text-base font-bold text-white sm:px-6 sm:py-2 sm:text-xl rounded-3xl xl:mt-7 bg-[#40ABE1] hover:bg-[#10a6f1] disabled:bg-[#505355]"
                 disabled={btnSubmitState}
                 id="button"
                 type="button"

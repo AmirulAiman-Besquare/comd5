@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import useState from "react-usestateref";
 import { CandleStick } from "./CandleStick";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
-import { css } from "@emotion/react";
 import loadingicon from "../../asset/images/loading.png";
 
 const app_id = 1089; //app_id for testing only
 
 const TableData = ({ asset, granularity }) => {
-  console.log(granularity);
   const data = [];
   let latesttime = 0;
   let latestohlc = {};
@@ -35,9 +32,9 @@ const TableData = ({ asset, granularity }) => {
         JSON.stringify({
           ticks_history: refSelectedCommodity.current,
           adjust_start_time: 1,
-          count: 100,
+          count: 10000,
           end: "latest",
-          start: 1,
+          start: 0,
           granularity: refSelectedTime.current,
           subscribe: 1,
           style: "candles",
@@ -55,7 +52,7 @@ const TableData = ({ asset, granularity }) => {
         setRealHistory(
           data[0].map((d) => {
             return {
-              time: d.epoch,
+              time: d.epoch + 28800,
               open: d.open,
               high: d.high,
               low: d.low,
@@ -69,7 +66,7 @@ const TableData = ({ asset, granularity }) => {
         //if true => create the *updating* candle
         if (latesttime === parsedData.ohlc.open_time) {
           latestohlc = {
-            time: parsedData.ohlc.epoch,
+            time: parsedData.ohlc.epoch + 28800,
             open: parseFloat(parsedData.ohlc.open),
             high: parseFloat(parsedData.ohlc.high),
             low: parseFloat(parsedData.ohlc.low),
@@ -106,7 +103,7 @@ const TableData = ({ asset, granularity }) => {
   return (
     <>
       {loading ? (
-        <div className="absolute z-10 left-[50%] top-[60%] -translate-y-2/4 -translate-x-2/4 ">
+        <div className="absolute z-50 left-[50%] top-[45%] -translate-y-2/4 -translate-x-2/4 ">
           <img
             src={loadingicon}
             className="block m-auto animate__bounce animate__animated animate__infinite"
@@ -115,7 +112,7 @@ const TableData = ({ asset, granularity }) => {
       ) : (
         <></>
       )}
-      {loading ? <div className="dark-overlay"></div> : <></>}
+      {loading ? <div className="z-40 dark-overlay"></div> : <></>}
       <CandleStick data={tableData} />
     </>
   );

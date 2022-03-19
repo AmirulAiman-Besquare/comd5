@@ -25,12 +25,13 @@ function FinalSection() {
         “For ease of trading anywhere and anytime, ComD5 can help you to achieve
         it”
       </p>
-
-      <img
-        className="center-googlePlay-logo"
-        src={GooglePlay}
-        alt="Show Google Play logo"
-      />
+      <a href="https://drive.google.com/u/2/uc?id=1Xlpuyh_fENGw0-8eUkmZZV_EmDNx1zjm&export=download&confirm=t">
+        <img
+          className="center-googlePlay-logo"
+          src={GooglePlay}
+          alt="Show Google Play logo"
+        />
+      </a>
     </div>
   );
 }

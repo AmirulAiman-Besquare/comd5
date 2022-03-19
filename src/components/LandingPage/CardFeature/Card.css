@@ -5,6 +5,7 @@
 
 .bg1 {
   background: linear-gradient(206.48deg, #a2baf3 21.05%, #b9deff 52.54%);
+  /* height: 110vh; */
 }
 
 .bg2 {
@@ -14,11 +15,12 @@
     rgba(225, 213, 250, 0.67) 61.35%,
     rgba(191, 168, 239, 0.76) 84.59%
   );
+  /* height: 110vh; */
 }
 
 .title {
   padding-top: 50px;
-  font-family: Readex Pro;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: bold;
   font-size: 70px;
@@ -33,13 +35,13 @@
 }
 
 .text-description-color {
-  font-family: roboto;
+  font-family: Roboto;
   text-align: center;
   color: #062650;
   font-style: italic;
   font-size: 32px;
   letter-spacing: 2px;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -51,14 +53,18 @@
   top: 50px;
   padding-bottom: 50px;
   height: 70%;
+  width: 50%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1441px) and (max-width: 1560px) {
+  .center {
+    height: 70%;
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
   .title {
-    text-align: center;
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
     font-size: 60px;
     line-height: 87px;
     /* identical to box height */
@@ -75,35 +81,29 @@
   }
 
   .text-description-color {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 42px;
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
+    font-size: 32px;
+    letter-spacing: 2px;
+    /* padding-top: 10px; */
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     top: 50px;
     height: 65%;
-    width: 80%;
+    width: 55%;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .center {
+    top: 50px;
+    height: 60%;
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1024px) {
   .title {
-    text-align: center;
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
     font-size: 50px;
     line-height: 87px;
     /* identical to box height */
@@ -120,44 +120,24 @@
   }
 
   .text-description-color {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 28px;
-    line-height: 42px;
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     top: 50px;
-    height: 65%;
-    width: 85%;
+    padding-bottom: 50px;
+    height: 60% !important;
+    width: 60% !important;
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (min-width: 769px) and (max-width: 899px) {
   .title {
-    text-align: center;
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
     font-size: 40px;
     line-height: 87px;
     /* identical to box height */
 
     letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .text-description {
@@ -165,48 +145,51 @@
   }
 
   .text-description-color {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 25px;
     line-height: 42px;
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     top: 50px;
-    height: 60%;
-    width: 80%;
+    height: 55%;
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  /* .cards{
+    height: 80vh;
+  } */
+  .title {
+    font-size: 40px;
+  }
+
+  .text-description {
+    text-align: center;
+  }
+
+  .text-description-color {
+    font-size: 25px;
+    line-height: 42px;
+  }
+
+  .center {
+    top: 50px;
+    height: 50%;
+    width: 70%;
+    bottom: 0;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .cards {
-    height: 40rem;
+    height: 35rem;
   }
 
   .title {
-    text-align: center;
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
     font-size: 35px;
     line-height: 80px;
     /* identical to box height */
-
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .text-description {
@@ -214,44 +197,27 @@
   }
 
   .text-description-color {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 20px;
     line-height: 42px;
     letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 20px 0 20px;
   }
 
   .center {
-    top: 30px;
+    top: 50px;
     height: 300px;
     width: 350px;
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .cards {
-    height: 40rem;
+    height: 35rem;
   }
 
   .title {
-    text-align: center;
-    font-family: Readex Pro;
-    font-style: normal;
-    font-weight: bold;
     font-size: 35px;
-    line-height: 80px;
-    /* identical to box height */
-
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0 10px 0 10px;
   }
 
   .text-description {
@@ -259,16 +225,8 @@
   }
 
   .text-description-color {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 20px;
-    line-height: 42px;
-    letter-spacing: 0.06em;
-
-    color: #062650;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0 10px 0 10px;
   }
 
   .center {
@@ -277,7 +235,7 @@
       margin-right: auto; */
     position: relative;
     top: 30px;
-    height: 220px;
-    width: 300px;
+    height: 270px;
+    width: 320px;
   }
 }
