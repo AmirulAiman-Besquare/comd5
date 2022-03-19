@@ -1,11 +1,12 @@
 .footer-container {
   background-color: #0a2653;
   padding: 1rem 0 1rem 0;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  justify-content: space-evenly;
-  align-content: space-between;
+  justify-content: center;
+  /* align-content: space-between; */
   white-space: nowrap;
+  height: 80px;
 }
 
 .footer-links {
@@ -13,8 +14,8 @@
   /* margin-left: 15px;
   max-width: 1000px; */
   display: flex;
-  justify-content: space-between;
-  align-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-link-wrapper {
@@ -24,130 +25,43 @@
 }
 
 .footer-link-items {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  /* display: flex; */
+  /* flex-direction: column; */
+  text-align: center;
   margin: 15px;
   text-align: left;
   width: 160px;
   box-sizing: border-box;
 }
 
-.footer-link-items .contact-us-tex {
-  margin-bottom: 16px;
-}
-
-.footer-link-items > .contact-us-tex {
-  color: #fff;
-}
-
-.comD5-logo-white {
-  position: absolute;
-  right: 0;
-  margin-right: 2%;
-  height: 50px;
-  width: 150px;
-}
-
-.contact-us-text {
-  font-family: "Roboto";
+.footer-details {
+  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 16px;
   /* identical to box height */
   margin-bottom: 15px;
   letter-spacing: 0.06em;
-
   color: #ffffff;
 }
 
-.contact-number-with-icon {
+footer-location > .location-icon {
   font-size: 24px;
-  padding-right: 1000px;
+  /* padding-right: 1000px; */
 }
 
-.contact-number {
-  font-family: Roboto;
-  font-style: italic;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 33px;
-  letter-spacing: 0.06em;
-  color: #ffffff;
-  position: relative;
-}
-
-@media only screen and (max-width: 600px) {
-  .footer-container {
-    background-color: #0a2653;
-    padding: 1rem 0 1rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-content: space-between; */
-    white-space: nowrap;
-    height: 20rem;
+@media only screen and (min-width: 240px) and (max-width: 480px) {
+  .contact-us-text {
+    font-size: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 0.06em;
   }
-
   .footer-links {
-    /* width: 100%; */
+    width: 85%;
     /* margin-left: 15px;
     max-width: 1000px; */
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
-  }
-
-  .footer-link-wrapper {
-    display: flex;
-    justify-content: space-between;
-    /* align-content: space-between; */
-  }
-
-  .footer-link-items {
-    display: flex;
-    align-items: flex-start;
-    /* margin: 15px; */
-    text-align: left;
-    /* width: 160px; */
-    box-sizing: border-box;
-  }
-
-  .footer-link-items .contact-us-tex {
-    margin: 0 0 0 0;
-  }
-
-  .comD5-logo-white {
-    /* position: absolute; */
-    justify-content: center;
-    margin: 0 90px 0 50px;
-    height: 50px;
-    width: 150px;
-  }
-
-  .contact-us-text {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 26px;
-    /* identical to box height */
-    margin-bottom: 15px;
-    letter-spacing: 0.06em;
-  }
-
-  .contact-number-with-icon {
-    font-size: 18px;
-    /* padding-right: 1000px; */
-  }
-
-  .contact-number {
-    font-family: Roboto;
-    font-style: italic;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 30px;
-    letter-spacing: 0.06em;
-    /* position: relative; */
-    margin-bottom: 10px;
+    align-content: center;
   }
 }

@@ -86,7 +86,7 @@
 
 @media only screen and (max-width: 1200px) {
   .cards-final-section {
-    height: 70vh;
+    height: 85vh;
   }
 
   .text-description-color-final {
@@ -99,15 +99,6 @@
   }
 
   .start-now-btn-final-page {
-    font-style: normal;
-    font-weight: 800;
-    font-size: 33px;
-    line-height: 42px;
-    letter-spacing: 0.015em;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     top: 40px;
     width: 200px;
     height: 60px;
@@ -118,14 +109,8 @@
     top: 100px;
     font-size: 25px;
     line-height: 37px;
-    text-align: center;
-    letter-spacing: 0.06em;
   }
   .center-googlePlay-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     top: 130px;
     width: 250px;
     height: 90px;
@@ -133,6 +118,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .cards-final-section {
+    height: 85vh;
+  }
+
   .text-description-color-final {
     font-size: 23px;
     line-height: 42px;
@@ -209,14 +198,15 @@
     height: 80px;
   }
 
-  .title {
-    /* padding-top: 50px; */
-  }
+  
 }
 
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 52px;
+  }
+  .cards-final-section{
+    height: 80vh;
   }
 }
 
@@ -224,10 +214,29 @@
   .title {
     font-size: 42px;
   }
+  .cards-final-section {
+    height: 90vh;
+  }
+  .text-description-color-final{
+    font-size: 18px;
+    margin: 0 10px 0 10px;
+  }
+  .text-description-comD5{
+    padding-top: 30px;
+    font-size: 18px;
+    margin: 0 10px 0 10px;
+  }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 300px)and (max-width: 400px) {
   .title {
     font-size: 42px;
   }
+  .text-description-color-final{
+    font-size: 16px;
+  }
+  .text-description-comD5{
+    font-size: 16px;
+  }
+  
 }

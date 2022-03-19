@@ -1,6 +1,6 @@
 .bg-creativeTeam {
   background: linear-gradient(201.58deg, #ece3ff 22.2%, #b0e0ed 83.85%);
-  height: 100vh;
+  height: 105vh;
   width: 100%;
 }
 
@@ -92,6 +92,7 @@
 
 .cards__item__img {
   position: absolute;
+  background-color: #062650;
   top: 0;
   right: 0;
   bottom: 0;
@@ -100,7 +101,7 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  max-height: 100%;
+  /* max-height: 100%; */
   object-fit: cover;
   transition: all 0.2s linear;
 }
@@ -110,18 +111,35 @@
 }
 
 .cards__item__info {
-  padding: 20px 50px 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
   background-color: #194785;
   color: #fff;
-  height: 100%;
+  height: 50px;
   width: 300px;
 }
 
 .cards__item_text {
+  
   text-align: center;
   font-size: 20px;
   line-height: 24px;
 }
+
+@media only screen and (max-width: 1560px) {
+  .bg-creativeTeam{
+   height: 110vh;;
+  }
+ }
+
+@media only screen and (max-width: 1440px) {
+ .bg-creativeTeam{
+  height: 110vh;;
+ }
+}
+
 
 @media only screen and (max-width: 1200px) {
   .cards__items {
@@ -223,7 +241,7 @@
 
 @media only screen and (max-width: 900px) {
   .bg-creativeTeam {
-    height: 80vh;
+    height: 100vh;
   }
 
   .cards__items {
@@ -278,7 +296,7 @@
 
 @media only screen and (max-width: 800px) {
   .bg-creativeTeam {
-    height: 80vh;
+    height: 95vh;
   }
 
   .cards__items {
@@ -328,11 +346,26 @@
 
 @media only screen and (max-width: 700px) {
   .bg-creativeTeam {
-    height: 80vh;
+    height: 260vh;
   }
+
   .cards__items {
     display: flex;
+    flex-flow: column;
   }
+
+  .cards__item__info {
+    padding: 20px 50px 20px;
+    height: 100%;
+    width: 300px;
+  }
+
+  .cards__item_text {
+    text-align: center;
+    font-size: 20px;
+    line-height: 15px;
+  }
+
   .cards__container {
     display: flex;
     align-items: center;
@@ -343,16 +376,11 @@
 
   .cards__item {
     display: flex;
+    
     flex: 1;
     margin: 0 20px 30px;
     border-radius: 10px;
     margin-bottom: 2rem;
-  }
-
-  .cards__item__info {
-    padding: 20px 50px 20px;
-    height: 100%;
-    width: 150px;
   }
 
   .title-creativeTeam {
@@ -361,16 +389,10 @@
   }
 
   .text-description-color-creativeTeam {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 42px;
     margin-left: 18px;
     margin-right: 18px;
-  }
-
-  .cards__item_text {
-    text-align: center;
-    font-size: 14px;
-    line-height: 15px;
   }
 }
 
