@@ -26,12 +26,14 @@ export const CandleStick = ({ data }) => {
       fontFamily: "Roboto",
     },
     timeScale: {
-      barSpacing: 20,
+      // rightOffset: 12,
       borderColor: "#194886",
+      borderVisible: true,
       timeVisible: true,
       secondsVisible: false,
       fixRightEdge: true,
-      fixLeftEdge: true,
+      shiftVisibleRangeOnNewBar: false,
+      // fixLeftEdge: true,
     },
     // localization: {
     //   priceFormatter: (price) =>
@@ -64,7 +66,11 @@ export const CandleStick = ({ data }) => {
     {
       data: [
         {
-          time: 1646802226,
+          close: 1943.62,
+          high: 1943.65,
+          low: 1943.45,
+          open: 1943.52,
+          time: 1647341768,
         },
       ],
     },

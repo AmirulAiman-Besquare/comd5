@@ -54,15 +54,12 @@ export const DashBoard = () => {
             </a>
           </div>
           <div className="bg-[#075F93] rounded sm:rounded-xl m-2 w-auto py-2 xl:m-0 xl:py-0 xl:px-2 h-full">
-            <a
-              href="/trade"
-              className="flex flex-col justify-center w-full h-full gap-2 px-5 sm:flex-row lg:justify-around lg:py-6 xl:gap-14 "
-            >
+            <div className="flex flex-col justify-center w-full h-full gap-2 px-5 sm:flex-row lg:justify-around lg:py-6 xl:gap-14 ">
               <TicksPriceWs asset={"frxXAUUSD"} />
               <TicksPriceWs asset={"frxXAGUSD"} />
               <TicksPriceWs asset={"frxXPTUSD"} />
               <TicksPriceWs asset={"frxXPDUSD"} />
-            </a>
+            </div>
           </div>
           <div className="hidden xl:block h-[20.5rem] bg-[#075F93] w-96 p-5 rounded-xl ">
             <a
@@ -76,9 +73,9 @@ export const DashBoard = () => {
                 draggable="false"
                 dragstart="false;"
               />
-              <p className="animate__animated animate__bounce">
+              <div className="animate__animated animate__bounce">
                 {balance === 0 ? "Click Me To Reload!" : <p>$ {balance}</p>}
-              </p>
+              </div>
             </a>
           </div>
         </div>

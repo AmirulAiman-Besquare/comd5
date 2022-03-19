@@ -72,7 +72,7 @@
 .hero-text > .Header-intro {
   margin-top: 6%;
   margin-left: 190px;
-  font-family: Readex Pro;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: bold;
   font-size: 76px;
@@ -85,7 +85,7 @@
 .hero-text > p {
   margin-top: 3%;
   margin-left: 190px;
-  font-family: Glory;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
@@ -148,7 +148,7 @@
 
   .hero-text > .Header-intro {
     margin-left: 90px;
-    font-family: Readex Pro;
+    font-family: "Roboto";
     font-style: normal;
     font-weight: bold;
     font-size: 68px;

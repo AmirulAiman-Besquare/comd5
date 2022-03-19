@@ -17,7 +17,7 @@ export const Balance = (props) => {
 
   const [showModal1, setShowModal1] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
-  const [disableTopup, setDisableTopup] = useState(0);
+  const [disableTopup, setDisableTopup] = useState(false);
   const [showCfmModal1, setshowCfmModal1] = useState(false);
 
   const { amount } = topupInputs;
@@ -72,7 +72,6 @@ export const Balance = (props) => {
     withdraw_amount = w_amount;
     try {
       const body = { withdraw_amount };
-      console.log(body);
       const response = await fetch("https://api.comd5.xyz/withdraw/", {
         method: "PUT",
         headers: {
@@ -107,8 +106,8 @@ export const Balance = (props) => {
 
       const parseRes = await response.json();
       setBalance(parseRes[0].balance);
-      if (balance > 5000) {
-        setDisableTopup(true);
+      if (balance < 10000) {
+        setDisableTopup(false);
       }
     } catch (error) {
       console.error(error.message);

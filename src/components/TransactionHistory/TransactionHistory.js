@@ -56,7 +56,6 @@ export const TransactionHistory = () => {
       );
 
       const parseRes = await response.json();
-      console.table(parseRes);
       setTransactionHistory(parseRes.reverse());
     } catch (error) {
       console.error(error.message);

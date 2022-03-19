@@ -61,7 +61,10 @@ export const TicksPriceWs = ({ asset }) => {
   }, [price]);
 
   return (
-    <a className="w-11/12 m-auto sm:w-64 xl:w-72 xl:max-w-xl animate__animated animate__flipInY">
+    <a
+      href="/trade"
+      className="w-11/12 m-auto sm:w-64 xl:w-72 xl:max-w-xl animate__animated animate__flipInY"
+    >
       <div className="h-full p-2 px-5 transition duration-500 transform rounded shadow-xl box sm:rounded-xl xl:p-4 hover:scale-110">
         <div className="flex flex-col flex-wrap justify-center w-full m-auto text-center align-middle xl:my-3 ">
           <p className="text-xl font-bold text-white sm:ml-0 xl:text-2xl">

@@ -10,8 +10,8 @@ import PasswordCriteria from "../PasswordCriteriaChecker/PasswordCriteira";
 import "../PasswordCriteriaChecker/PasswordCriteria.css";
 
 export const EmailPassword = () => {
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
   //Email & Password section
   const [isDisabledEmailPassword, setIsDisabledEmailPassword] = useState(true);
@@ -77,7 +77,7 @@ export const EmailPassword = () => {
   };
 
   //clear user input for password
-  const [valuePass, setValuePass] = useState();
+  const [valuePass, setValuePass] = useState("");
 
   //update user input for Password
   const handleUserInputPass = (e) => {

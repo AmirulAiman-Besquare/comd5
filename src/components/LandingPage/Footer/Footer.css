@@ -1,5 +1,5 @@
 .footer-container {
-  background-color: #0A2653;
+  background-color: #0a2653;
   padding: 1rem 0 1rem 0;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
 }
 
 .contact-us-text {
-  font-family: Readex Pro;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -77,10 +77,9 @@
   position: relative;
 }
 
-
 @media only screen and (max-width: 600px) {
   .footer-container {
-    background-color: #0A2653;
+    background-color: #0a2653;
     padding: 1rem 0 1rem 0;
     display: flex;
     flex-direction: column;
@@ -89,7 +88,7 @@
     white-space: nowrap;
     height: 20rem;
   }
-  
+
   .footer-links {
     /* width: 100%; */
     /* margin-left: 15px;
@@ -98,13 +97,13 @@
     justify-content: center;
     /* flex-direction: column; */
   }
-  
+
   .footer-link-wrapper {
     display: flex;
     justify-content: space-between;
     /* align-content: space-between; */
   }
-  
+
   .footer-link-items {
     display: flex;
     align-items: flex-start;
@@ -113,21 +112,21 @@
     /* width: 160px; */
     box-sizing: border-box;
   }
-  
+
   .footer-link-items .contact-us-tex {
     margin: 0 0 0 0;
   }
-  
+
   .comD5-logo-white {
     /* position: absolute; */
-    justify-content: center;     
+    justify-content: center;
     margin: 0 90px 0 50px;
     height: 50px;
     width: 150px;
   }
-  
+
   .contact-us-text {
-    font-family: Readex Pro;
+    font-family: "Roboto";
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
@@ -135,12 +134,12 @@
     margin-bottom: 15px;
     letter-spacing: 0.06em;
   }
-  
+
   .contact-number-with-icon {
     font-size: 18px;
     /* padding-right: 1000px; */
   }
-  
+
   .contact-number {
     font-family: Roboto;
     font-style: italic;

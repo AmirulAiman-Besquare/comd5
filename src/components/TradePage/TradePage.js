@@ -39,6 +39,8 @@ export const TradePage = () => {
   let latestPrice = null;
   const [disableBuyBtn, setDisableBuyBtn] = useState(false);
   const [disableSellBtn, setDisableSellBtn] = useState(false);
+  const [sellBtnText, setSellBtnText] = useState("Sell");
+  const [buyBtnText, setBuyBtnText] = useState("Buy");
   const [icon, setIcon] = useState(<></>);
   const [lastPrice, setLastPrice] = useState(0);
 
@@ -154,6 +156,7 @@ export const TradePage = () => {
   }, [buy_amount, sell_amount]);
 
   const onSubmitBuy = async (e) => {
+    setBuyBtnText(<ScaleLoader color={"white"} height={15} margin={0.6} />);
     e.preventDefault();
 
     try {
@@ -168,8 +171,6 @@ export const TradePage = () => {
       });
       clearInput();
       const parseRes = await response.json();
-      console.log(JSON.stringify(body));
-      console.log(parseRes);
       if (parseRes === "Invalid Amount to Purchase") {
         toast.error("Invalid Amount to Purchase");
       } else if (parseRes === "Purchase Gold Successful") {
@@ -183,6 +184,7 @@ export const TradePage = () => {
       } else if (parseRes === "Insufficient Balance") {
         toast.error("Insufficient Balance");
       }
+      setBuyBtnText("Buy");
       getAsset();
       getBalance();
     } catch (error) {
@@ -192,6 +194,7 @@ export const TradePage = () => {
   };
 
   const onSubmitSell = async (e) => {
+    setSellBtnText(<ScaleLoader color={"white"} height={15} margin={0.6} />);
     e.preventDefault();
     try {
       const body = { sell_amount };
@@ -206,8 +209,7 @@ export const TradePage = () => {
       });
       clearInput();
       const parseRes = await response.json();
-      console.log(JSON.stringify(body));
-      console.log(parseRes);
+
       if (parseRes === "Invalid Amount to sell") {
         toast.error("Invalid Amount to Sell");
       } else if (parseRes === "Selling Gold Successful") {
@@ -227,6 +229,7 @@ export const TradePage = () => {
       } else if (parseRes === "Not enough palladium to sell") {
         toast.error("Not Enough Palladium to Sell");
       }
+      setSellBtnText("Sell");
       getAsset();
       getBalance();
     } catch (error) {
@@ -309,11 +312,11 @@ export const TradePage = () => {
                 <option value={3600}>1 Hours</option>
                 <option value={7200}>2 Hours</option>
                 <option value={14400}>4 Hours</option>
-                <option value={28800}>8 Hours</option>
+                {/* <option value={28800}>8 Hours</option> */}
                 {/* <option value={86400}>1 Day</option> */}
               </select>
             </div>
-            <div className="p-2 w-40 h-[3.8em] sm:h-[4.6em] xl:h-[5.6em] m-auto  drop-shadow rounded-xl  ">
+            <div className="p-2 w-40 h-[3.8em] sm:h-[4.6em] xl:h-[5.6em] m-auto drop-shadow rounded-xl">
               <select
                 onChange={(e) => setCommodity(e.target.value)}
                 className="w-full h-full p-1 px-2 m-auto text-base font-bold text-center text-white bg-gray-800 border border-black rounded-md outline-none appearance-none placeholder:text-slate-500 hover:bg-gray-900 focus:ring-1 focus:ring-gray-300"
@@ -382,7 +385,14 @@ export const TradePage = () => {
                 <button
                   type="submit"
                   disabled={disableBuyBtn}
-                  className="transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
+                  className="hidden sm:block transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
+                >
+                  {buyBtnText}
+                </button>
+                <button
+                  type="submit"
+                  disabled={disableBuyBtn}
+                  className="sm:hidden transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
                 >
                   Buy
                 </button>
@@ -437,7 +447,14 @@ export const TradePage = () => {
                 <button
                   type="submit"
                   disabled={disableSellBtn}
-                  className=" transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
+                  className="hidden sm:block transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
+                >
+                  {sellBtnText}
+                </button>
+                <button
+                  type="submit"
+                  disabled={disableSellBtn}
+                  className=" sm:hidden transform transition duration-500 hover:scale-110 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm px-7 py-2.5 text-center font-bold disabled:bg-gradient-to-r disabled:from-black disabled:via-black disabled:to-black"
                 >
                   Sell
                 </button>

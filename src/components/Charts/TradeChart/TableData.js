@@ -32,9 +32,9 @@ const TableData = ({ asset, granularity }) => {
         JSON.stringify({
           ticks_history: refSelectedCommodity.current,
           adjust_start_time: 1,
-          count: 100,
+          count: 10000,
           end: "latest",
-          start: 1,
+          start: 0,
           granularity: refSelectedTime.current,
           subscribe: 1,
           style: "candles",
@@ -52,7 +52,7 @@ const TableData = ({ asset, granularity }) => {
         setRealHistory(
           data[0].map((d) => {
             return {
-              time: d.epoch,
+              time: d.epoch + 28800,
               open: d.open,
               high: d.high,
               low: d.low,
@@ -66,7 +66,7 @@ const TableData = ({ asset, granularity }) => {
         //if true => create the *updating* candle
         if (latesttime === parsedData.ohlc.open_time) {
           latestohlc = {
-            time: parsedData.ohlc.epoch,
+            time: parsedData.ohlc.epoch + 28800,
             open: parseFloat(parsedData.ohlc.open),
             high: parseFloat(parsedData.ohlc.high),
             low: parseFloat(parsedData.ohlc.low),

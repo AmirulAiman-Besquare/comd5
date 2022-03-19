@@ -23,7 +23,6 @@ export const PersonalInfo = () => {
         headers: { token: localStorage.token },
       });
       const parseRes = await response.json();
-      console.log(parseRes);
 
       setFirstName(parseRes[0].first_name);
       setLastName(parseRes[0].last_name);
@@ -56,7 +55,7 @@ export const PersonalInfo = () => {
   //   };
   // }, [PhoneNumInputs]);
 
-  const { phone_number } = PhoneNumInputs;
+  let { phone_number } = PhoneNumInputs;
   const onChangePhoneNum = (e) => {
     setPhoneNumInputs({ ...PhoneNumInputs, [e.target.name]: e.target.value });
   };
@@ -102,6 +101,7 @@ export const PersonalInfo = () => {
 
   //Cancel button in Personal Info section
   const handleCancelBtnTextPersonalInfo = () => {
+    phone_number = "";
     setPhoneNo("Example: 01234567899");
     setShowCancelBtnPersonalInfo(!showCancelBtnPersonalInfo);
     setBtnTextPersonalInfo((prev) => (prev === "Edit" ? "Save" : "Edit"));
@@ -139,7 +139,7 @@ export const PersonalInfo = () => {
             className="w-full px-3 py-2 border rounded shadow appearance-none disabled:bg-gray-300 text-grey-darker"
             id="id"
             type="text"
-            value={id}
+            defaultValue={id}
             disabled
           />
         </div>
@@ -156,7 +156,7 @@ export const PersonalInfo = () => {
             className="w-full px-3 py-2 mb-3 border rounded shadow appearance-none border-red text-grey-darker disabled:bg-gray-300"
             type="tel"
             name="phone_number"
-            value={phone_number}
+            defaultValue={phone_number}
             maxLength="11"
             onChange={(e) => onChangePhoneNum(e)}
             onKeyDown={(event) => {

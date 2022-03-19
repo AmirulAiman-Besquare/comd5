@@ -10,7 +10,7 @@
 
 .asset-title {
   padding-top: 50px;
-  font-family: Readex Pro;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: bold;
   font-size: 70px;
@@ -20,7 +20,7 @@
 }
 
 .asset-subtitle {
-  font-family: roboto;
+  font-family: "Roboto";
   text-align: center;
   color: #062650;
   font-style: italic;

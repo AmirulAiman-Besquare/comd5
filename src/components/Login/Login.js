@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { eye } from "react-icons-kit/fa/eye";
 import { eyeSlash } from "react-icons-kit/fa/eyeSlash";
 import { Icon } from "react-icons-kit";
+import "animate.css";
 
 export const Login = ({ setAuth }) => {
   //toggle password feature
@@ -61,7 +62,7 @@ export const Login = ({ setAuth }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-[url('../asset/images/mainbg.png')] lg:justify-center bg-center bg-no-repeat bg-cover">
-      <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md ">
+      <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg animate__animated animate__fadeInDown max md:flex-row md:flex-1 lg:max-w-screen-md">
         <div className="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly ">
           <img
             className="object-center mx-auto h-72"
