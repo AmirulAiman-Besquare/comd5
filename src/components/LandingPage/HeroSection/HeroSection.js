@@ -1,6 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
-import comD5 from "../../asset/images/Company-logo.png";
+import comD5 from "../../asset/CompanyLogo/Company-logo.png";
 import pcPhone from "../../asset/images/device.png";
 import history from "../../../history";
 import "animate.css";

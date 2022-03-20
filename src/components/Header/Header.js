@@ -8,7 +8,7 @@ import { FaBars } from "react-icons/fa";
 import "animate.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { slide as Menu } from "react-burger-menu";
-import logo from "../asset/CompanyLogo/White Logo no text.png";
+import logo from "../asset/CompanyLogo/logo_white.png";
 import { FiArchive } from "react-icons/fi";
 import {
   MdOutlineGraphicEq,
@@ -48,8 +48,8 @@ export const Header = ({ setAuth, title }) => {
     <>
       <Menu>
         <div className="w-full border-b-2 bm-header border-[#00B2FF] mt-8 px-5  pb-10">
-          <img src={logo} />
-          <p className="mt-2 ml-2 text-xl font-bold text-white grow">
+          <img src={logo} className="w-16" />
+          <p className="mt-5 ml-2 text-xl font-bold text-white grow">
             COMMODIFY
           </p>
           <FaBars className="mt-1" color="white" size={"2.5em"} />
