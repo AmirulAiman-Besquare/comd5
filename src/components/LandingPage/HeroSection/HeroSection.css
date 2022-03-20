@@ -477,7 +477,7 @@
   }
 
   .hero-img {
-    margin-bottom: 400px;
+    margin-bottom: 300px;
   }
 
   .hero-img > .pcPhone-comd5 {
@@ -488,8 +488,8 @@
     left: 10%;
     /* white-space: nowrap; */
     justify-content: center;
-    height: 220px;
-    width: 270px;
+    height: 180px;
+    width: 230px;
   }
 
   .start-now-btn {
@@ -499,10 +499,10 @@
     line-height: 42px;
     letter-spacing: 0.015em;
     border-radius: 20px;
-    margin: 40px 75px;
+    margin: 40px 70px;
     height: 60px;
-    width: 180px;
-    font-size: 24px;
+    width: 140px;
+    font-size: 20px;
   }
 
   .hero-content {
