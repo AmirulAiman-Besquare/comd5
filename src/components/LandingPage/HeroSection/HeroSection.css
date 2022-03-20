@@ -17,7 +17,7 @@
   position: absolute;
   top: 70px;
   left: 190px;
-  height: 80px;
+  height: 100px;
   width: 230px;
 }
 
@@ -108,7 +108,7 @@
     position: absolute;
     top: 20px;
     left: 90px;
-    height: 50px;
+    height: 70px;
     width: 150px;
   }
 
@@ -179,7 +179,7 @@
     position: absolute;
     top: 20px;
     left: 90px;
-    height: 50px;
+    height: 70px;
     width: 150px;
   }
 
@@ -238,7 +238,7 @@
   }
 
   .company-logo {
-    height: 50px;
+    height: 70px;
     width: 150px;
     left: 10%;
   }
@@ -316,7 +316,7 @@
   }
 
   .company-logo {
-    height: 50px;
+    height: 70px;
     width: 150px;
     left: 10%;
   }
@@ -394,7 +394,7 @@
   }
 
   .company-logo {
-    height: 50px;
+    height: 70px;
     width: 150px;
     left: 10%;
   }
@@ -471,7 +471,7 @@
   }
 
   .company-logo {
-    height: 40px;
+    height: 60px;
     width: 120px;
     left: 10%;
   }
