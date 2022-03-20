@@ -198,6 +198,7 @@ export const Register = ({ setAuth }) => {
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                   required
                   onFocus={handleOnFocus}
                   onBlur={handleOnBlur}
@@ -247,8 +248,7 @@ export const Register = ({ setAuth }) => {
             <div>
               <button
                 type="submit"
-                className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 rounded-md shadow bg-gradient-to-r from-cyan-500 to-blue-700 hover:from-cyan-600 hover:to-blue-900 focus:outline-none focus:ring-blue-200 focus:ring-4"
-                // disabled={btnSubmitState}
+                className="disabled:bg-gradient-to-r disabled:from-[#505355] disabled:to-[#505355] disabled:border-[#505355] w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 rounded-md shadow bg-gradient-to-r from-cyan-500 to-blue-700 hover:from-cyan-600 hover:to-blue-900 focus:outline-none focus:ring-blue-200 focus:ring-4"
               >
                 Sign Up
               </button>
