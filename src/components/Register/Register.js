@@ -198,7 +198,7 @@ export const Register = ({ setAuth }) => {
                   name="password"
                   value={password}
                   onChange={(e) => onChange(e)}
-                  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                  pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
                   required
                   onFocus={handleOnFocus}
                   onBlur={handleOnBlur}
